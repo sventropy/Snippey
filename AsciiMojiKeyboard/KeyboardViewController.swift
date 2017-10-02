@@ -70,12 +70,12 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         label.sizeToFit()
         
         let requiredSize = label.frame.size;
-        let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 8)
+        let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 16)
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top:8,left:8,bottom:8,right:8)
+        return UIEdgeInsets(top:8 ,left:8 ,bottom:8 ,right:8)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

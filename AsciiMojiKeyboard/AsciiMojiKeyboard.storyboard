@@ -80,13 +80,12 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-iu-nmf">
-                                        <rect key="frame" x="0.0" y="179" width="600" height="36"/>
+                                        <rect key="frame" x="0.0" y="173" width="600" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ord-EM-fL0">
-                                                <rect key="frame" x="4" y="0.0" width="30" height="28"/>
+                                                <rect key="frame" x="4" y="0.0" width="32" height="32"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="30" id="GiW-2X-K0r"/>
-                                                    <constraint firstAttribute="height" constant="28" id="jJ9-T4-vg2"/>
+                                                    <constraint firstAttribute="width" constant="32" id="Gtq-cv-Oy3"/>
                                                 </constraints>
                                                 <state key="normal" title="⌨︎">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -95,21 +94,8 @@
                                                     <action selector="keyboardSwitchTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="GD1-2F-6XZ"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pWa-KH-uRD">
-                                                <rect key="frame" x="566" y="0.0" width="30" height="28"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="28" id="Sx4-ft-QN3"/>
-                                                    <constraint firstAttribute="width" constant="30" id="ezI-IX-s5o"/>
-                                                </constraints>
-                                                <state key="normal" title="⌫">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backspaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="TxE-YO-2Q5"/>
-                                                </connections>
-                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pD-QA-OqO">
-                                                <rect key="frame" x="38" y="0.0" width="524" height="28"/>
+                                                <rect key="frame" x="40" y="0.0" width="520" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="␣">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -118,35 +104,46 @@
                                                     <action selector="spaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="otu-7u-Q90"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVO-RO-xjf">
+                                                <rect key="frame" x="564" y="0.0" width="32" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="32" id="vru-Hs-KYx"/>
+                                                </constraints>
+                                                <state key="normal" title="⌫">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backspaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="teP-4f-u8a"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="2ZO-si-ZCb"/>
-                                            <constraint firstAttribute="trailing" secondItem="pWa-KH-uRD" secondAttribute="trailing" constant="4" id="3aA-J3-vnT"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="4AE-TR-4xe"/>
-                                            <constraint firstAttribute="bottom" secondItem="pWa-KH-uRD" secondAttribute="bottom" constant="8" id="4z4-Ao-gPO"/>
-                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="FNp-VU-ppS"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="HJ4-qB-ECQ"/>
-                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="a44-w3-hmh"/>
-                                            <constraint firstItem="pWa-KH-uRD" firstAttribute="leading" secondItem="8pD-QA-OqO" secondAttribute="trailing" constant="4" id="f55-pG-F4e"/>
-                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="leading" secondItem="xpt-iu-nmf" secondAttribute="leading" constant="4" id="nkl-Qz-blO"/>
-                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="wj5-Ds-RHf"/>
-                                            <constraint firstItem="pWa-KH-uRD" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="woF-7t-ebA"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ord-EM-fL0" secondAttribute="bottom" constant="8" id="ytZ-ec-gHe"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="zw2-03-Efx"/>
+                                            <constraint firstAttribute="height" constant="40" id="Ern-GU-132"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="MTr-fg-kol"/>
+                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="QXb-Lu-lxY"/>
+                                            <constraint firstAttribute="trailing" secondItem="wVO-RO-xjf" secondAttribute="trailing" constant="4" id="R2g-dl-opL"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="Tow-5y-6tv"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="VY8-Y1-j3x"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ord-EM-fL0" secondAttribute="bottom" constant="8" id="WwJ-Fw-phn"/>
+                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="iQz-O9-o6Y"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="k9x-Rp-MrT"/>
+                                            <constraint firstAttribute="bottom" secondItem="wVO-RO-xjf" secondAttribute="bottom" constant="8" id="lWC-lS-cg6"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="leading" secondItem="xpt-iu-nmf" secondAttribute="leading" constant="4" id="m8n-pE-SlU"/>
+                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="leading" secondItem="8pD-QA-OqO" secondAttribute="trailing" constant="4" id="rqg-HH-ahn"/>
+                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="tWm-9X-hR5"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="xZ3-Fi-h3o"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="xpt-iu-nmf" secondAttribute="trailing" id="44l-5X-uoI"/>
+                                    <constraint firstAttribute="trailing" secondItem="xpt-iu-nmf" secondAttribute="trailing" id="3ci-AW-FqI"/>
                                     <constraint firstItem="t0j-En-E4T" firstAttribute="top" secondItem="ZzT-AT-Rrp" secondAttribute="top" id="4OE-d1-Phq"/>
                                     <constraint firstAttribute="trailing" secondItem="t0j-En-E4T" secondAttribute="trailing" id="Ktf-Xn-dZ0"/>
-                                    <constraint firstAttribute="bottom" secondItem="xpt-iu-nmf" secondAttribute="bottom" constant="-2" id="Rhl-cA-gka"/>
-                                    <constraint firstItem="xpt-iu-nmf" firstAttribute="leading" secondItem="ZzT-AT-Rrp" secondAttribute="leading" id="U5B-NA-acp"/>
-                                    <constraint firstItem="xpt-iu-nmf" firstAttribute="top" secondItem="t0j-En-E4T" secondAttribute="bottom" constant="2" id="dZ1-XX-ycW"/>
                                     <constraint firstItem="t0j-En-E4T" firstAttribute="leading" secondItem="ZzT-AT-Rrp" secondAttribute="leading" id="kEr-u2-TR5"/>
-                                    <constraint firstItem="xpt-iu-nmf" firstAttribute="top" secondItem="t0j-En-E4T" secondAttribute="bottom" constant="2" id="tjY-H7-Pxm"/>
+                                    <constraint firstItem="xpt-iu-nmf" firstAttribute="leading" secondItem="ZzT-AT-Rrp" secondAttribute="leading" id="r1D-NN-fhN"/>
+                                    <constraint firstAttribute="bottom" secondItem="xpt-iu-nmf" secondAttribute="bottom" id="zcc-jM-IbC"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -160,7 +157,7 @@
                     </view>
                     <size key="freeformSize" width="600" height="213"/>
                     <connections>
-                        <outlet property="backspaceButton" destination="pWa-KH-uRD" id="DjN-G5-ctL"/>
+                        <outlet property="backspaceButton" destination="wVO-RO-xjf" id="YXB-vh-LVM"/>
                         <outlet property="collectionView" destination="t0j-En-E4T" id="JaF-rt-DCT"/>
                         <outlet property="keyboardSwitchButton" destination="Ord-EM-fL0" id="v06-O2-FAT"/>
                         <outlet property="spaceButton" destination="8pD-QA-OqO" id="xQQ-Vl-V3q"/>
