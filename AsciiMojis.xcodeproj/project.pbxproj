@@ -1,0 +1,671 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */; };
+		5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
+		5C504EA21F6B0CAB00625257 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA01F6B0CAB00625257 /* Main.storyboard */; };
+		5C504EA41F6B0CAB00625257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA31F6B0CAB00625257 /* Assets.xcassets */; };
+		5C504EA71F6B0CAB00625257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */; };
+		5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
+		5C504ED51F6B0E4C00625257 /* AsciiMojiKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C8ADCDC1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */; };
+		5C8ADCE31F77B6C80063ECFA /* EmoticonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5C504EAE1F6B0CAB00625257 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C504E981F6B0CAB00625257;
+			remoteInfo = AsciiMojis;
+		};
+		5C504EB91F6B0CAB00625257 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C504E981F6B0CAB00625257;
+			remoteInfo = AsciiMojis;
+		};
+		5C504ED31F6B0E4C00625257 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C504ECD1F6B0E4C00625257;
+			remoteInfo = AsciiMojiKeyboard;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		5C504ED91F6B0E4C00625257 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				5C504ED51F6B0E4C00625257 /* AsciiMojiKeyboard.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		5C504E991F6B0CAB00625257 /* AsciiMojis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsciiMojis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5C504E9E1F6B0CAB00625257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5C504EA11F6B0CAB00625257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5C504EA31F6B0CAB00625257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C504EA61F6B0CAB00625257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5C504EA81F6B0CAB00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsciiMojisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsciiMojisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AsciiMojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
+		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AsciiMojiKeyboard.storyboard; sourceTree = "<group>"; };
+		5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonCollectionViewCell.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5C504E961F6B0CAB00625257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EAA1F6B0CAB00625257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EB51F6B0CAB00625257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504ECB1F6B0E4C00625257 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5C504E901F6B0CAB00625257 = {
+			isa = PBXGroup;
+			children = (
+				5C504E9B1F6B0CAB00625257 /* AsciiMojis */,
+				5C504ECF1F6B0E4C00625257 /* AsciiMojiKeyboard */,
+				5C504E9A1F6B0CAB00625257 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5C504E9A1F6B0CAB00625257 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5C504E991F6B0CAB00625257 /* AsciiMojis.app */,
+				5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */,
+				5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */,
+				5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5C504E9B1F6B0CAB00625257 /* AsciiMojis */ = {
+			isa = PBXGroup;
+			children = (
+				5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */,
+				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
+				5C504EA01F6B0CAB00625257 /* Main.storyboard */,
+				5C504EA31F6B0CAB00625257 /* Assets.xcassets */,
+				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
+				5C504EA81F6B0CAB00625257 /* Info.plist */,
+			);
+			path = AsciiMojis;
+			sourceTree = "<group>";
+		};
+		5C504ECF1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */,
+				5C504ED21F6B0E4C00625257 /* Info.plist */,
+				5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */,
+				5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */,
+			);
+			path = AsciiMojiKeyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5C504E981F6B0CAB00625257 /* AsciiMojis */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojis" */;
+			buildPhases = (
+				5C504E951F6B0CAB00625257 /* Sources */,
+				5C504E961F6B0CAB00625257 /* Frameworks */,
+				5C504E971F6B0CAB00625257 /* Resources */,
+				5C504ED91F6B0E4C00625257 /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C504ED41F6B0E4C00625257 /* PBXTargetDependency */,
+			);
+			name = AsciiMojis;
+			productName = AsciiMojis;
+			productReference = 5C504E991F6B0CAB00625257 /* AsciiMojis.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5C504EAC1F6B0CAB00625257 /* AsciiMojisTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C504EC41F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisTests" */;
+			buildPhases = (
+				5C504EA91F6B0CAB00625257 /* Sources */,
+				5C504EAA1F6B0CAB00625257 /* Frameworks */,
+				5C504EAB1F6B0CAB00625257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C504EAF1F6B0CAB00625257 /* PBXTargetDependency */,
+			);
+			name = AsciiMojisTests;
+			productName = AsciiMojisTests;
+			productReference = 5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5C504EB71F6B0CAB00625257 /* AsciiMojisUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C504EC71F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisUITests" */;
+			buildPhases = (
+				5C504EB41F6B0CAB00625257 /* Sources */,
+				5C504EB51F6B0CAB00625257 /* Frameworks */,
+				5C504EB61F6B0CAB00625257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5C504EBA1F6B0CAB00625257 /* PBXTargetDependency */,
+			);
+			name = AsciiMojisUITests;
+			productName = AsciiMojisUITests;
+			productReference = 5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "AsciiMojiKeyboard" */;
+			buildPhases = (
+				5C504ECA1F6B0E4C00625257 /* Sources */,
+				5C504ECB1F6B0E4C00625257 /* Frameworks */,
+				5C504ECC1F6B0E4C00625257 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AsciiMojiKeyboard;
+			productName = AsciiMojiKeyboard;
+			productReference = 5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5C504E911F6B0CAB00625257 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = "Hennessen, Sven";
+				TargetAttributes = {
+					5C504E981F6B0CAB00625257 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U7BU5DCVKA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+					};
+					5C504EAC1F6B0CAB00625257 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U7BU5DCVKA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5C504E981F6B0CAB00625257;
+					};
+					5C504EB71F6B0CAB00625257 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U7BU5DCVKA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5C504E981F6B0CAB00625257;
+					};
+					5C504ECD1F6B0E4C00625257 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = U7BU5DCVKA;
+						LastSwiftMigration = 0900;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 0;
+							};
+						};
+					};
+				};
+			};
+			buildConfigurationList = 5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "AsciiMojis" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5C504E901F6B0CAB00625257;
+			productRefGroup = 5C504E9A1F6B0CAB00625257 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5C504E981F6B0CAB00625257 /* AsciiMojis */,
+				5C504EAC1F6B0CAB00625257 /* AsciiMojisTests */,
+				5C504EB71F6B0CAB00625257 /* AsciiMojisUITests */,
+				5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5C504E971F6B0CAB00625257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C504EA71F6B0CAB00625257 /* LaunchScreen.storyboard in Resources */,
+				5C504EA41F6B0CAB00625257 /* Assets.xcassets in Resources */,
+				5C504EA21F6B0CAB00625257 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EAB1F6B0CAB00625257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EB61F6B0CAB00625257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504ECC1F6B0E4C00625257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8ADCDC1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5C504E951F6B0CAB00625257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */,
+				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EA91F6B0CAB00625257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504EB41F6B0CAB00625257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5C504ECA1F6B0E4C00625257 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5C8ADCE31F77B6C80063ECFA /* EmoticonCollectionViewCell.swift in Sources */,
+				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5C504EAF1F6B0CAB00625257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C504E981F6B0CAB00625257 /* AsciiMojis */;
+			targetProxy = 5C504EAE1F6B0CAB00625257 /* PBXContainerItemProxy */;
+		};
+		5C504EBA1F6B0CAB00625257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C504E981F6B0CAB00625257 /* AsciiMojis */;
+			targetProxy = 5C504EB91F6B0CAB00625257 /* PBXContainerItemProxy */;
+		};
+		5C504ED41F6B0E4C00625257 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */;
+			targetProxy = 5C504ED31F6B0E4C00625257 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		5C504EA01F6B0CAB00625257 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C504EA11F6B0CAB00625257 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C504EA61F6B0CAB00625257 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5C504EBF1F6B0CAB00625257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5C504EC01F6B0CAB00625257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5C504EC21F6B0CAB00625257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5C504EC31F6B0CAB00625257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		5C504EC51F6B0CAB00625257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AsciiMojis.app/AsciiMojis";
+			};
+			name = Debug;
+		};
+		5C504EC61F6B0CAB00625257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojisTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AsciiMojis.app/AsciiMojis";
+			};
+			name = Release;
+		};
+		5C504EC81F6B0CAB00625257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AsciiMojis;
+			};
+			name = Debug;
+		};
+		5C504EC91F6B0CAB00625257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojisUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = AsciiMojis;
+			};
+			name = Release;
+		};
+		5C504ED71F6B0E4C00625257 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojiKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis.AsciiMojiKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		5C504ED81F6B0E4C00625257 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				INFOPLIST_FILE = AsciiMojiKeyboard/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis.AsciiMojiKeyboard;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "AsciiMojis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C504EBF1F6B0CAB00625257 /* Debug */,
+				5C504EC01F6B0CAB00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojis" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C504EC21F6B0CAB00625257 /* Debug */,
+				5C504EC31F6B0CAB00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C504EC41F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C504EC51F6B0CAB00625257 /* Debug */,
+				5C504EC61F6B0CAB00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C504EC71F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C504EC81F6B0CAB00625257 /* Debug */,
+				5C504EC91F6B0CAB00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "AsciiMojiKeyboard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5C504ED71F6B0E4C00625257 /* Debug */,
+				5C504ED81F6B0E4C00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5C504E911F6B0CAB00625257 /* Project object */;
+}
