@@ -19,20 +19,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		5C504EAE1F6B0CAB00625257 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C504E981F6B0CAB00625257;
-			remoteInfo = AsciiMojis;
-		};
-		5C504EB91F6B0CAB00625257 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 5C504E981F6B0CAB00625257;
-			remoteInfo = AsciiMojis;
-		};
 		5C504ED31F6B0E4C00625257 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
@@ -64,8 +50,6 @@
 		5C504EA31F6B0CAB00625257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C504EA61F6B0CAB00625257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C504EA81F6B0CAB00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsciiMojisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsciiMojisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AsciiMojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,20 +59,6 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		5C504E961F6B0CAB00625257 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C504EAA1F6B0CAB00625257 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C504EB51F6B0CAB00625257 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -118,8 +88,6 @@
 			isa = PBXGroup;
 			children = (
 				5C504E991F6B0CAB00625257 /* AsciiMojis.app */,
-				5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */,
-				5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */,
 				5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */,
 			);
 			name = Products;
@@ -171,42 +139,6 @@
 			productReference = 5C504E991F6B0CAB00625257 /* AsciiMojis.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5C504EAC1F6B0CAB00625257 /* AsciiMojisTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5C504EC41F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisTests" */;
-			buildPhases = (
-				5C504EA91F6B0CAB00625257 /* Sources */,
-				5C504EAA1F6B0CAB00625257 /* Frameworks */,
-				5C504EAB1F6B0CAB00625257 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5C504EAF1F6B0CAB00625257 /* PBXTargetDependency */,
-			);
-			name = AsciiMojisTests;
-			productName = AsciiMojisTests;
-			productReference = 5C504EAD1F6B0CAB00625257 /* AsciiMojisTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		5C504EB71F6B0CAB00625257 /* AsciiMojisUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 5C504EC71F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisUITests" */;
-			buildPhases = (
-				5C504EB41F6B0CAB00625257 /* Sources */,
-				5C504EB51F6B0CAB00625257 /* Frameworks */,
-				5C504EB61F6B0CAB00625257 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				5C504EBA1F6B0CAB00625257 /* PBXTargetDependency */,
-			);
-			name = AsciiMojisUITests;
-			productName = AsciiMojisUITests;
-			productReference = 5C504EB81F6B0CAB00625257 /* AsciiMojisUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "AsciiMojiKeyboard" */;
@@ -240,18 +172,6 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
-					5C504EAC1F6B0CAB00625257 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = U7BU5DCVKA;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 5C504E981F6B0CAB00625257;
-					};
-					5C504EB71F6B0CAB00625257 = {
-						CreatedOnToolsVersion = 8.3.3;
-						DevelopmentTeam = U7BU5DCVKA;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 5C504E981F6B0CAB00625257;
-					};
 					5C504ECD1F6B0E4C00625257 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = U7BU5DCVKA;
@@ -279,8 +199,6 @@
 			projectRoot = "";
 			targets = (
 				5C504E981F6B0CAB00625257 /* AsciiMojis */,
-				5C504EAC1F6B0CAB00625257 /* AsciiMojisTests */,
-				5C504EB71F6B0CAB00625257 /* AsciiMojisUITests */,
 				5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */,
 			);
 		};
@@ -294,20 +212,6 @@
 				5C504EA71F6B0CAB00625257 /* LaunchScreen.storyboard in Resources */,
 				5C504EA41F6B0CAB00625257 /* Assets.xcassets in Resources */,
 				5C504EA21F6B0CAB00625257 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C504EAB1F6B0CAB00625257 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C504EB61F6B0CAB00625257 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,20 +235,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5C504EA91F6B0CAB00625257 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C504EB41F6B0CAB00625257 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		5C504ECA1F6B0E4C00625257 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,16 +247,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		5C504EAF1F6B0CAB00625257 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C504E981F6B0CAB00625257 /* AsciiMojis */;
-			targetProxy = 5C504EAE1F6B0CAB00625257 /* PBXContainerItemProxy */;
-		};
-		5C504EBA1F6B0CAB00625257 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 5C504E981F6B0CAB00625257 /* AsciiMojis */;
-			targetProxy = 5C504EB91F6B0CAB00625257 /* PBXContainerItemProxy */;
-		};
 		5C504ED41F6B0E4C00625257 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */;
@@ -531,64 +411,6 @@
 			};
 			name = Release;
 		};
-		5C504EC51F6B0CAB00625257 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojisTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AsciiMojis.app/AsciiMojis";
-			};
-			name = Debug;
-		};
-		5C504EC61F6B0CAB00625257 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojisTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AsciiMojis.app/AsciiMojis";
-			};
-			name = Release;
-		};
-		5C504EC81F6B0CAB00625257 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojisUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = AsciiMojis;
-			};
-			name = Debug;
-		};
-		5C504EC91F6B0CAB00625257 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojisUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojisUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-				TEST_TARGET_NAME = AsciiMojis;
-			};
-			name = Release;
-		};
 		5C504ED71F6B0E4C00625257 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -634,24 +456,6 @@
 			buildConfigurations = (
 				5C504EC21F6B0CAB00625257 /* Debug */,
 				5C504EC31F6B0CAB00625257 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5C504EC41F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5C504EC51F6B0CAB00625257 /* Debug */,
-				5C504EC61F6B0CAB00625257 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		5C504EC71F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojisUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				5C504EC81F6B0CAB00625257 /* Debug */,
-				5C504EC91F6B0CAB00625257 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
