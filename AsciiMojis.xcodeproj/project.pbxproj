@@ -16,6 +16,9 @@
 		5C504ED51F6B0E4C00625257 /* AsciiMojiKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5C8ADCDC1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */; };
 		5C8ADCE31F77B6C80063ECFA /* EmoticonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */; };
+		5C8FCC0F1FA66E9900DA157C /* text_emoji.json in Resources */ = {isa = PBXBuildFile; fileRef = 5C8FCC0E1FA66E9900DA157C /* text_emoji.json */; };
+		5C8FCC111FA66F3000DA157C /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Emoticon.swift */; };
+		5C8FCC131FA671F600DA157C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC121FA671F600DA157C /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +58,9 @@
 		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AsciiMojiKeyboard.storyboard; sourceTree = "<group>"; };
 		5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmoticonCollectionViewCell.swift; sourceTree = "<group>"; };
+		5C8FCC0E1FA66E9900DA157C /* text_emoji.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = text_emoji.json; sourceTree = "<group>"; };
+		5C8FCC101FA66F3000DA157C /* Emoticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
+		5C8FCC121FA671F600DA157C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,10 +115,13 @@
 		5C504ECF1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
 			isa = PBXGroup;
 			children = (
+				5C8FCC0E1FA66E9900DA157C /* text_emoji.json */,
 				5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */,
 				5C504ED21F6B0E4C00625257 /* Info.plist */,
 				5C8ADCDB1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard */,
 				5C8ADCE21F77B6C80063ECFA /* EmoticonCollectionViewCell.swift */,
+				5C8FCC101FA66F3000DA157C /* Emoticon.swift */,
+				5C8FCC121FA671F600DA157C /* Persistence.swift */,
 			);
 			path = AsciiMojiKeyboard;
 			sourceTree = "<group>";
@@ -220,6 +229,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C8ADCDC1F76B22B0063ECFA /* AsciiMojiKeyboard.storyboard in Resources */,
+				5C8FCC0F1FA66E9900DA157C /* text_emoji.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +249,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C8FCC111FA66F3000DA157C /* Emoticon.swift in Sources */,
 				5C8ADCE31F77B6C80063ECFA /* EmoticonCollectionViewCell.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
+				5C8FCC131FA671F600DA157C /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +400,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
 				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -403,6 +416,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
 				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
 				PRODUCT_NAME = "$(TARGET_NAME)";

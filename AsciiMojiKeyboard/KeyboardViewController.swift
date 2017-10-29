@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
@@ -22,7 +23,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBOutlet weak var spaceButton: UIButton!
     @IBOutlet weak var backspaceButton: UIButton!
     
-    var emoticons: [String] = ["⊙﹏⊙","ಠ_ಠ","눈_눈","ఠ_ఠ","ಠ‿ಠ","ಥ_ಥ","ಥ﹏ಥ","ʘ‿ʘ","◔_◔","♥‿♥","ᵒᴥᵒ#","°‿‿°","ʕ•ᴥ•ʔ","V●ᴥ●V","ミ●﹏☉ミ","٩◔̯◔۶","¿ⓧ_ⓧﮌ","(⊙_◎)","(ಥ⌣ಥ)","(ᵔᴥᵔ)","(⊙.☉)7","(Ծ‸ Ծ)","（　ﾟДﾟ）","(҂◡_◡)","щ（ﾟДﾟщ）","t(-_-t)","(´･_･`)","{•̃_•̃}","⊂(◉‿◉)つ","(╬ ಠ益ಠ)","ᕕ( ᐛ )ᕗ","ヽ(´ー｀)ノ","(☞ﾟヮﾟ)☞","ლ(｀ー´ლ)","ฅ^•ﻌ•^ฅ","( ˇ෴ˇ )","☜(⌒▽⌒)☞","ヽ(´▽`)/","┌(ㆆ㉨ㆆ)ʃ","ԅ(≖‿≖ԅ)","(｡◕‿◕｡)","[¬º-°]¬","(`･ω･´)","q(❂‿❂)p","ᕦ(ò_óˇ)ᕤ","٩(͡๏_๏)۶","(づ￣ ³￣)づ","( ˘ ³˘)♥","( ఠൠఠ )ﾉ","ლ(•́•́ლ)","ヾ(-_- )ゞ","ᕙ(⇀‸↼‶)ᕗ","ƪ(ړײ)‎ƪ​​","ヽ༼ ಠ益ಠ ༽ﾉ","ʕ •́؈•̀ ₎","¯\\_(ツ)_/¯","¯\\(°_o)/¯","(づ｡◕‿‿◕｡)づ","༼ ༎ຶ ෴ ༎ຶ༽","(っ•́｡•́)♪♬","(•̀ᴗ•́)و ̑̑","( ͡° ͜ʖ ͡°)","(๑•́ ₃ •̀๑)","｡ﾟ( ﾟஇ‸இﾟ)ﾟ｡","¯\\_(⊙︿⊙)_/¯","(╯°□°）╯︵ ┻━┻","┬─┬⃰͡ (ᵔᵕᵔ͜ )","⁽⁽ଘ( ˊᵕˋ )ଓ⁾⁾","┬─┬﻿ ノ( ゜-゜ノ)","ε=ε=ε=┌(;*´Д`)ﾉ","༼∵༽ ༼⍨༽ ༼⍢༽ ༼⍤༽","“ヽ(´▽｀)ノ\u{201d}","（ ^_^）o自自o（^_^ ）","\'\'⌐(ಠ۾ಠ)¬\'\'\'","┻━┻ ︵ヽ(`Д´)ﾉ︵﻿ ┻━┻","(ノಠ ∩ಠ)ノ彡( \\o°o)\\","乁( ◔ ౪◔)「      ┑(￣Д ￣)┍"]
+    var emoticons: [Emoticon] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +37,11 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.addShadowTo(self.keyboardSwitchButton)
         self.addShadowTo(self.spaceButton)
         self.addShadowTo(self.backspaceButton)
+        
+        self.emoticons = Persistence.sharedInstance.getEmoticons()
+        self.emoticons.sort { (e1, e2) -> Bool in
+            e1.emoticon.count < e2.emoticon.count
+        }
     }
     
     @IBAction func keyboardSwitchTouchUp(_ sender: Any) {
@@ -66,7 +72,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         
         // dummy label to calculate size
         let label = UILabel()
-        label.text = emoticon
+        label.text = emoticon.emoticon
         label.sizeToFit()
         
         let requiredSize = label.frame.size;
@@ -97,7 +103,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let emoticon = self.emoticons[indexPath.row];
 
-        self.textDocumentProxy.insertText(emoticon)
+        self.textDocumentProxy.insertText(emoticon.emoticon)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
@@ -109,7 +115,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         
         // Configure the cell...
         let emoticon = self.emoticons[indexPath.row];
-        cell.label?.text = emoticon
+        cell.label?.text = emoticon.emoticon
         
         cell.view?.layer.cornerRadius = Constants.cornerRadius
         cell.view?.backgroundColor = Constants.backgroundColor
