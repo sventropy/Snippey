@@ -15,17 +15,17 @@
             <objects>
                 <viewController id="u42-Yw-Rps" customClass="KeyboardViewController" customModule="AsciiMojiKeyboard" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cLL-WZ-ypI">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="213"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzT-AT-Rrp">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="213"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="220"/>
                                 <subviews>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t0j-En-E4T">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="177"/>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t0j-En-E4T">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="177" id="cpb-Xg-o2v"/>
+                                            <constraint firstAttribute="height" constant="180" id="llv-Lb-N1N"/>
                                         </constraints>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4ig-sl-qY2">
                                             <size key="itemSize" width="50" height="50"/>
@@ -80,13 +80,10 @@
                                         </connections>
                                     </collectionView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xpt-iu-nmf">
-                                        <rect key="frame" x="0.0" y="173" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="180" width="600" height="40"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ord-EM-fL0">
-                                                <rect key="frame" x="4" y="0.0" width="32" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="Gtq-cv-Oy3"/>
-                                                </constraints>
+                                                <rect key="frame" x="4" y="4" width="145" height="32"/>
                                                 <state key="normal" title="⌨︎">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                                 </state>
@@ -94,8 +91,26 @@
                                                     <action selector="keyboardSwitchTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="GD1-2F-6XZ"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVO-RO-xjf">
+                                                <rect key="frame" x="451" y="4" width="145" height="32"/>
+                                                <state key="normal" title="⌫">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="backspaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="teP-4f-u8a"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PtQ-m7-dvJ">
+                                                <rect key="frame" x="302" y="4" width="145" height="32"/>
+                                                <state key="normal" title="⏎">
+                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="returnTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="tjf-Uw-MYi"/>
+                                                </connections>
+                                            </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8pD-QA-OqO">
-                                                <rect key="frame" x="40" y="0.0" width="520" height="32"/>
+                                                <rect key="frame" x="153" y="4" width="145" height="32"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <state key="normal" title="␣">
                                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -104,35 +119,26 @@
                                                     <action selector="spaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="otu-7u-Q90"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wVO-RO-xjf">
-                                                <rect key="frame" x="564" y="0.0" width="32" height="32"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="32" id="vru-Hs-KYx"/>
-                                                </constraints>
-                                                <state key="normal" title="⌫">
-                                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backspaceTouchUp:" destination="u42-Yw-Rps" eventType="touchUpInside" id="teP-4f-u8a"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
+                                            <constraint firstItem="PtQ-m7-dvJ" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" constant="4" id="5EC-pb-VpQ"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="width" secondItem="wVO-RO-xjf" secondAttribute="width" id="Azs-ky-bSS"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="width" secondItem="8pD-QA-OqO" secondAttribute="width" id="EPQ-fM-DHj"/>
                                             <constraint firstAttribute="height" constant="40" id="Ern-GU-132"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="MTr-fg-kol"/>
-                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="QXb-Lu-lxY"/>
-                                            <constraint firstAttribute="trailing" secondItem="wVO-RO-xjf" secondAttribute="trailing" constant="4" id="R2g-dl-opL"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="Tow-5y-6tv"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="VY8-Y1-j3x"/>
-                                            <constraint firstAttribute="bottom" secondItem="Ord-EM-fL0" secondAttribute="bottom" constant="8" id="WwJ-Fw-phn"/>
-                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="iQz-O9-o6Y"/>
-                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="k9x-Rp-MrT"/>
-                                            <constraint firstAttribute="bottom" secondItem="wVO-RO-xjf" secondAttribute="bottom" constant="8" id="lWC-lS-cg6"/>
-                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="leading" secondItem="xpt-iu-nmf" secondAttribute="leading" constant="4" id="m8n-pE-SlU"/>
-                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="leading" secondItem="8pD-QA-OqO" secondAttribute="trailing" constant="4" id="rqg-HH-ahn"/>
-                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="8" id="tWm-9X-hR5"/>
-                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" id="xZ3-Fi-h3o"/>
+                                            <constraint firstAttribute="trailing" secondItem="wVO-RO-xjf" secondAttribute="trailing" constant="4" id="Gl5-bc-M9W"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" constant="4" id="HTW-Bf-XDR"/>
+                                            <constraint firstAttribute="bottom" secondItem="Ord-EM-fL0" secondAttribute="bottom" constant="4" id="HZj-Ym-8H8"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="width" secondItem="PtQ-m7-dvJ" secondAttribute="width" id="I9n-LA-HCP"/>
+                                            <constraint firstAttribute="bottom" secondItem="PtQ-m7-dvJ" secondAttribute="bottom" constant="4" id="fTH-e8-UqS"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="leading" secondItem="Ord-EM-fL0" secondAttribute="trailing" constant="4" id="fpH-QW-ofY"/>
+                                            <constraint firstItem="PtQ-m7-dvJ" firstAttribute="leading" secondItem="8pD-QA-OqO" secondAttribute="trailing" constant="4" id="gQI-iL-vSw"/>
+                                            <constraint firstAttribute="bottom" secondItem="8pD-QA-OqO" secondAttribute="bottom" constant="4" id="ltb-Ei-FM9"/>
+                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" constant="4" id="mvc-pj-mN9"/>
+                                            <constraint firstItem="Ord-EM-fL0" firstAttribute="leading" secondItem="xpt-iu-nmf" secondAttribute="leading" constant="4" id="o1o-sq-pHX"/>
+                                            <constraint firstItem="wVO-RO-xjf" firstAttribute="leading" secondItem="PtQ-m7-dvJ" secondAttribute="trailing" constant="4" id="qY1-pz-MqR"/>
+                                            <constraint firstAttribute="bottom" secondItem="wVO-RO-xjf" secondAttribute="bottom" constant="4" id="rnJ-ng-AEr"/>
+                                            <constraint firstItem="8pD-QA-OqO" firstAttribute="top" secondItem="xpt-iu-nmf" secondAttribute="top" constant="4" id="wqg-Xx-QbU"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -155,11 +161,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mwl-uq-zC4"/>
                     </view>
-                    <size key="freeformSize" width="600" height="213"/>
+                    <size key="freeformSize" width="600" height="220"/>
                     <connections>
                         <outlet property="backspaceButton" destination="wVO-RO-xjf" id="YXB-vh-LVM"/>
+                        <outlet property="bottomBar" destination="xpt-iu-nmf" id="RQs-eH-4kc"/>
                         <outlet property="collectionView" destination="t0j-En-E4T" id="JaF-rt-DCT"/>
                         <outlet property="keyboardSwitchButton" destination="Ord-EM-fL0" id="v06-O2-FAT"/>
+                        <outlet property="returnButton" destination="PtQ-m7-dvJ" id="pOb-pd-D8R"/>
                         <outlet property="spaceButton" destination="8pD-QA-OqO" id="xQQ-Vl-V3q"/>
                     </connections>
                 </viewController>

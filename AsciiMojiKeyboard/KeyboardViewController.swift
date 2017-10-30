@@ -14,38 +14,54 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     struct Constants {
         static let cellReuseIdentifier = "emoticonCell"
         static let cornerRadius : CGFloat = 4.0
-        static let backgroundColor = UIColor(white: 0.95, alpha: 1.0)
-        static let textColor = UIColor(white: 0.1, alpha: 1.0)
+        static let keyboardBackgroundColor = UIColor(displayP3Red: 199/255, green: 203/255, blue: 210/255, alpha: 1)
+        static let buttonBackgroundColor = UIColor.white
+        static let textColor = UIColor.black
+        static let shadowColor = UIColor(displayP3Red: 137/255, green: 139/255, blue: 143/255, alpha: 1)
+        static let spacing : CGFloat = 4.0
     }
     
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet weak var keyboardSwitchButton: UIButton!
     @IBOutlet weak var spaceButton: UIButton!
     @IBOutlet weak var backspaceButton: UIButton!
+    @IBOutlet weak var returnButton: UIButton!
+    @IBOutlet weak var bottomBar: UIView!
     
     var emoticons: [Emoticon] = []
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.keyboardSwitchButton.backgroundColor = Constants.backgroundColor
-        self.spaceButton.backgroundColor = Constants.backgroundColor
-        self.backspaceButton.backgroundColor = Constants.backgroundColor
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+     
+        self.keyboardSwitchButton.backgroundColor = Constants.buttonBackgroundColor
+        self.spaceButton.backgroundColor = Constants.buttonBackgroundColor
+        self.backspaceButton.backgroundColor = Constants.buttonBackgroundColor
+        self.returnButton.backgroundColor = Constants.buttonBackgroundColor
         self.keyboardSwitchButton.layer.cornerRadius = Constants.cornerRadius
         self.spaceButton.layer.cornerRadius = Constants.cornerRadius
         self.backspaceButton.layer.cornerRadius = Constants.cornerRadius
+        self.returnButton.layer.cornerRadius = Constants.cornerRadius
         self.addShadowTo(self.keyboardSwitchButton)
         self.addShadowTo(self.spaceButton)
         self.addShadowTo(self.backspaceButton)
+        self.addShadowTo(self.returnButton)
+        
+        self.collectionView.backgroundColor = Constants.keyboardBackgroundColor
+        self.bottomBar.backgroundColor = Constants.keyboardBackgroundColor
         
         self.emoticons = Persistence.sharedInstance.getEmoticons()
         self.emoticons.sort { (e1, e2) -> Bool in
             e1.emoticon.count < e2.emoticon.count
         }
+        self.collectionView.reloadData()
     }
     
     @IBAction func keyboardSwitchTouchUp(_ sender: Any) {
         self.advanceToNextInputMode()
+    }
+    
+    @IBAction func returnTouchUp(_ sender: Any) {
+        self.textDocumentProxy.insertText("\n")
     }
     
     @IBAction func spaceTouchUp(_ sender: Any) {
@@ -81,22 +97,22 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top:8 ,left:8 ,bottom:8 ,right:8)
+        return UIEdgeInsets(top: Constants.spacing ,left: Constants.spacing ,bottom: Constants.spacing * 3 , right:Constants.spacing)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return Constants.spacing
     }
     
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! EmoticonCollectionViewCell
         cell.view?.backgroundColor = Constants.textColor
-        cell.label?.textColor = Constants.backgroundColor
+        cell.label?.textColor = Constants.buttonBackgroundColor
     }
     
     func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! EmoticonCollectionViewCell
-        cell.view?.backgroundColor = Constants.backgroundColor
+        cell.view?.backgroundColor = Constants.buttonBackgroundColor
         cell.label?.textColor = Constants.textColor
     }
     
@@ -107,7 +123,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 4
+        return Constants.spacing
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -118,7 +134,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         cell.label?.text = emoticon.emoticon
         
         cell.view?.layer.cornerRadius = Constants.cornerRadius
-        cell.view?.backgroundColor = Constants.backgroundColor
+        cell.view?.backgroundColor = Constants.buttonBackgroundColor
         self.addShadowTo(cell)
         cell.label?.textColor = Constants.textColor
         cell.label?.textAlignment = .center
@@ -127,11 +143,12 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     }
     
     func addShadowTo(_ view:UIView) -> Void {
-        view.layer.masksToBounds = false
-        view.layer.shadowColor = Constants.textColor.cgColor
-        view.layer.shadowOffset = CGSize(width: 0.0, height: 0.25)
-        view.layer.shadowOpacity = 0.25
+        view.layer.shadowColor = Constants.shadowColor.cgColor
+        view.layer.shadowOffset = CGSize(width: 0, height: 2)
+        view.layer.shadowOpacity = 1
+        view.layer.shadowRadius = 0
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: Constants.cornerRadius).cgPath
+        view.layer.masksToBounds = false
     }
     
 }
