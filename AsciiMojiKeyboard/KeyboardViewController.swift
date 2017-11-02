@@ -29,10 +29,24 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBOutlet weak var bottomBar: UIView!
     
     var emoticons: [Emoticon] = []
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-     
+        
+        self.emoticons = Persistence.sharedInstance.getEmoticons()
+        self.emoticons.sort { (e1, e2) -> Bool in
+            e1.emoticon.count < e2.emoticon.count
+        }
+        self.collectionView.reloadData()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
         self.keyboardSwitchButton.backgroundColor = Constants.buttonBackgroundColor
         self.spaceButton.backgroundColor = Constants.buttonBackgroundColor
         self.backspaceButton.backgroundColor = Constants.buttonBackgroundColor
@@ -49,11 +63,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.collectionView.backgroundColor = Constants.keyboardBackgroundColor
         self.bottomBar.backgroundColor = Constants.keyboardBackgroundColor
         
-        self.emoticons = Persistence.sharedInstance.getEmoticons()
-        self.emoticons.sort { (e1, e2) -> Bool in
-            e1.emoticon.count < e2.emoticon.count
-        }
-        self.collectionView.reloadData()
+        self.collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0,left: 0,bottom: -4,right: 0)
     }
     
     @IBAction func keyboardSwitchTouchUp(_ sender: Any) {
@@ -92,12 +102,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         label.sizeToFit()
         
         let requiredSize = label.frame.size;
-        let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 16)
+        let size = CGSize(width: requiredSize.width + 12, height: requiredSize.height + 12)
         return size
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: Constants.spacing ,left: Constants.spacing ,bottom: Constants.spacing * 3 , right:Constants.spacing)
+        
+        let bottom = Constants.spacing
+        return UIEdgeInsets(top: Constants.spacing ,left: Constants.spacing ,bottom: bottom , right:Constants.spacing)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
