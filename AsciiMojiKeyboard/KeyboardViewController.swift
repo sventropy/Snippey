@@ -102,7 +102,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         label.sizeToFit()
         
         let requiredSize = label.frame.size;
-        let size = CGSize(width: requiredSize.width + 12, height: requiredSize.height + 12)
+        let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 12)
         return size
     }
     
@@ -144,7 +144,6 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         // Configure the cell...
         let emoticon = self.emoticons[indexPath.row];
         cell.label?.text = emoticon.emoticon
-        
         cell.view?.layer.cornerRadius = Constants.cornerRadius
         cell.view?.backgroundColor = Constants.buttonBackgroundColor
         self.addShadowTo(cell)
