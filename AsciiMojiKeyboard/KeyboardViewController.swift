@@ -9,8 +9,8 @@
 import UIKit
 import Foundation
 
-class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-
+class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITableViewDataSource {
+    
     struct Constants {
         static let cellReuseIdentifier = "emoticonCell"
         static let cornerRadius : CGFloat = 4.0
@@ -21,7 +21,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         static let spacing : CGFloat = 4.0
     }
     
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var tableView: UITableView!
     @IBOutlet weak var keyboardSwitchButton: UIButton!
     @IBOutlet weak var spaceButton: UIButton!
     @IBOutlet weak var backspaceButton: UIButton!
@@ -33,7 +33,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadAndSortEmoticons()
+        self.loadAndSortEmoticons()
     }
     
     override func viewDidLayoutSubviews() {
@@ -52,10 +52,8 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.addShadowTo(self.backspaceButton)
         self.addShadowTo(self.returnButton)
         
-        self.collectionView.backgroundColor = Constants.keyboardBackgroundColor
+        self.tableView.backgroundColor = Constants.keyboardBackgroundColor
         self.toolBar.backgroundColor = Constants.keyboardBackgroundColor
-        
-        self.collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0,left: 0,bottom: -4,right: 0)
     }
     
     @IBAction func keyboardSwitchTouchUp(_ sender: Any) {
@@ -74,73 +72,17 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.textDocumentProxy.deleteBackward()
     }
     
-    // MARK: - Collection view data source
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.emoticons.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let emoticon = self.emoticons[indexPath.row];
-        
-        // dummy label to calculate size
-        let label = UILabel()
-        label.text = emoticon.emoticon
-        label.sizeToFit()
-        
-        let requiredSize = label.frame.size
-        let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 12)
-        return size
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
-        let bottom = Constants.spacing
-        return UIEdgeInsets(top: Constants.spacing ,left: Constants.spacing ,bottom: bottom , right:Constants.spacing)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.spacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! EmoticonCollectionViewCell
-        cell.view?.backgroundColor = Constants.textColor
-        cell.label?.textColor = Constants.buttonBackgroundColor
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! EmoticonCollectionViewCell
-        cell.view?.backgroundColor = Constants.buttonBackgroundColor
-        cell.label?.textColor = Constants.textColor
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emoticon = self.emoticons[indexPath.row];
-
-        self.textDocumentProxy.insertText(emoticon.emoticon)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.spacing
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.cellReuseIdentifier, for: indexPath) as! EmoticonCollectionViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
         
         // Configure the cell...
         let emoticon = self.emoticons[indexPath.row];
-        cell.label?.text = emoticon.emoticon
-        cell.view?.layer.cornerRadius = Constants.cornerRadius
-        cell.view?.backgroundColor = Constants.buttonBackgroundColor
-        self.addShadowTo(cell)
-        cell.label?.textColor = Constants.textColor
-        cell.label?.textAlignment = .center
+        cell.textLabel?.text = emoticon.emoticon
+        cell.detailTextLabel?.text = emoticon.title
         
         return cell
     }
@@ -159,7 +101,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.emoticons.sort { (e1, e2) -> Bool in
             e1.emoticon.count < e2.emoticon.count
         }
-        self.collectionView.reloadData()
+        self.tableView.reloadData()
     }
     
 }
