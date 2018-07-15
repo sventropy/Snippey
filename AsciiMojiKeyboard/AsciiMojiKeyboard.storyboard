@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u42-Yw-Rps">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="u42-Yw-Rps">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -155,11 +155,11 @@
                     <size key="freeformSize" width="600" height="216"/>
                     <connections>
                         <outlet property="backspaceButton" destination="wVO-RO-xjf" id="YXB-vh-LVM"/>
-                        <outlet property="bottomBar" destination="xpt-iu-nmf" id="RQs-eH-4kc"/>
                         <outlet property="collectionView" destination="t0j-En-E4T" id="JaF-rt-DCT"/>
                         <outlet property="keyboardSwitchButton" destination="Ord-EM-fL0" id="v06-O2-FAT"/>
                         <outlet property="returnButton" destination="PtQ-m7-dvJ" id="pOb-pd-D8R"/>
                         <outlet property="spaceButton" destination="8pD-QA-OqO" id="xQQ-Vl-V3q"/>
+                        <outlet property="toolBar" destination="xpt-iu-nmf" id="RQs-eH-4kc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3N0-b0-SJS" userLabel="First Responder" sceneMemberID="firstResponder"/>

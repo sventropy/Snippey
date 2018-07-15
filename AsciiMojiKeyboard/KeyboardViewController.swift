@@ -26,22 +26,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
     @IBOutlet weak var spaceButton: UIButton!
     @IBOutlet weak var backspaceButton: UIButton!
     @IBOutlet weak var returnButton: UIButton!
-    @IBOutlet weak var bottomBar: UIView!
+    @IBOutlet weak var toolBar: UIView!
     
     var emoticons: [Emoticon] = []
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.emoticons = Persistence.sharedInstance.getEmoticons()
-        self.emoticons.sort { (e1, e2) -> Bool in
-            e1.emoticon.count < e2.emoticon.count
-        }
-        self.collectionView.reloadData()
+        loadAndSortEmoticons()
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,7 +53,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         self.addShadowTo(self.returnButton)
         
         self.collectionView.backgroundColor = Constants.keyboardBackgroundColor
-        self.bottomBar.backgroundColor = Constants.keyboardBackgroundColor
+        self.toolBar.backgroundColor = Constants.keyboardBackgroundColor
         
         self.collectionView.scrollIndicatorInsets = UIEdgeInsets(top: 0,left: 0,bottom: -4,right: 0)
     }
@@ -101,7 +93,7 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         label.text = emoticon.emoticon
         label.sizeToFit()
         
-        let requiredSize = label.frame.size;
+        let requiredSize = label.frame.size
         let size = CGSize(width: requiredSize.width + 16, height: requiredSize.height + 12)
         return size
     }
@@ -160,6 +152,14 @@ class KeyboardViewController: UIInputViewController, UICollectionViewDelegate, U
         view.layer.shadowRadius = 0
         view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: Constants.cornerRadius).cgPath
         view.layer.masksToBounds = false
+    }
+    
+    fileprivate func loadAndSortEmoticons() {
+        self.emoticons = Persistence.sharedInstance.getEmoticons()
+        self.emoticons.sort { (e1, e2) -> Bool in
+            e1.emoticon.count < e2.emoticon.count
+        }
+        self.collectionView.reloadData()
     }
     
 }
