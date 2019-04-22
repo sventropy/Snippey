@@ -196,10 +196,9 @@
 			};
 			buildConfigurationList = 5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "AsciiMojis" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 				Base,
 			);
