@@ -87,6 +87,12 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let emoticon = self.emoticons[indexPath.row];
+        self.textDocumentProxy.insertText(emoticon.emoticon)
+        self.tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func addShadowTo(_ view:UIView) -> Void {
         view.layer.shadowColor = Constants.shadowColor.cgColor
         view.layer.shadowOffset = CGSize(width: 0, height: 2)
