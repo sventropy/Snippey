@@ -21,6 +21,7 @@ class KeyboardViewController: UIInputViewController {
         static let textColor = UIColor.black
         static let shadowColor = UIColor(displayP3Red: 137/255, green: 139/255, blue: 143/255, alpha: 1)
         static let spacing : CGFloat = 4.0
+        static let appGroup = "group.de.sventropy.snippey"
     }
     
     // MARK: - Properties
@@ -82,7 +83,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         
-        self.loadAndSortEmoticons()
+        self.loadEmoticons()
         tableView.reloadData()
         
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
@@ -100,10 +101,18 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: - Data Access
     
-    fileprivate func loadAndSortEmoticons() {
-        self.emoticons = Persistence.sharedInstance.getEmoticons()
-        self.emoticons.sort { (e1, e2) -> Bool in
-            e1.emoticon.count < e2.emoticon.count
+    fileprivate func loadEmoticons() {
+        
+        // Clear everything
+        self.emoticons.removeAll()
+        
+        // Read data from defaults
+        let defaults = UserDefaults(suiteName: Constants.appGroup)
+        let data = defaults?.dictionary(forKey: "data")
+        if let dataDict = data {
+            for e in dataDict {
+                self.emoticons.append(Emoticon(title: e.value as! String, emoticon: e.key))
+            }
         }
     }
     
