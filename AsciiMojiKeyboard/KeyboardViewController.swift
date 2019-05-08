@@ -38,19 +38,12 @@ class KeyboardViewController: UIInputViewController {
 
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
-//        keyboardSwitchButton.setTitle("⌨︎", for: .normal)
-//        keyboardSwitchButton.addTarget(self, action: #selector(keyboardSwitchTouchUp), for: .touchUpInside)
         backspaceButton.title = "⌫"
         backspaceButton.action = #selector(backspaceTouchUp)
-//        backspaceButton.setTitle("⌫asdfa", for: .normal)
-//        backspaceButton.addTarget(self, action: #selector(backspaceTouchUp), for: .touchUpInside)
         toolbar.setItems([keyboardSwitchButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton], animated: true)
-//        toolbar.addSubview(keyboardSwitchButton)
-//        toolbar.addSubview(backspaceButton)
         let stackView = UIView()
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-        
         self.view.addSubview(stackView)
         
         // Autolayout
@@ -70,15 +63,6 @@ class KeyboardViewController: UIInputViewController {
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         tableView.heightAnchor.constraint(equalToConstant: 258.0).isActive = true
-//        keyboardSwitchButton.topAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
-//        keyboardSwitchButton.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
-//        keyboardSwitchButton.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor).isActive = true
-//        backspaceButton.topAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
-//        backspaceButton.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
-//        backspaceButton.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
-//        keyboardSwitchButton.sizeToFit()
-//        backspaceButton.sizeToFit()
-        
         
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
@@ -95,21 +79,13 @@ class KeyboardViewController: UIInputViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-//        backspaceButton.backgroundColor = Constants.buttonBackgroundColor
-//        backspaceButton.layer.cornerRadius = Constants.cornerRadius
-//        backspaceButton.setTitleColor(Constants.textColor, for: .normal)
-//        addShadowTo(backspaceButton)
-//        keyboardSwitchButton.backgroundColor = Constants.buttonBackgroundColor
-//        keyboardSwitchButton.layer.cornerRadius = Constants.cornerRadius
-//        keyboardSwitchButton.setTitleColor(Constants.textColor, for: .normal)
-//        addShadowTo(keyboardSwitchButton)
+        print("viewDidLayoutSubviews")
+     
         tableView.backgroundColor = Constants.keyboardBackgroundColor
         toolbar.backgroundColor = Constants.keyboardBackgroundColor
         toolbar.tintColor = Constants.textColor
         
-        print("viewDidLayoutSubviews")
-        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
+//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
     @objc func keyboardSwitchTouchUp(_ sender: Any) {
@@ -145,7 +121,6 @@ class KeyboardViewController: UIInputViewController {
             self.printViewsIntrinsicSizeRecursive(views: v.subviews)
         }
     }
-    
 }
 
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
