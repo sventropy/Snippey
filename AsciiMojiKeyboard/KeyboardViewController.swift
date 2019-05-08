@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITableViewDataSource {
+class KeyboardViewController: UIInputViewController {
     
     struct Constants {
         static let cellReuseIdentifier = "emoticonCell"
@@ -21,76 +21,103 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         static let spacing : CGFloat = 4.0
     }
     
-    @IBOutlet var tableView: UITableView!
-    @IBOutlet weak var keyboardSwitchButton: UIButton!
-    @IBOutlet weak var spaceButton: UIButton!
-    @IBOutlet weak var backspaceButton: UIButton!
-    @IBOutlet weak var returnButton: UIButton!
-    @IBOutlet weak var toolBar: UIView!
-    
     var emoticons: [Emoticon] = []
+    var tableView: UITableView = UITableView()
+    let keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
+    let backspaceButton: UIBarButtonItem = UIBarButtonItem()
+    let toolbar: UIToolbar = UIToolbar()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("viewDidLoad")
+        
+        tableView = UITableView()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(TextTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+
+        keyboardSwitchButton.title = "⌨︎"
+        keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
+//        keyboardSwitchButton.setTitle("⌨︎", for: .normal)
+//        keyboardSwitchButton.addTarget(self, action: #selector(keyboardSwitchTouchUp), for: .touchUpInside)
+        backspaceButton.title = "⌫"
+        backspaceButton.action = #selector(backspaceTouchUp)
+//        backspaceButton.setTitle("⌫asdfa", for: .normal)
+//        backspaceButton.addTarget(self, action: #selector(backspaceTouchUp), for: .touchUpInside)
+        toolbar.setItems([keyboardSwitchButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton], animated: true)
+//        toolbar.addSubview(keyboardSwitchButton)
+//        toolbar.addSubview(backspaceButton)
+        let stackView = UIView()
+        stackView.addSubview(tableView)
+        stackView.addSubview(toolbar)
+        
+        self.view.addSubview(stackView)
+        
+        // Autolayout
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+        toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+        toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        tableView.heightAnchor.constraint(equalToConstant: 258.0).isActive = true
+//        keyboardSwitchButton.topAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+//        keyboardSwitchButton.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
+//        keyboardSwitchButton.leadingAnchor.constraint(equalTo: toolbar.leadingAnchor).isActive = true
+//        backspaceButton.topAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+//        backspaceButton.trailingAnchor.constraint(equalTo: toolbar.trailingAnchor).isActive = true
+//        backspaceButton.bottomAnchor.constraint(equalTo: toolbar.bottomAnchor).isActive = true
+//        keyboardSwitchButton.sizeToFit()
+//        backspaceButton.sizeToFit()
+        
+        
+//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print("viewWillAppear")
         
         self.loadAndSortEmoticons()
+        tableView.reloadData()
+        
+//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        self.keyboardSwitchButton.backgroundColor = Constants.buttonBackgroundColor
-        self.spaceButton.backgroundColor = Constants.buttonBackgroundColor
-        self.backspaceButton.backgroundColor = Constants.buttonBackgroundColor
-        self.returnButton.backgroundColor = Constants.buttonBackgroundColor
-        self.keyboardSwitchButton.layer.cornerRadius = Constants.cornerRadius
-        self.spaceButton.layer.cornerRadius = Constants.cornerRadius
-        self.backspaceButton.layer.cornerRadius = Constants.cornerRadius
-        self.returnButton.layer.cornerRadius = Constants.cornerRadius
-        self.addShadowTo(self.keyboardSwitchButton)
-        self.addShadowTo(self.spaceButton)
-        self.addShadowTo(self.backspaceButton)
-        self.addShadowTo(self.returnButton)
+//        backspaceButton.backgroundColor = Constants.buttonBackgroundColor
+//        backspaceButton.layer.cornerRadius = Constants.cornerRadius
+//        backspaceButton.setTitleColor(Constants.textColor, for: .normal)
+//        addShadowTo(backspaceButton)
+//        keyboardSwitchButton.backgroundColor = Constants.buttonBackgroundColor
+//        keyboardSwitchButton.layer.cornerRadius = Constants.cornerRadius
+//        keyboardSwitchButton.setTitleColor(Constants.textColor, for: .normal)
+//        addShadowTo(keyboardSwitchButton)
+        tableView.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.tintColor = Constants.textColor
         
-        self.tableView.backgroundColor = Constants.keyboardBackgroundColor
-        self.toolBar.backgroundColor = Constants.keyboardBackgroundColor
+        print("viewDidLayoutSubviews")
+        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
-    @IBAction func keyboardSwitchTouchUp(_ sender: Any) {
+    @objc func keyboardSwitchTouchUp(_ sender: Any) {
         self.advanceToNextInputMode()
     }
     
-    @IBAction func returnTouchUp(_ sender: Any) {
-        self.textDocumentProxy.insertText("\n")
-    }
-    
-    @IBAction func spaceTouchUp(_ sender: Any) {
-        self.textDocumentProxy.insertText(" ")
-    }
-    
-    @IBAction func backspaceTouchUp(_ sender: Any) {
+    @objc func backspaceTouchUp(_ sender: Any) {
         self.textDocumentProxy.deleteBackward()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.emoticons.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
-        
-        // Configure the cell...
-        let emoticon = self.emoticons[indexPath.row];
-        cell.textLabel?.text = emoticon.emoticon
-        cell.detailTextLabel?.text = emoticon.title
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoticon = self.emoticons[indexPath.row];
-        self.textDocumentProxy.insertText(emoticon.emoticon)
-        self.tableView.deselectRow(at: indexPath, animated: true)
     }
     
     func addShadowTo(_ view:UIView) -> Void {
@@ -107,15 +134,55 @@ class KeyboardViewController: UIInputViewController, UITableViewDelegate, UITabl
         self.emoticons.sort { (e1, e2) -> Bool in
             e1.emoticon.count < e2.emoticon.count
         }
-        self.tableView.reloadData()
+    }
+    
+    func printViewsIntrinsicSizeRecursive(views:[UIView]!) {
+        
+        if(views.count == 0){ return }
+        
+        for v in views {
+            print("View:", String(describing: v), "|w:",v.intrinsicContentSize.width, "|h:",v.intrinsicContentSize.height)
+            self.printViewsIntrinsicSizeRecursive(views: v.subviews)
+        }
     }
     
 }
 
-extension Dictionary {
-    subscript(i:Int) -> (key:Key,value:Value) {
-        get {
-            return self[index(startIndex, offsetBy: i)];
+extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.emoticons.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
+        
+        // Configure the cell...
+        let emoticon = self.emoticons[indexPath.row];
+        cell.textLabel?.text = emoticon.title
+        cell.detailTextLabel?.text = emoticon.emoticon
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let emoticon = self.emoticons[indexPath.row];
+        self.textDocumentProxy.insertText(emoticon.emoticon)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    class TextTableViewCell : UITableViewCell {
+        
+        // HACK: Alter behavior of initializing standard tableview cell in basic display
+        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        }
+        init() {
+            super.init(style: .subtitle, reuseIdentifier: Constants.cellReuseIdentifier)
+        }
+        
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
         }
     }
 }
