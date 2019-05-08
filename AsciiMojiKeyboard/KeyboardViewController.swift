@@ -11,6 +11,8 @@ import Foundation
 
 class KeyboardViewController: UIInputViewController {
     
+    // MARK: Constants
+    
     struct Constants {
         static let cellReuseIdentifier = "emoticonCell"
         static let cornerRadius : CGFloat = 4.0
@@ -21,21 +23,25 @@ class KeyboardViewController: UIInputViewController {
         static let spacing : CGFloat = 4.0
     }
     
+    // MARK: - Properties
+    
     var emoticons: [Emoticon] = []
     var tableView: UITableView = UITableView()
     let keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
     let backspaceButton: UIBarButtonItem = UIBarButtonItem()
     let toolbar: UIToolbar = UIToolbar()
     
+    // MARK: - UIView Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("viewDidLoad")
         
+        // Create UI elements
         tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TextTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
         backspaceButton.title = "⌫"
@@ -64,6 +70,11 @@ class KeyboardViewController: UIInputViewController {
         toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
         tableView.heightAnchor.constraint(equalToConstant: 258.0).isActive = true
         
+        // Styling
+        tableView.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.tintColor = Constants.textColor
+        
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
@@ -77,16 +88,7 @@ class KeyboardViewController: UIInputViewController {
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        print("viewDidLayoutSubviews")
-     
-        tableView.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.tintColor = Constants.textColor
-        
-//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
-    }
+    // MARK: - Keyboard Extension
     
     @objc func keyboardSwitchTouchUp(_ sender: Any) {
         self.advanceToNextInputMode()
@@ -96,14 +98,7 @@ class KeyboardViewController: UIInputViewController {
         self.textDocumentProxy.deleteBackward()
     }
     
-    func addShadowTo(_ view:UIView) -> Void {
-        view.layer.shadowColor = Constants.shadowColor.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 2)
-        view.layer.shadowOpacity = 1
-        view.layer.shadowRadius = 0
-        view.layer.shadowPath = UIBezierPath(roundedRect: view.bounds, cornerRadius: Constants.cornerRadius).cgPath
-        view.layer.masksToBounds = false
-    }
+    // MARK: - Data Access
     
     fileprivate func loadAndSortEmoticons() {
         self.emoticons = Persistence.sharedInstance.getEmoticons()
@@ -122,6 +117,8 @@ class KeyboardViewController: UIInputViewController {
         }
     }
 }
+
+// MARK: - UITableView
 
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     
@@ -145,6 +142,8 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         self.textDocumentProxy.insertText(emoticon.emoticon)
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    // MARK: - UITableViewCell implementation
     
     class TextTableViewCell : UITableViewCell {
         
