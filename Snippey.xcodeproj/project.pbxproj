@@ -23,7 +23,7 @@
 			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 5C504ECD1F6B0E4C00625257;
-			remoteInfo = AsciiMojiKeyboard;
+			remoteInfo = SnippeyKeyboard;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -136,7 +136,7 @@
 				5C504ED41F6B0E4C00625257 /* PBXTargetDependency */,
 			);
 			name = Snippey;
-			productName = AsciiMojis;
+			productName = Snippey;
 			productReference = 5C504E991F6B0CAB00625257 /* Snippey.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -153,7 +153,7 @@
 			dependencies = (
 			);
 			name = SnippeyKeyboard;
-			productName = AsciiMojiKeyboard;
+			productName = SnippeyKeyboard;
 			productReference = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
