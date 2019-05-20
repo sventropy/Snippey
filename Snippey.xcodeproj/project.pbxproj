@@ -13,8 +13,8 @@
 		5C504EA41F6B0CAB00625257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA31F6B0CAB00625257 /* Assets.xcassets */; };
 		5C504EA71F6B0CAB00625257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */; };
 		5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
-		5C504ED51F6B0E4C00625257 /* AsciiMojiKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5C8FCC111FA66F3000DA157C /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Emoticon.swift */; };
+		5C504ED51F6B0E4C00625257 /* SnippeyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +34,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				5C504ED51F6B0E4C00625257 /* AsciiMojiKeyboard.appex in Embed App Extensions */,
+				5C504ED51F6B0E4C00625257 /* SnippeyKeyboard.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -42,19 +42,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		5C504E991F6B0CAB00625257 /* AsciiMojis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AsciiMojis.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504E991F6B0CAB00625257 /* Snippey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C504E9E1F6B0CAB00625257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5C504EA11F6B0CAB00625257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5C504EA31F6B0CAB00625257 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5C504EA61F6B0CAB00625257 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5C504EA81F6B0CAB00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AsciiMojiKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SnippeyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C76046B22835C90003F86A3 /* AsciiMojis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AsciiMojis.entitlements; sourceTree = "<group>"; };
-		5C76046C22835CCF003F86A3 /* AsciiMojiKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AsciiMojiKeyboard.entitlements; sourceTree = "<group>"; };
-		5C8FCC101FA66F3000DA157C /* Emoticon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
+		5C76046B22835C90003F86A3 /* Snippey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snippey.entitlements; sourceTree = "<group>"; };
+		5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnippeyKeyboard.entitlements; sourceTree = "<group>"; };
+		5C8FCC101FA66F3000DA157C /* Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,8 +78,8 @@
 		5C504E901F6B0CAB00625257 = {
 			isa = PBXGroup;
 			children = (
-				5C504E9B1F6B0CAB00625257 /* AsciiMojis */,
-				5C504ECF1F6B0E4C00625257 /* AsciiMojiKeyboard */,
+				5C504E9B1F6B0CAB00625257 /* Snippey */,
+				5C504ECF1F6B0E4C00625257 /* SnippeyKeyboard */,
 				5C504E9A1F6B0CAB00625257 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -87,16 +87,16 @@
 		5C504E9A1F6B0CAB00625257 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5C504E991F6B0CAB00625257 /* AsciiMojis.app */,
-				5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */,
+				5C504E991F6B0CAB00625257 /* Snippey.app */,
+				5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		5C504E9B1F6B0CAB00625257 /* AsciiMojis */ = {
+		5C504E9B1F6B0CAB00625257 /* Snippey */ = {
 			isa = PBXGroup;
 			children = (
-				5C76046B22835C90003F86A3 /* AsciiMojis.entitlements */,
+				5C76046B22835C90003F86A3 /* Snippey.entitlements */,
 				5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */,
 				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
 				5C504EA01F6B0CAB00625257 /* Main.storyboard */,
@@ -104,26 +104,26 @@
 				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
 				5C504EA81F6B0CAB00625257 /* Info.plist */,
 			);
-			path = AsciiMojis;
+			path = Snippey;
 			sourceTree = "<group>";
 		};
-		5C504ECF1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
+		5C504ECF1F6B0E4C00625257 /* SnippeyKeyboard */ = {
 			isa = PBXGroup;
 			children = (
-				5C76046C22835CCF003F86A3 /* AsciiMojiKeyboard.entitlements */,
+				5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */,
 				5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */,
 				5C504ED21F6B0E4C00625257 /* Info.plist */,
-				5C8FCC101FA66F3000DA157C /* Emoticon.swift */,
+				5C8FCC101FA66F3000DA157C /* Snippet.swift */,
 			);
-			path = AsciiMojiKeyboard;
+			path = SnippeyKeyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5C504E981F6B0CAB00625257 /* AsciiMojis */ = {
+		5C504E981F6B0CAB00625257 /* Snippey */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojis" */;
+			buildConfigurationList = 5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "Snippey" */;
 			buildPhases = (
 				5C504E951F6B0CAB00625257 /* Sources */,
 				5C504E961F6B0CAB00625257 /* Frameworks */,
@@ -135,14 +135,14 @@
 			dependencies = (
 				5C504ED41F6B0E4C00625257 /* PBXTargetDependency */,
 			);
-			name = AsciiMojis;
+			name = Snippey;
 			productName = AsciiMojis;
-			productReference = 5C504E991F6B0CAB00625257 /* AsciiMojis.app */;
+			productReference = 5C504E991F6B0CAB00625257 /* Snippey.app */;
 			productType = "com.apple.product-type.application";
 		};
-		5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */ = {
+		5C504ECD1F6B0E4C00625257 /* SnippeyKeyboard */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "AsciiMojiKeyboard" */;
+			buildConfigurationList = 5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "SnippeyKeyboard" */;
 			buildPhases = (
 				5C504ECA1F6B0E4C00625257 /* Sources */,
 				5C504ECB1F6B0E4C00625257 /* Frameworks */,
@@ -152,9 +152,9 @@
 			);
 			dependencies = (
 			);
-			name = AsciiMojiKeyboard;
+			name = SnippeyKeyboard;
 			productName = AsciiMojiKeyboard;
-			productReference = 5C504ECE1F6B0E4C00625257 /* AsciiMojiKeyboard.appex */;
+			productReference = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -191,7 +191,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "AsciiMojis" */;
+			buildConfigurationList = 5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "Snippey" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -204,8 +204,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5C504E981F6B0CAB00625257 /* AsciiMojis */,
-				5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */,
+				5C504E981F6B0CAB00625257 /* Snippey */,
+				5C504ECD1F6B0E4C00625257 /* SnippeyKeyboard */,
 			);
 		};
 /* End PBXProject section */
@@ -244,7 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C8FCC111FA66F3000DA157C /* Emoticon.swift in Sources */,
+				5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,7 +254,7 @@
 /* Begin PBXTargetDependency section */
 		5C504ED41F6B0E4C00625257 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5C504ECD1F6B0E4C00625257 /* AsciiMojiKeyboard */;
+			target = 5C504ECD1F6B0E4C00625257 /* SnippeyKeyboard */;
 			targetProxy = 5C504ED31F6B0E4C00625257 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -397,12 +397,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AsciiMojis/AsciiMojis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Snippey/Snippey.entitlements;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				INFOPLIST_FILE = Snippey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.Snippey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -413,12 +413,12 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = AsciiMojis/AsciiMojis.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Snippey/Snippey.entitlements;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojis/Info.plist;
+				INFOPLIST_FILE = Snippey/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.Snippey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -427,11 +427,11 @@
 		5C504ED71F6B0E4C00625257 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = AsciiMojiKeyboard/AsciiMojiKeyboard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SnippeyKeyboard/SnippeyKeyboard.entitlements;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojiKeyboard/Info.plist;
+				INFOPLIST_FILE = SnippeyKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis.AsciiMojiKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.Snippey.SnippeyKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -441,11 +441,11 @@
 		5C504ED81F6B0E4C00625257 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = AsciiMojiKeyboard/AsciiMojiKeyboard.entitlements;
+				CODE_SIGN_ENTITLEMENTS = SnippeyKeyboard/SnippeyKeyboard.entitlements;
 				DEVELOPMENT_TEAM = U7BU5DCVKA;
-				INFOPLIST_FILE = AsciiMojiKeyboard/Info.plist;
+				INFOPLIST_FILE = SnippeyKeyboard/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.AsciiMojis.AsciiMojiKeyboard;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.Snippey.SnippeyKeyboard;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
@@ -455,7 +455,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "AsciiMojis" */ = {
+		5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "Snippey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C504EBF1F6B0CAB00625257 /* Debug */,
@@ -464,7 +464,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "AsciiMojis" */ = {
+		5C504EC11F6B0CAB00625257 /* Build configuration list for PBXNativeTarget "Snippey" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C504EC21F6B0CAB00625257 /* Debug */,
@@ -473,7 +473,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "AsciiMojiKeyboard" */ = {
+		5C504ED61F6B0E4C00625257 /* Build configuration list for PBXNativeTarget "SnippeyKeyboard" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				5C504ED71F6B0E4C00625257 /* Debug */,
