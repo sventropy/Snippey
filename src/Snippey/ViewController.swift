@@ -8,41 +8,48 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
-    // MARK: Constants
+    // MARK: Properties
     
-    struct Constants {
-        static let appGroup = "group.de.sventropy.snippey"
-    }
+    var snippets : [Snippet] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Setup data
-        let defaults = UserDefaults(suiteName: Constants.appGroup)
-        var data = defaults?.dictionary(forKey: "data")
-        if (data == nil) {
-            data = ["shrug": "¯\\_(ツ)_/¯", "why": "щ（ﾟДﾟщ）", "fuck": "t(-_-t)"]
-            defaults?.set(data, forKey: "data")
-        }
+        Data.sharedInstance.initializeDefaultSnippets()
+        
+        // Setup tableview
+        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // gradient similar to app icon
-        let topColor = UIColor(red: 234/255, green: 88/255, blue: 43/255, alpha: 1)
-        let bottomColor = UIColor(red: 138/255, green: 75/255, blue: 39/255, alpha: 1)
-        let gradientLayer = CAGradientLayer()
-        gradientLayer.frame = self.view.bounds
-        gradientLayer.colors = [topColor.cgColor, bottomColor.cgColor]
-        self.view.layer.insertSublayer(gradientLayer, at: 0)
-    }
 
-    override var prefersStatusBarHidden: Bool{
-        return true
+        snippets = Data.sharedInstance.loadSnippets()
+        tableView.reloadData()
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return snippets.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "snippetCell", for: indexPath)
+        
+        // Configure the cell...
+        let emoticon = snippets[indexPath.row];
+        cell.textLabel?.text = emoticon.title
+        cell.detailTextLabel?.text = emoticon.text
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
+
 

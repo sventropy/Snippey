@@ -11,19 +11,6 @@ import Foundation
 
 class KeyboardViewController: UIInputViewController {
     
-    // MARK: Constants
-    
-    struct Constants {
-        static let cellReuseIdentifier = "emoticonCell"
-        static let cornerRadius : CGFloat = 4.0
-        static let keyboardBackgroundColor = UIColor(displayP3Red: 199/255, green: 203/255, blue: 210/255, alpha: 1)
-        static let buttonBackgroundColor = UIColor.white
-        static let textColor = UIColor.black
-        static let shadowColor = UIColor(displayP3Red: 137/255, green: 139/255, blue: 143/255, alpha: 1)
-        static let spacing : CGFloat = 4.0
-        static let appGroup = "group.de.sventropy.snippey"
-    }
-    
     // MARK: - Properties
     
     var snippets: [Snippet] = []
@@ -42,7 +29,7 @@ class KeyboardViewController: UIInputViewController {
         tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.register(TextTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
         backspaceButton.title = "⌫"
@@ -83,7 +70,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         
-        self.loadSnippets()
+        refreshSnippets()
         tableView.reloadData()
         
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
@@ -101,19 +88,11 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: - Data Access
     
-    fileprivate func loadSnippets() {
+    fileprivate func refreshSnippets() {
         
         // Clear everything
         self.snippets.removeAll()
-        
-        // Read data from defaults
-        let defaults = UserDefaults(suiteName: Constants.appGroup)
-        let data = defaults?.dictionary(forKey: "data")
-        if let dataDict = data {
-            for e in dataDict {
-                self.snippets.append(Snippet(title: e.value as! String, text: e.key))
-            }
-        }
+        self.snippets = Data.sharedInstance.loadSnippets()
     }
     
     func printViewsIntrinsicSizeRecursive(views:[UIView]!) {
@@ -151,21 +130,5 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         self.textDocumentProxy.insertText(emoticon.text)
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
-    // MARK: - UITableViewCell implementation
-    
-    class TextTableViewCell : UITableViewCell {
-        
-        // HACK: Alter behavior of initializing standard tableview cell in basic display
-        override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-            super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
-        }
-        init() {
-            super.init(style: .subtitle, reuseIdentifier: Constants.cellReuseIdentifier)
-        }
-        
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-    }
+
 }
