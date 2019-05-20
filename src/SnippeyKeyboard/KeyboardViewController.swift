@@ -1,6 +1,6 @@
 //
 //  KeyboardViewController.swift
-//  AsciiMojiKeyboard
+//  SnippeyKeyboard
 //
 //  Created by Hennessen, Sven on 14.09.17.
 //  Copyright © 2017 Hennessen, Sven. All rights reserved.
@@ -26,7 +26,7 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: - Properties
     
-    var emoticons: [Emoticon] = []
+    var snippets: [Snippet] = []
     var tableView: UITableView = UITableView()
     let keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
     let backspaceButton: UIBarButtonItem = UIBarButtonItem()
@@ -83,7 +83,7 @@ class KeyboardViewController: UIInputViewController {
         super.viewWillAppear(animated)
         print("viewWillAppear")
         
-        self.loadEmoticons()
+        self.loadSnippets()
         tableView.reloadData()
         
 //        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
@@ -101,17 +101,17 @@ class KeyboardViewController: UIInputViewController {
     
     // MARK: - Data Access
     
-    fileprivate func loadEmoticons() {
+    fileprivate func loadSnippets() {
         
         // Clear everything
-        self.emoticons.removeAll()
+        self.snippets.removeAll()
         
         // Read data from defaults
         let defaults = UserDefaults(suiteName: Constants.appGroup)
         let data = defaults?.dictionary(forKey: "data")
         if let dataDict = data {
             for e in dataDict {
-                self.emoticons.append(Emoticon(title: e.value as! String, emoticon: e.key))
+                self.snippets.append(Snippet(title: e.value as! String, text: e.key))
             }
         }
     }
@@ -132,23 +132,23 @@ class KeyboardViewController: UIInputViewController {
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.emoticons.count
+        return self.snippets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
         
         // Configure the cell...
-        let emoticon = self.emoticons[indexPath.row];
+        let emoticon = self.snippets[indexPath.row];
         cell.textLabel?.text = emoticon.title
-        cell.detailTextLabel?.text = emoticon.emoticon
+        cell.detailTextLabel?.text = emoticon.text
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoticon = self.emoticons[indexPath.row];
-        self.textDocumentProxy.insertText(emoticon.emoticon)
+        let emoticon = self.snippets[indexPath.row];
+        self.textDocumentProxy.insertText(emoticon.text)
         tableView.deselectRow(at: indexPath, animated: true)
     }
     

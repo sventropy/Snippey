@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AsciiMojis
+//  Snippey
 //
 //  Created by Hennessen, Sven on 14.09.17.
 //  Copyright © 2017 Hennessen, Sven. All rights reserved.
