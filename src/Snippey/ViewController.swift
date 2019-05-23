@@ -32,6 +32,15 @@ class ViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Edit button
+        toggleEditButton()
+    }
+    
+    // MARK: UITableViewController
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return snippets.count
     }
@@ -50,6 +59,37 @@ class ViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        }
+     }
+    
+    // MARK: Actions
+    @objc func toggleEditMode() {
+        
+        // toggle editing
+        tableView.setEditing(!tableView.isEditing, animated: true)
+        
+        toggleEditButton()
+    }
+    
+    func toggleEditButton() {
+        
+        // toggle bar button item
+        let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: tableView.isEditing ? .done : .edit, target: self, action: #selector(toggleEditMode))
+        navigationItem.rightBarButtonItem = editBarButtonItem
+    }
+    
 }
 
 
