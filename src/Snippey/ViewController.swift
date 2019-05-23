@@ -35,6 +35,12 @@ class ViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        // Add button
+        
+        // While editing add 'add' button
+        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
+        navigationItem.leftBarButtonItem = addBarButtonItem
+        
         // Edit button
         toggleEditButton()
     }
@@ -90,6 +96,63 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = editBarButtonItem
     }
     
+    func ensureNotEditing() {
+        // Ensure not enditing
+        if(tableView.isEditing){
+            tableView.setEditing(false, animated: true)
+        }
+    }
+    
+    
+    @objc func addSnippet() {
+        
+        ensureNotEditing()
+        
+        let alertController = UIAlertController(title: "Add Snippet", message: nil, preferredStyle: .alert)
+        
+        // TextFields
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Title"
+            textField.addTarget(alertController, action: #selector(alertController.textDidChangeInAlert), for: .editingChanged)
+        }
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Enter Snippet"
+            textField.addTarget(alertController, action: #selector(alertController.textDidChangeInAlert), for: .editingChanged)
+        }
+        
+        // Actions
+        let confirmAction = UIAlertAction(title: "Add", style: .default) { (_) in
+            
+            // Ensure both textfields filled
+            guard let snippetTitle = alertController.textFields?[0].text,
+                let snippetText = alertController.textFields?[1].text
+                else { return }
+            
+            self.snippets.append(Snippet(title: snippetTitle, text: snippetText))
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+            alertController.dismiss(animated: true, completion: nil)
+        }
+        confirmAction.isEnabled = false
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        // Show
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+}
+
+extension UIAlertController {
+    
+    @objc func textDidChangeInAlert() {
+        if let snippetTitle = textFields?[0].text,
+            let snippetText = textFields?[1].text,
+            let action = actions.first {
+            action.isEnabled = !snippetTitle.isEmpty && !snippetText.isEmpty
+        }
+    }
 }
 
 
