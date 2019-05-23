@@ -103,13 +103,22 @@ class ViewController: UITableViewController {
         }
     }
     
-    
     @objc func addSnippet() {
         
         ensureNotEditing()
         
-        let alertController = UIAlertController(title: "Add Snippet", message: nil, preferredStyle: .alert)
+        // Build alert to allow adding new snippet
+        let alertController = buildAddAlertController()
         
+        // Show
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func buildAddAlertController() -> UIAlertController {
+        
+        // Use dialog as a basis
+        let alertController = UIAlertController(title: "Add Snippet", message: nil, preferredStyle: .alert)
+    
         // TextFields
         alertController.addTextField { (textField) in
             textField.placeholder = "Enter Title"
@@ -119,27 +128,28 @@ class ViewController: UITableViewController {
             textField.placeholder = "Enter Snippet"
             textField.addTarget(alertController, action: #selector(alertController.textDidChangeInAlert), for: .editingChanged)
         }
-        
+    
         // Actions
         let confirmAction = UIAlertAction(title: "Add", style: .default) { (_) in
-            
             // Ensure both textfields filled
             guard let snippetTitle = alertController.textFields?[0].text,
                 let snippetText = alertController.textFields?[1].text
-                else { return }
-            
+                else { return } // ensured
+    
             self.snippets.append(Snippet(title: snippetTitle, text: snippetText))
             self.tableView.reloadData()
         }
+        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
             alertController.dismiss(animated: true, completion: nil)
         }
+        
+        // by default disable, enable when both fields valid
         confirmAction.isEnabled = false
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
-        
-        // Show
-        self.present(alertController, animated: true, completion: nil)
+    
+        return alertController
     }
     
 }
