@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Snippey
+
+  Created by Hennessen, Sven on 26.05.19.
+  Copyright © 2019 Hennessen, Sven. All rights reserved.
+*/
+
+"list-title" = "Schnipsel";
+"add-new-snippet-alert-title" = "Neuer Schnipsel";
+"add-new-snippet-alert-text-placeholder" = "Schnipsel eingeben";
+"add-new-snippet-alert-add-button-label" = "Hinzufügen";
+"add-new-snippet-alert-cancel-button-label" = "Abbrechen";

@@ -24,7 +24,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         // Add title
-        self.navigationItem.title = "My Snippets"
+        self.navigationItem.title = "list-title".localized
         
         // Setup data
         Data.sharedInstance.initializeDefaultSnippets()
@@ -57,7 +57,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "snippetCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
         
         // Configure the cell...
         let emoticon = snippets[indexPath.row];
@@ -125,7 +125,7 @@ class ViewController: UITableViewController {
     func buildAddAlertController() -> UIAlertController {
         
         // Use dialog as a basis
-        let alertController = UIAlertController(title: "Add Snippet", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "add-new-snippet-alert-title".localized, message: nil, preferredStyle: .alert)
     
         // TextFields
         alertController.addTextField { (textField) in
@@ -133,12 +133,12 @@ class ViewController: UITableViewController {
             textField.addTarget(alertController, action: #selector(alertController.textDidChangeInAlert), for: .editingChanged)
         }
         alertController.addTextField { (textField) in
-            textField.placeholder = "Enter Snippet"
+            textField.placeholder = "add-new-snippet-alert-text-placeholder".localized
             textField.addTarget(alertController, action: #selector(alertController.textDidChangeInAlert), for: .editingChanged)
         }
     
         // Actions
-        let confirmAction = UIAlertAction(title: "Add", style: .default) { (_) in
+        let confirmAction = UIAlertAction(title: "add-new-snippet-alert-add-button-label".localized, style: .default) { (_) in
             // Ensure both textfields filled
             guard let snippetTitle = alertController.textFields?[0].text,
                 let snippetText = alertController.textFields?[1].text
@@ -151,7 +151,7 @@ class ViewController: UITableViewController {
             self.tableView.reloadData()
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { (_) in
+        let cancelAction = UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized, style: .cancel) { (_) in
             alertController.dismiss(animated: true, completion: nil)
         }
         

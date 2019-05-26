@@ -20,5 +20,10 @@ class Util {
             printViewsIntrinsicSizeRecursive(views: v.subviews)
         }
     }
+}
 
+extension String {
+    var localized: String {
+        return NSLocalizedString(self, comment:"")
+    }
 }
