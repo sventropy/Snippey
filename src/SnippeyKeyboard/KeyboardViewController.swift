@@ -14,10 +14,12 @@ class KeyboardViewController: UIInputViewController {
     // MARK: - Properties
     
     var snippets: [Snippet] = []
+    
     var tableView: UITableView = UITableView()
-    let keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
-    let backspaceButton: UIBarButtonItem = UIBarButtonItem()
-    let toolbar: UIToolbar = UIToolbar()
+    var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
+    var backspaceButton: UIBarButtonItem = UIBarButtonItem()
+    var toolbar: UIToolbar = UIToolbar()
+    var stackView: UIView = UIView()
     
     // MARK: - UIView Lifecycle
     
@@ -26,7 +28,6 @@ class KeyboardViewController: UIInputViewController {
         print("viewDidLoad")
         
         // Create UI elements
-        tableView = UITableView()
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
@@ -34,13 +35,34 @@ class KeyboardViewController: UIInputViewController {
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
         backspaceButton.title = "⌫"
         backspaceButton.action = #selector(backspaceTouchUp)
-        toolbar.setItems([keyboardSwitchButton, UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton], animated: true)
-        let stackView = UIView()
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-        self.view.addSubview(stackView)
+        inputView?.addSubview(stackView)
+        
+        // Styling
+        tableView.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.backgroundColor = Constants.keyboardBackgroundColor
+        toolbar.tintColor = Constants.textColor
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear")
+        
+        // Clear everything and reload
+        snippets.removeAll()
+        snippets = Data.sharedInstance.loadSnippets()
+        tableView.reloadData()
+        
+        // Compute correct toolbar items, must be done in viewWillAppear
+        var toolbarItems = [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton]
+        if(needsInputModeSwitchKey) {
+            toolbarItems.insert(keyboardSwitchButton, at: 0)
+        }
+        toolbar.setItems(toolbarItems, animated: true)
         
         // Autolayout
+        inputView?.heightAnchor.constraint(equalToConstant: needsInputModeSwitchKey ? 258.0 : 333.0).isActive = true // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -56,53 +78,23 @@ class KeyboardViewController: UIInputViewController {
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
-        tableView.heightAnchor.constraint(equalToConstant: 258.0).isActive = true
-        
-        // Styling
-        tableView.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.tintColor = Constants.textColor
-        
-//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print("viewWillAppear")
-        
-        refreshSnippets()
-        tableView.reloadData()
-        
-//        self.printViewsIntrinsicSizeRecursive(views: view.subviews)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        print("viewDidAppear")
     }
     
     // MARK: - Keyboard Extension
     
     @objc func keyboardSwitchTouchUp(_ sender: Any) {
-        self.advanceToNextInputMode()
+        print("Switching keyboard")
+        advanceToNextInputMode()
     }
     
     @objc func backspaceTouchUp(_ sender: Any) {
-        self.textDocumentProxy.deleteBackward()
-    }
-    
-    // MARK: - Data Access
-    
-    fileprivate func refreshSnippets() {
-        
-        // Clear everything
-        self.snippets.removeAll()
-        self.snippets = Data.sharedInstance.loadSnippets()
-    }
-    
-    func printViewsIntrinsicSizeRecursive(views:[UIView]!) {
-        
-        if(views.count == 0){ return }
-        
-        for v in views {
-            print("View:", String(describing: v), "|w:",v.intrinsicContentSize.width, "|h:",v.intrinsicContentSize.height)
-            self.printViewsIntrinsicSizeRecursive(views: v.subviews)
-        }
+        print("Backspace pressed")
+        textDocumentProxy.deleteBackward()
     }
 }
 
@@ -111,14 +103,14 @@ class KeyboardViewController: UIInputViewController {
 extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.snippets.count
+        return snippets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
         
         // Configure the cell...
-        let emoticon = self.snippets[indexPath.row];
+        let emoticon = snippets[indexPath.row];
         cell.textLabel?.text = emoticon.title
         cell.detailTextLabel?.text = emoticon.text
         
@@ -126,7 +118,7 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoticon = self.snippets[indexPath.row];
+        let emoticon = snippets[indexPath.row];
         self.textDocumentProxy.insertText(emoticon.text)
         tableView.deselectRow(at: indexPath, animated: true)
     }
