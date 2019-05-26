@@ -21,10 +21,12 @@ class AddSnippetAlertController: UIAlertController {
         // One textview to enter snippet
         
         // TODO textview with placeholder
-        //            textField.placeholder = "add-new-snippet-alert-text-placeholder".localized
+        // textField.placeholder = "add-new-snippet-alert-text-placeholder".localized
         textView = UITextView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width - Constants.viewMargin * 2, height: 120))
         textView?.textContainerInset = UIEdgeInsets.init(top: Constants.textAreaTopBottomInset, left: Constants.textAreaSideInset, bottom: Constants.textAreaTopBottomInset, right: Constants.textAreaSideInset)
         view.addSubview(textView!)
+        
+        // Autolayout
         textView?.translatesAutoresizingMaskIntoConstraints = false
         textView?.topAnchor.constraint(equalTo: view.topAnchor, constant: 52).isActive = true
         textView?.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -10).isActive = true
@@ -48,6 +50,7 @@ class AddSnippetAlertController: UIAlertController {
             self.dismiss(animated: true, completion: nil)
         }
         
+        // Ensure add button is disabled until text is entered
         NotificationCenter.default.addObserver(forName: UITextView.textDidChangeNotification, object: textView, queue: OperationQueue.main) { (notification) in
             confirmAction.isEnabled = !(self.textView!.text.isEmpty)
         }
@@ -60,11 +63,15 @@ class AddSnippetAlertController: UIAlertController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Place cursor into single textview on display
         textView!.becomeFirstResponder()
     }
     
 }
 
 protocol AddSnippetAlertControllerDelegate {
+    
+    // Notify delegate about new snippet creation
     func didAddNewSnippet(snippetText: String)
 }

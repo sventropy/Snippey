@@ -136,13 +136,13 @@
 			isa = PBXGroup;
 			children = (
 				5C76046B22835C90003F86A3 /* Snippey.entitlements */,
+				5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */,
 				5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */,
 				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
 				5C504EA31F6B0CAB00625257 /* Assets.xcassets */,
 				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
 				5C504EA81F6B0CAB00625257 /* Info.plist */,
 				5CAF4C0B229AD7A200CB9823 /* Localizable.strings */,
-				5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */,
 			);
 			path = Snippey;
 			sourceTree = "<group>";
