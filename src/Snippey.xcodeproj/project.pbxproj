@@ -26,6 +26,7 @@
 		5CAF4C0D229AD7A200CB9823 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF4C0B229AD7A200CB9823 /* Localizable.strings */; };
 		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
 		5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
+		5CAF4C1F229B17AC00CB9823 /* AddSnippetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 		5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
 		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetAlertController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
 				5C504EA81F6B0CAB00625257 /* Info.plist */,
 				5CAF4C0B229AD7A200CB9823 /* Localizable.strings */,
+				5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */,
 			);
 			path = Snippey;
 			sourceTree = "<group>";
@@ -327,6 +330,7 @@
 			files = (
 				5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */,
 				5C935CD422933FB800825E58 /* Data.swift in Sources */,
+				5CAF4C1F229B17AC00CB9823 /* AddSnippetAlertController.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
 				5CAF4BED229A920C00CB9823 /* Util.swift in Sources */,
