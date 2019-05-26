@@ -20,4 +20,5 @@ struct Constants {
     static let shadowColor = UIColor(displayP3Red: 137/255, green: 139/255, blue: 143/255, alpha: 1)
     static let spacing : CGFloat = 4.0
     static let appGroup = "group.de.sventropy.snippey"
+    static let defaultsSnippetsKey = "snippets"
 }

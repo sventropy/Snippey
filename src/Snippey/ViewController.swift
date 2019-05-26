@@ -111,7 +111,7 @@ class ViewController: UITableViewController {
         let alertController = buildAddAlertController()
         
         // Show
-        self.present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
     func buildAddAlertController() -> UIAlertController {
@@ -137,6 +137,9 @@ class ViewController: UITableViewController {
                 else { return } // ensured
     
             self.snippets.append(Snippet(title: snippetTitle, text: snippetText))
+            // Update model
+            Data.sharedInstance.storeSnippets(snippets: self.snippets)
+            // Reload ui
             self.tableView.reloadData()
         }
         

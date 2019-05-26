@@ -11,31 +11,37 @@ import Foundation
 class Data {
     
     static let sharedInstance = Data()
+    var defaults: UserDefaults? {
+        // Initialize defaults for app group
+        return UserDefaults(suiteName: Constants.appGroup)
+    }
     
     func initializeDefaultSnippets() {
-        let defaults = UserDefaults(suiteName: Constants.appGroup)
-        var data = defaults?.dictionary(forKey: "data")
-        if (data == nil) {
-            data = ["shrug": "¯\\_(ツ)_/¯", "why": "щ（ﾟДﾟщ）", "fuck": "t(-_-t)"]
-            defaults?.set(data, forKey: "data")
-        }
+
+        // Check for existing snippets
+        guard (defaults?.data(forKey: Constants.defaultsSnippetsKey)) != nil
+            else {
+                // Store default snippets (once)
+                let defaultSnippets = [Snippet(title: "shrug", text: "¯\\_(ツ)_/¯") , Snippet(title: "why", text: "щ（ﾟДﾟщ）"), Snippet(title: "fuck", text: "t(-_-t)")]
+                storeSnippets(snippets: defaultSnippets)
+                return
+            }
     }
     
     func loadSnippets() -> [Snippet] {
-        
-        // Initialize defaults for app group
-        let defaults = UserDefaults(suiteName: Constants.appGroup)
-        
-        // Initialize result
-        var snippets : [Snippet] = []
-        
+
         // Load data from defaults
-        let snippetData = defaults?.dictionary(forKey: "data")
-        if let snippetDict = snippetData {
-            for e in snippetDict {
-                snippets.append(Snippet(title: e.value as! String, text: e.key))
-            }
-        }
-        return snippets
+        guard let snippetArrayData = defaults?.data(forKey: Constants.defaultsSnippetsKey)
+            else { return [Snippet]() } // return empty result
+        
+        // Convert snippets to model
+        return try! PropertyListDecoder().decode([Snippet].self, from: snippetArrayData)
+    }
+    
+    func storeSnippets(snippets: [Snippet]) {
+        
+        // Store new list of snippets (always entire list --> easier, shouldn't be an issue performance wise)
+        let snippetArrayData = try! PropertyListEncoder().encode(snippets)
+        defaults?.set(snippetArrayData, forKey: Constants.defaultsSnippetsKey)
     }
 }

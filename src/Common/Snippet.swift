@@ -9,6 +9,6 @@
 import UIKit
 
 struct Snippet: Codable {
-    var title: String
-    var text: String
+    let title: String
+    let text: String
 }
