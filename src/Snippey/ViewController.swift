@@ -13,10 +13,18 @@ class ViewController: UITableViewController {
     // MARK: Properties
     
     var snippets : [Snippet] = []
+    
+    var addBarButtonItem : UIBarButtonItem {
+        return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
+    }
+    
+    // UIViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        // Add title
+        self.navigationItem.title = "My Snippets"
         
         // Setup data
         Data.sharedInstance.initializeDefaultSnippets()
@@ -36,10 +44,7 @@ class ViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         // Add button
-        
-        // While editing add 'add' button
-        let addBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
-        navigationItem.leftBarButtonItem = addBarButtonItem
+        toggleAddButtonVisible()
         
         // Edit button
         toggleEditButton()
@@ -72,21 +77,23 @@ class ViewController: UITableViewController {
     
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        // Only delete handled here
         if editingStyle == .delete {
             // Delete the row from the data source
+            snippets.remove(at: indexPath.row)
+            Data.sharedInstance.storeSnippets(snippets: snippets)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
      }
     
     // MARK: Actions
+    
     @objc func toggleEditMode() {
         
         // toggle editing
         tableView.setEditing(!tableView.isEditing, animated: true)
-        
         toggleEditButton()
+        toggleAddButtonVisible()
     }
     
     func toggleEditButton() {
@@ -96,17 +103,18 @@ class ViewController: UITableViewController {
         navigationItem.rightBarButtonItem = editBarButtonItem
     }
     
-    func ensureNotEditing() {
-        // Ensure not enditing
-        if(tableView.isEditing){
-            tableView.setEditing(false, animated: true)
+    func toggleAddButtonVisible() {
+        
+        // hide add bar button item in tableview edit mode
+        if(tableView.isEditing) {
+            navigationItem.leftBarButtonItem = nil
+        } else {
+            navigationItem.leftBarButtonItem = addBarButtonItem
         }
     }
     
     @objc func addSnippet() {
-        
-        ensureNotEditing()
-        
+
         // Build alert to allow adding new snippet
         let alertController = buildAddAlertController()
         
