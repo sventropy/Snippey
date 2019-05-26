@@ -24,7 +24,7 @@ class Data {
         guard (defaults?.data(forKey: Constants.defaultsSnippetsKey)) != nil
             else {
                 // Store default snippets (once)
-                let defaultSnippets = [Snippet(title: "shrug", text: "¯\\_(ツ)_/¯") , Snippet(title: "why", text: "щ（ﾟДﾟщ）"), Snippet(title: "fuck", text: "t(-_-t)")]
+                let defaultSnippets = [Snippet(text: "¯\\_(ツ)_/¯") , Snippet(text: "щ（ﾟДﾟщ）"), Snippet(text: "t(-_-t)")]
                 storeSnippets(snippets: defaultSnippets)
                 print("\(defaultSnippets.count) snippets stored")
                 

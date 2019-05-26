@@ -24,6 +24,8 @@
 		5CAF4BED229A920C00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
 		5CAF4BEE229A926D00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
 		5CAF4C0D229AD7A200CB9823 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF4C0B229AD7A200CB9823 /* Localizable.strings */; };
+		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
+		5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +35,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 5C504ECD1F6B0E4C00625257;
 			remoteInfo = SnippeyKeyboard;
+		};
+		5CAF4C18229B14D900CB9823 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5C504E911F6B0CAB00625257 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5C504E981F6B0CAB00625257;
+			remoteInfo = Snippey;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -70,6 +79,9 @@
 		5CAF4BFE229AD3B700CB9823 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5CAF4C0C229AD7A200CB9823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CAF4C0E229AD92100CB9823 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
+		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +99,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CAF4C10229B14D900CB9823 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -96,6 +115,7 @@
 				5C935CD222933F5700825E58 /* Common */,
 				5C504E9B1F6B0CAB00625257 /* Snippey */,
 				5C504ECF1F6B0E4C00625257 /* SnippeyKeyboard */,
+				5CAF4C14229B14D900CB9823 /* SnippeyTests */,
 				5C504E9A1F6B0CAB00625257 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -105,6 +125,7 @@
 			children = (
 				5C504E991F6B0CAB00625257 /* Snippey.app */,
 				5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */,
+				5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -143,6 +164,15 @@
 				5CAF4BEC229A920C00CB9823 /* Util.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		5CAF4C14229B14D900CB9823 /* SnippeyTests */ = {
+			isa = PBXGroup;
+			children = (
+				5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */,
+				5CAF4C17229B14D900CB9823 /* Info.plist */,
+			);
+			path = SnippeyTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,13 +214,31 @@
 			productReference = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		5CAF4C12229B14D900CB9823 /* SnippeyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CAF4C1A229B14D900CB9823 /* Build configuration list for PBXNativeTarget "SnippeyTests" */;
+			buildPhases = (
+				5CAF4C0F229B14D900CB9823 /* Sources */,
+				5CAF4C10229B14D900CB9823 /* Frameworks */,
+				5CAF4C11229B14D900CB9823 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5CAF4C19229B14D900CB9823 /* PBXTargetDependency */,
+			);
+			name = SnippeyTests;
+			productName = SnippeyTests;
+			productReference = 5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		5C504E911F6B0CAB00625257 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
+				LastSwiftUpdateCheck = 1020;
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Hennessen, Sven";
 				TargetAttributes = {
@@ -216,6 +264,12 @@
 							};
 						};
 					};
+					5CAF4C12229B14D900CB9823 = {
+						CreatedOnToolsVersion = 10.2.1;
+						DevelopmentTeam = U7BU5DCVKA;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5C504E981F6B0CAB00625257;
+					};
 				};
 			};
 			buildConfigurationList = 5C504E941F6B0CAB00625257 /* Build configuration list for PBXProject "Snippey" */;
@@ -234,6 +288,7 @@
 			targets = (
 				5C504E981F6B0CAB00625257 /* Snippey */,
 				5C504ECD1F6B0E4C00625257 /* SnippeyKeyboard */,
+				5CAF4C12229B14D900CB9823 /* SnippeyTests */,
 			);
 		};
 /* End PBXProject section */
@@ -250,6 +305,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		5C504ECC1F6B0E4C00625257 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5CAF4C11229B14D900CB9823 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -286,6 +348,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		5CAF4C0F229B14D900CB9823 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */,
+				5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -293,6 +364,11 @@
 			isa = PBXTargetDependency;
 			target = 5C504ECD1F6B0E4C00625257 /* SnippeyKeyboard */;
 			targetProxy = 5C504ED31F6B0E4C00625257 /* PBXContainerItemProxy */;
+		};
+		5CAF4C19229B14D900CB9823 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5C504E981F6B0CAB00625257 /* Snippey */;
+			targetProxy = 5CAF4C18229B14D900CB9823 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -491,6 +567,51 @@
 			};
 			name = Release;
 		};
+		5CAF4C1B229B14D900CB9823 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SnippeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.SnippeyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snippey.app/Snippey";
+			};
+			name = Debug;
+		};
+		5CAF4C1C229B14D900CB9823 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = U7BU5DCVKA;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = SnippeyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.SnippeyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Snippey.app/Snippey";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -517,6 +638,15 @@
 			buildConfigurations = (
 				5C504ED71F6B0E4C00625257 /* Debug */,
 				5C504ED81F6B0E4C00625257 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CAF4C1A229B14D900CB9823 /* Build configuration list for PBXNativeTarget "SnippeyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CAF4C1B229B14D900CB9823 /* Debug */,
+				5CAF4C1C229B14D900CB9823 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

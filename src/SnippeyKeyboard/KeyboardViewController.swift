@@ -111,7 +111,6 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         
         // Configure the cell...
         let emoticon = snippets[indexPath.row];
-        cell.textLabel?.text = emoticon.title
         cell.detailTextLabel?.text = emoticon.text
         
         return cell

@@ -21,4 +21,7 @@ struct Constants {
     static let spacing : CGFloat = 4.0
     static let appGroup = "group.de.sventropy.snippey"
     static let defaultsSnippetsKey = "snippets"
+    static let textAreaSideInset : CGFloat = 5.0
+    static let textAreaTopBottomInset : CGFloat = 8.0
+    static let viewMargin : CGFloat = 8.0
 }
