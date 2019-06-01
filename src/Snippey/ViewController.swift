@@ -33,6 +33,7 @@ class ViewController: UITableViewController {
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.backgroundColor = Constants.keyboardBackgroundColor
         tableView.separatorStyle = .none
+        tableView.frame = tableView.frame.inset(by: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -40,8 +41,6 @@ class ViewController: UITableViewController {
 
         snippets = Data.sharedInstance.loadSnippets()
         tableView.reloadData()
-        
-        tableView.frame = tableView.frame.inset(by: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0))
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -101,6 +100,10 @@ class ViewController: UITableViewController {
         
         // Update UI
         Data.sharedInstance.storeSnippets(snippets: snippets)
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .none
     }
     
     // MARK: Actions
