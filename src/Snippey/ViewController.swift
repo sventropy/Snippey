@@ -61,7 +61,7 @@ class ViewController: UITableViewController {
         
         // Configure the cell...
         let emoticon = snippets[indexPath.row]
-        cell.detailTextLabel?.text = emoticon.text
+        cell.textLabel?.text = emoticon.text
         
         return cell
     }

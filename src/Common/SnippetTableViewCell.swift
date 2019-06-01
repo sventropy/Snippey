@@ -14,13 +14,19 @@ class SnippetTableViewCell : UITableViewCell {
     
     // HACK: Alter behavior of initializing standard tableview cell in basic display
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        initCellBehavior()
     }
     init() {
-        super.init(style: .subtitle, reuseIdentifier: Constants.cellReuseIdentifier)
+        super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
+        initCellBehavior()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func initCellBehavior() {
+        textLabel?.numberOfLines = 0
     }
 }
