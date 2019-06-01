@@ -31,6 +31,7 @@ class ViewController: UITableViewController {
         
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        tableView.reorder.delegate = self
         tableView.backgroundColor = Constants.keyboardBackgroundColor
         tableView.separatorStyle = .none
         tableView.frame = tableView.frame.inset(by: UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0))
@@ -57,6 +58,12 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        // Handle reordering
+        if let spacer = tableView.reorder.spacerCell(for: indexPath) {
+            return spacer
+        }
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
         
         // Configure the cell...
@@ -88,16 +95,6 @@ class ViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
      }
-    
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
-        // Update datasource
-        let snippet = snippets[sourceIndexPath.row]
-        snippets.remove(at: sourceIndexPath.row)
-        snippets.insert(snippet, at: destinationIndexPath.row)
-        
-        // Update UI
-        Data.sharedInstance.storeSnippets(snippets: snippets)
-    }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -134,6 +131,19 @@ extension ViewController : AddSnippetAlertControllerDelegate {
         Data.sharedInstance.storeSnippets(snippets: self.snippets)
         // Reload ui
         self.tableView.reloadData()
+    }
+}
+
+extension ViewController : TableViewReorderDelegate {
+    
+    func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Update data source
+        let snippet = snippets[sourceIndexPath.row]
+        snippets.remove(at: sourceIndexPath.row)
+        snippets.insert(snippet, at: destinationIndexPath.row)
+        
+        // Update UI
+        Data.sharedInstance.storeSnippets(snippets: snippets)
     }
 }
 

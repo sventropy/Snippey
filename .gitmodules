@@ -1,0 +1,3 @@
+[submodule "src/Dependencies/SwiftReorder"]
+	path = src/Dependencies/SwiftReorder
+	url = git://github.com/sventropy/SwiftReorder

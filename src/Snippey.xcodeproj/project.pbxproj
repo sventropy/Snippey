@@ -27,6 +27,12 @@
 		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
 		5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
 		5CAF4C1F229B17AC00CB9823 /* AddSnippetAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */; };
+		5CD5FD7222A3142D00CF046D /* ReorderController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD6C22A3142D00CF046D /* ReorderController+GestureRecognizer.swift */; };
+		5CD5FD7322A3142D00CF046D /* ReorderController+SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD6D22A3142D00CF046D /* ReorderController+SnapshotView.swift */; };
+		5CD5FD7422A3142D00CF046D /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD6E22A3142D00CF046D /* ReorderController.swift */; };
+		5CD5FD7522A3142D00CF046D /* ReorderController+DestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD6F22A3142D00CF046D /* ReorderController+DestinationRow.swift */; };
+		5CD5FD7622A3142D00CF046D /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7022A3142D00CF046D /* ReorderController+AutoScroll.swift */; };
+		5CD5FD7722A3142D00CF046D /* UITableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7122A3142D00CF046D /* UITableView+Reorder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +90,12 @@
 		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
 		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetAlertController.swift; sourceTree = "<group>"; };
+		5CD5FD6C22A3142D00CF046D /* ReorderController+GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+GestureRecognizer.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+GestureRecognizer.swift"; sourceTree = SOURCE_ROOT; };
+		5CD5FD6D22A3142D00CF046D /* ReorderController+SnapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+SnapshotView.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+SnapshotView.swift"; sourceTree = SOURCE_ROOT; };
+		5CD5FD6E22A3142D00CF046D /* ReorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderController.swift; path = Dependencies/SwiftReorder/Source/ReorderController.swift; sourceTree = SOURCE_ROOT; };
+		5CD5FD6F22A3142D00CF046D /* ReorderController+DestinationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+DestinationRow.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+DestinationRow.swift"; sourceTree = SOURCE_ROOT; };
+		5CD5FD7022A3142D00CF046D /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+AutoScroll.swift"; sourceTree = SOURCE_ROOT; };
+		5CD5FD7122A3142D00CF046D /* UITableView+Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Reorder.swift"; path = "Dependencies/SwiftReorder/Source/UITableView+Reorder.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +126,7 @@
 		5C504E901F6B0CAB00625257 = {
 			isa = PBXGroup;
 			children = (
+				5CD5FD6B22A3140700CF046D /* Externals */,
 				5C935CD222933F5700825E58 /* Common */,
 				5C504E9B1F6B0CAB00625257 /* Snippey */,
 				5C504ECF1F6B0E4C00625257 /* SnippeyKeyboard */,
@@ -176,6 +189,19 @@
 				5CAF4C17229B14D900CB9823 /* Info.plist */,
 			);
 			path = SnippeyTests;
+			sourceTree = "<group>";
+		};
+		5CD5FD6B22A3140700CF046D /* Externals */ = {
+			isa = PBXGroup;
+			children = (
+				5CD5FD6E22A3142D00CF046D /* ReorderController.swift */,
+				5CD5FD7022A3142D00CF046D /* ReorderController+AutoScroll.swift */,
+				5CD5FD6F22A3142D00CF046D /* ReorderController+DestinationRow.swift */,
+				5CD5FD6C22A3142D00CF046D /* ReorderController+GestureRecognizer.swift */,
+				5CD5FD6D22A3142D00CF046D /* ReorderController+SnapshotView.swift */,
+				5CD5FD7122A3142D00CF046D /* UITableView+Reorder.swift */,
+			);
+			path = Externals;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -328,12 +354,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD5FD7322A3142D00CF046D /* ReorderController+SnapshotView.swift in Sources */,
+				5CD5FD7722A3142D00CF046D /* UITableView+Reorder.swift in Sources */,
 				5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */,
+				5CD5FD7222A3142D00CF046D /* ReorderController+GestureRecognizer.swift in Sources */,
 				5C935CD422933FB800825E58 /* Data.swift in Sources */,
+				5CD5FD7422A3142D00CF046D /* ReorderController.swift in Sources */,
+				5CD5FD7522A3142D00CF046D /* ReorderController+DestinationRow.swift in Sources */,
 				5CAF4C1F229B17AC00CB9823 /* AddSnippetAlertController.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
 				5CAF4BED229A920C00CB9823 /* Util.swift in Sources */,
+				5CD5FD7622A3142D00CF046D /* ReorderController+AutoScroll.swift in Sources */,
 				5C935CD722933FD600825E58 /* Constants.swift in Sources */,
 				5C935CDA2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);
