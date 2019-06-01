@@ -15,11 +15,15 @@ class SnippetTableViewCell : UITableViewCell {
     // HACK: Alter behavior of initializing standard tableview cell in basic display
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        initCellStyle()
         initCellBehavior()
+        
     }
     init() {
         super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
+        initCellStyle()
         initCellBehavior()
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,6 +31,20 @@ class SnippetTableViewCell : UITableViewCell {
     }
     
     func initCellBehavior() {
+        
+        // This tells the UITableViewCell label to show multiple lines
         textLabel?.numberOfLines = 0
+    }
+
+    func initCellStyle() {
+        backgroundColor = .clear
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        textLabel?.frame = textLabel?.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 0)) ?? CGRect()
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
+        contentView.backgroundColor = Constants.buttonBackgroundColor
     }
 }
