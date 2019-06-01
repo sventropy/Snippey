@@ -74,6 +74,10 @@ class ViewController: UITableViewController {
         return true
     }
     
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Only delete handled here
@@ -84,6 +88,16 @@ class ViewController: UITableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
      }
+    
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        // Update datasource
+        let snippet = snippets[sourceIndexPath.row]
+        snippets.remove(at: sourceIndexPath.row)
+        snippets.insert(snippet, at: destinationIndexPath.row)
+        
+        // Update UI
+        Data.sharedInstance.storeSnippets(snippets: snippets)
+    }
     
     // MARK: Actions
     
