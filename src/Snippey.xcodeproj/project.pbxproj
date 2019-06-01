@@ -33,6 +33,7 @@
 		5CD5FD7522A3142D00CF046D /* ReorderController+DestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD6F22A3142D00CF046D /* ReorderController+DestinationRow.swift */; };
 		5CD5FD7622A3142D00CF046D /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7022A3142D00CF046D /* ReorderController+AutoScroll.swift */; };
 		5CD5FD7722A3142D00CF046D /* UITableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7122A3142D00CF046D /* UITableView+Reorder.swift */; };
+		5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,7 @@
 		5CD5FD6F22A3142D00CF046D /* ReorderController+DestinationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+DestinationRow.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+DestinationRow.swift"; sourceTree = SOURCE_ROOT; };
 		5CD5FD7022A3142D00CF046D /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+AutoScroll.swift"; sourceTree = SOURCE_ROOT; };
 		5CD5FD7122A3142D00CF046D /* UITableView+Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Reorder.swift"; path = "Dependencies/SwiftReorder/Source/UITableView+Reorder.swift"; sourceTree = SOURCE_ROOT; };
+		5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 			children = (
 				5C76046B22835C90003F86A3 /* Snippey.entitlements */,
 				5CAF4C1E229B17AC00CB9823 /* AddSnippetAlertController.swift */,
+				5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */,
 				5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */,
 				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
 				5C504EA31F6B0CAB00625257 /* Assets.xcassets */,
@@ -361,6 +364,7 @@
 				5C935CD422933FB800825E58 /* Data.swift in Sources */,
 				5CD5FD7422A3142D00CF046D /* ReorderController.swift in Sources */,
 				5CD5FD7522A3142D00CF046D /* ReorderController+DestinationRow.swift in Sources */,
+				5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */,
 				5CAF4C1F229B17AC00CB9823 /* AddSnippetAlertController.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,

@@ -103,16 +103,17 @@ class ViewController: UITableViewController {
     @objc func addSnippet() {
 
         // Build alert to allow adding new snippet
-        let alertController = AddSnippetAlertController(title: "add-new-snippet-alert-title".localized, message: nil, preferredStyle: .alert)
-        alertController.delegate = self
-        
+        let addSnippetViewController = AddSnippetViewController()
+        addSnippetViewController.delegate = self
+        let navigationController = UINavigationController(rootViewController: addSnippetViewController)
+
         // Show
-        present(alertController, animated: true, completion: nil)
+        present(navigationController, animated: true, completion: nil)
     }
     
 }
 
-extension ViewController : AddSnippetAlertControllerDelegate {
+extension ViewController : AddSnippetViewControllerDelegate {
     
     func didAddNewSnippet(snippetText: String) {
         
