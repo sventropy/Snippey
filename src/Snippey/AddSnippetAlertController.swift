@@ -59,6 +59,12 @@ class AddSnippetAlertController: UIAlertController {
         confirmAction.isEnabled = false
         addAction(confirmAction)
         addAction(cancelAction)
+        
+        // Styling
+        
+        // Align text view with rest of alert
+        textView?.backgroundColor = view.backgroundColor
+        textView?.textColor = view.tintColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
