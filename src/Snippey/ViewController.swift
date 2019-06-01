@@ -134,6 +134,7 @@ class ViewController: UITableViewController {
 
         // Build alert to allow adding new snippet
         let alertController = AddSnippetAlertController(title: "add-new-snippet-alert-title".localized, message: nil, preferredStyle: .alert)
+        alertController.delegate = self
         
         // Show
         present(alertController, animated: true, completion: nil)
