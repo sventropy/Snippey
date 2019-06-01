@@ -48,7 +48,7 @@ class ViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         // Add button
-        toggleAddButtonVisible()
+        navigationItem.rightBarButtonItem = addBarButtonItem
     }
     
     // MARK: UITableViewController
@@ -98,16 +98,6 @@ class ViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
-    }
-    
-    func toggleAddButtonVisible() {
-        
-        // hide add bar button item in tableview edit mode
-        if(tableView.isEditing) {
-            navigationItem.leftBarButtonItem = nil
-        } else {
-            navigationItem.leftBarButtonItem = addBarButtonItem
-        }
     }
     
     @objc func addSnippet() {
