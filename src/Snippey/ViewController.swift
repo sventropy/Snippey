@@ -48,9 +48,6 @@ class ViewController: UITableViewController {
         
         // Add button
         toggleAddButtonVisible()
-        
-        // Edit button
-        toggleEditButton()
     }
     
     // MARK: UITableViewController
@@ -103,24 +100,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
-    }
-    
-    // MARK: Actions
-    
-    @objc func toggleEditMode() {
-        
-        // toggle editing
-        tableView.setEditing(!tableView.isEditing, animated: true)
-        toggleEditButton()
-        toggleAddButtonVisible()
-    }
-    
-    func toggleEditButton() {
-        
-        // toggle bar button item
-        let editBarButtonItem = UIBarButtonItem(barButtonSystemItem: tableView.isEditing ? .done : .edit, target: self, action: #selector(toggleEditMode))
-        navigationItem.rightBarButtonItem = editBarButtonItem
+        return .delete
     }
     
     func toggleAddButtonVisible() {
