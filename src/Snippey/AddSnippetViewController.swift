@@ -27,7 +27,7 @@ class AddSnippetViewController: UIViewController {
         textView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         textView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         textView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        textView?.heightAnchor.constraint(equalToConstant: 320).isActive = true
+        textView?.heightAnchor.constraint(equalToConstant: Constants.textAreaDefaultHeight).isActive = true
         
         // Align text view with rest of alert
         view.backgroundColor = Constants.keyboardBackgroundColor

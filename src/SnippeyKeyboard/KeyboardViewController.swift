@@ -62,7 +62,7 @@ class KeyboardViewController: UIInputViewController {
         toolbar.setItems(toolbarItems, animated: true)
         
         // Autolayout
-        inputView?.heightAnchor.constraint(equalToConstant: needsInputModeSwitchKey ? 258.0 : 333.0).isActive = true // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
+        inputView?.heightAnchor.constraint(equalToConstant: needsInputModeSwitchKey ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX).isActive = true // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -77,7 +77,7 @@ class KeyboardViewController: UIInputViewController {
         toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

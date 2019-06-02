@@ -22,7 +22,7 @@ class AddSnippetAlertController: UIAlertController {
         
         // TODO textview with placeholder
         // textField.placeholder = "add-new-snippet-alert-text-placeholder".localized
-        textView = UITextView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width - Constants.viewMargin * 2, height: 120))
+        textView = UITextView(frame: CGRect(x: 0, y: 0, width: view.bounds.size.width - Constants.margin * 2, height: 120))
         textView?.textContainerInset = UIEdgeInsets.init(top: Constants.textAreaTopBottomInset, left: Constants.textAreaSideInset, bottom: Constants.textAreaTopBottomInset, right: Constants.textAreaSideInset)
         view.addSubview(textView!)
         

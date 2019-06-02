@@ -34,7 +34,7 @@ class ViewController: UITableViewController {
         tableView.reorder.delegate = self
         tableView.backgroundColor = Constants.keyboardBackgroundColor
         tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets(top: 4, left: 0, bottom: 4, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: margin / 2, left: 0, bottom: margin / 2, right: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
