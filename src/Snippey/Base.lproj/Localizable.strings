@@ -8,6 +8,6 @@
 
 "list-title" = "Snippets";
 "add-new-snippet-alert-title" = "New Snippet";
-"add-new-snippet-alert-text-placeholder" = "Enter Snippet";
+"add-new-snippet-alert-text-placeholder" = "Enter snippet text here";
 "add-new-snippet-alert-add-button-label" = "Add";
 "add-new-snippet-alert-cancel-button-label" = "Cancel";

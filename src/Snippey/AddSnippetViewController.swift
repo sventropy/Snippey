@@ -21,19 +21,23 @@ class AddSnippetViewController: UIViewController {
         // Controls
         textView = UITextView()
         view.addSubview(textView!)
+        textView!.delegate = self
         
         // Autolayout
-        textView?.translatesAutoresizingMaskIntoConstraints = false
-        textView?.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        textView?.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        textView?.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        textView?.heightAnchor.constraint(equalToConstant: Constants.textAreaDefaultHeight).isActive = true
+        textView!.translatesAutoresizingMaskIntoConstraints = false
+        textView!.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.margin).isActive = true
+        textView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.margin).isActive = true
+        textView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.margin).isActive = true
+        textView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.margin).isActive = true
         
-        // Align text view with rest of alert
-        view.backgroundColor = Constants.keyboardBackgroundColor
-        textView?.backgroundColor = view.backgroundColor
-        textView?.textColor = view.tintColor
-        textView?.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        // Styling
+        view.backgroundColor = .white
+        textView!.backgroundColor = view.backgroundColor
+        textView!.textColor = .black
+        textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        // Start with placeholder
+        textView!.text = "add-new-snippet-alert-text-placeholder".localized
+        textView!.textColor = Constants.placeholderColor
         
         // Navigation item
         title = "add-new-snippet-alert-title".localized
@@ -46,6 +50,7 @@ class AddSnippetViewController: UIViewController {
         
         // Place cursor into single textview on display
         textView!.becomeFirstResponder()
+        textView!.selectedTextRange = textView!.textRange(from: textView!.beginningOfDocument, to: textView!.beginningOfDocument)
     }
     
     @objc func addSnippet() {
@@ -73,4 +78,55 @@ protocol AddSnippetViewControllerDelegate {
     
     // Notify delegate about new snippet creation
     func didAddNewSnippet(snippetText: String)
+}
+
+extension AddSnippetViewController : UITextViewDelegate {
+    
+    // Based on solution #2 from https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        
+        // Combine the textView text and the replacement text to
+        // create the updated text string
+        let currentText:String = textView.text
+        let updatedText = (currentText as NSString).replacingCharacters(in: range, with: text)
+        
+        // If updated text view will be empty, add the placeholder
+        // and set the cursor to the beginning of the text view
+        if updatedText.isEmpty {
+            
+            textView.text = "add-new-snippet-alert-text-placeholder".localized
+            textView.textColor = Constants.placeholderColor
+            
+            textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            
+            // Else if the text view's placeholder is showing and the
+            // length of the replacement string is greater than 0, set
+            // the text color to black then set its text to the
+            // replacement string
+        else if textView.textColor == Constants.placeholderColor && !text.isEmpty {
+            textView.textColor = Constants.textColor
+            textView.text = text
+        }
+            
+            // For every other case, the text should change with the usual
+            // behavior...
+        else {
+            return true
+        }
+        
+        // ...otherwise return false since the updates have already
+        // been made
+        return false
+    }
+    
+    // Make sure cursor is not placed elsewhere while showing placeholder
+    func textViewDidChangeSelection(_ textView: UITextView) {
+        if self.view.window != nil {
+            if textView.textColor == Constants.placeholderColor {
+                textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            }
+        }
+    }
+    
 }

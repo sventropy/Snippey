@@ -32,7 +32,6 @@
 		5CC5A52222A6D22700BC2800 /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51C22A6D22700BC2800 /* ReorderController.swift */; };
 		5CC5A52322A6D22700BC2800 /* ReorderController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */; };
 		5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */; };
-		5CC5A52822A6D24E00BC2800 /* UITextView+Placeholder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A52622A6D24D00BC2800 /* UITextView+Placeholder.m */; };
 		5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -96,9 +95,6 @@
 		5CC5A51C22A6D22700BC2800 /* ReorderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ReorderController.swift; path = Dependencies/SwiftReorder/Source/ReorderController.swift; sourceTree = "<group>"; };
 		5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+GestureRecognizer.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+GestureRecognizer.swift"; sourceTree = "<group>"; };
 		5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+SnapshotView.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+SnapshotView.swift"; sourceTree = "<group>"; };
-		5CC5A52522A6D24D00BC2800 /* Snippey-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Snippey-Bridging-Header.h"; sourceTree = "<group>"; };
-		5CC5A52622A6D24D00BC2800 /* UITextView+Placeholder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UITextView+Placeholder.m"; path = "Dependencies/UITextView-Placeholder/Sources/UITextView+Placeholder.m"; sourceTree = "<group>"; };
-		5CC5A52722A6D24E00BC2800 /* UITextView+Placeholder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UITextView+Placeholder.h"; path = "Dependencies/UITextView-Placeholder/Sources/UITextView+Placeholder.h"; sourceTree = "<group>"; };
 		5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -198,15 +194,12 @@
 		5CC5A51822A6D1F400BC2800 /* Dependencies */ = {
 			isa = PBXGroup;
 			children = (
-				5CC5A52722A6D24E00BC2800 /* UITextView+Placeholder.h */,
-				5CC5A52622A6D24D00BC2800 /* UITextView+Placeholder.m */,
 				5CC5A51C22A6D22700BC2800 /* ReorderController.swift */,
 				5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */,
 				5CC5A51B22A6D22700BC2800 /* ReorderController+DestinationRow.swift */,
 				5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */,
 				5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */,
 				5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */,
-				5CC5A52522A6D24D00BC2800 /* Snippey-Bridging-Header.h */,
 			);
 			name = Dependencies;
 			sourceTree = "<group>";
@@ -374,7 +367,6 @@
 				5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */,
 				5CC5A52222A6D22700BC2800 /* ReorderController.swift in Sources */,
 				5C935CD722933FD600825E58 /* Constants.swift in Sources */,
-				5CC5A52822A6D24E00BC2800 /* UITextView+Placeholder.m in Sources */,
 				5C935CDA2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -494,6 +486,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -546,6 +539,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -564,7 +558,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.app.Snippey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Snippey-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -583,7 +578,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.sventropy.app.Snippey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Snippey-Bridging-Header.h";
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
