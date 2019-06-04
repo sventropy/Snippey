@@ -31,6 +31,8 @@ class KeyboardViewController: UIInputViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        // TODO: Redunant to app --> extract
+        tableView.separatorStyle = .none
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
         backspaceButton.title = "⌫"
@@ -38,11 +40,6 @@ class KeyboardViewController: UIInputViewController {
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
         inputView?.addSubview(stackView)
-        
-        // Styling
-        tableView.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.tintColor = Constants.textColor
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +75,12 @@ class KeyboardViewController: UIInputViewController {
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        
+        // Styling
+        Style.sharedInstance.apply(window: view.window!)
+        
+        // Override global tint
+        toolbar.tintColor = Style.sharedInstance.textColor
     }
     
     override func viewDidAppear(_ animated: Bool) {

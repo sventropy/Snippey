@@ -14,10 +14,6 @@ class ViewController: UITableViewController {
     
     var snippets : [Snippet] = []
     
-    var addBarButtonItem : UIBarButtonItem {
-        return UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
-    }
-    
     // UIViewController Lifecycle
 
     override func viewDidLoad() {
@@ -32,7 +28,6 @@ class ViewController: UITableViewController {
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
-        tableView.backgroundColor = Constants.keyboardBackgroundColor
         tableView.separatorStyle = .none
         tableView.contentInset = UIEdgeInsets(top: Constants.margin / 2, left: 0, bottom: Constants.margin / 2, right: 0)
     }
@@ -48,7 +43,7 @@ class ViewController: UITableViewController {
         super.viewDidAppear(animated)
         
         // Add button
-        navigationItem.rightBarButtonItem = addBarButtonItem
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
     }
     
     // MARK: UITableViewController

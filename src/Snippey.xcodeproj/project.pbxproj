@@ -26,6 +26,10 @@
 		5CAF4C0D229AD7A200CB9823 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF4C0B229AD7A200CB9823 /* Localizable.strings */; };
 		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
 		5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
+		5CBEF9AC22A6FB0100C0DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBEF9AB22A6FB0100C0DD56 /* Style.swift */; };
+		5CC3970622A7056700D9BDD8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBEF9AB22A6FB0100C0DD56 /* Style.swift */; };
+		5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
+		5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
 		5CC5A51F22A6D22700BC2800 /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */; };
 		5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */; };
 		5CC5A52122A6D22700BC2800 /* ReorderController+DestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51B22A6D22700BC2800 /* ReorderController+DestinationRow.swift */; };
@@ -89,6 +93,8 @@
 		5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
 		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CBEF9AB22A6FB0100C0DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+AutoScroll.swift"; sourceTree = "<group>"; };
 		5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Reorder.swift"; path = "Dependencies/SwiftReorder/Source/UITableView+Reorder.swift"; sourceTree = "<group>"; };
 		5CC5A51B22A6D22700BC2800 /* ReorderController+DestinationRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+DestinationRow.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+DestinationRow.swift"; sourceTree = "<group>"; };
@@ -178,6 +184,8 @@
 				5C8FCC101FA66F3000DA157C /* Snippet.swift */,
 				5C935CD92293401400825E58 /* SnippetTableViewCell.swift */,
 				5CAF4BEC229A920C00CB9823 /* Util.swift */,
+				5CBEF9AB22A6FB0100C0DD56 /* Style.swift */,
+				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -361,7 +369,9 @@
 				5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */,
 				5CC5A52122A6D22700BC2800 /* ReorderController+DestinationRow.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
+				5CBEF9AC22A6FB0100C0DD56 /* Style.swift in Sources */,
 				5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */,
+				5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
 				5CAF4BED229A920C00CB9823 /* Util.swift in Sources */,
 				5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */,
@@ -376,10 +386,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */,
+				5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5CAF4BEE229A926D00CB9823 /* Util.swift in Sources */,
 				5C935CD522933FB800825E58 /* Data.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
 				5C935CD822933FD600825E58 /* Constants.swift in Sources */,
+				5CC3970622A7056700D9BDD8 /* Style.swift in Sources */,
 				5C935CDB2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

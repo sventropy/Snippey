@@ -31,13 +31,12 @@ class AddSnippetViewController: UIViewController {
         textView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.margin).isActive = true
         
         // Styling
-        view.backgroundColor = .white
-        textView!.backgroundColor = view.backgroundColor
-        textView!.textColor = .black
         textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
         // Start with placeholder
         textView!.text = "add-new-snippet-alert-text-placeholder".localized
-        textView!.textColor = Constants.placeholderColor
+        textView!.textColor = Style.sharedInstance.placeholderColor
+        // HACK: Explicitly set view background color to avoid messing up appearance of UIView
+        view.backgroundColor = Style.sharedInstance.viewBackgroundColor
         
         // Navigation item
         title = "add-new-snippet-alert-title".localized
@@ -95,7 +94,7 @@ extension AddSnippetViewController : UITextViewDelegate {
         if updatedText.isEmpty {
             
             textView.text = "add-new-snippet-alert-text-placeholder".localized
-            textView.textColor = Constants.placeholderColor
+            textView.textColor = Style.sharedInstance.placeholderColor
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
         }
@@ -104,8 +103,8 @@ extension AddSnippetViewController : UITextViewDelegate {
             // length of the replacement string is greater than 0, set
             // the text color to black then set its text to the
             // replacement string
-        else if textView.textColor == Constants.placeholderColor && !text.isEmpty {
-            textView.textColor = Constants.textColor
+        else if textView.textColor == Style.sharedInstance.placeholderColor && !text.isEmpty {
+            textView.textColor = Style.sharedInstance.textColor
             textView.text = text
         }
             
@@ -123,7 +122,7 @@ extension AddSnippetViewController : UITextViewDelegate {
     // Make sure cursor is not placed elsewhere while showing placeholder
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
-            if textView.textColor == Constants.placeholderColor {
+            if textView.textColor == Style.sharedInstance.placeholderColor {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }

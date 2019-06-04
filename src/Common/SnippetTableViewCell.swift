@@ -38,8 +38,6 @@ class SnippetTableViewCell : UITableViewCell {
     }
 
     func initCellStyle() {
-        backgroundColor = .clear
-        tintColor = .green
         contentView.layer.cornerRadius = Constants.cornerRadius
     }
     
@@ -48,6 +46,5 @@ class SnippetTableViewCell : UITableViewCell {
         
         textLabel?.frame = textLabel!.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 16))
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
-        contentView.backgroundColor = Constants.buttonBackgroundColor
     }
 }
