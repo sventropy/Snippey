@@ -52,6 +52,16 @@ class AddSnippetViewController: UIViewController {
         textView!.selectedTextRange = textView!.textRange(from: textView!.beginningOfDocument, to: textView!.beginningOfDocument)
     }
     
+    override func viewDidLayoutSubviews() {
+
+        // Add textView margin to the trailing end
+        textView?.frame = textView!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: CGFloat.zero, right: Constants.margin * 2))
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
     @objc func addSnippet() {
         // Ensure textView is filled
         guard let snippetText = textView?.text

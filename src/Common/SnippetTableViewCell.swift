@@ -38,7 +38,12 @@ class SnippetTableViewCell : UITableViewCell {
     }
 
     func initCellStyle() {
+        // Style here, since to cumbersome via UIAppearance
         contentView.layer.cornerRadius = Constants.cornerRadius
+        contentView.layer.shadowColor = Style.sharedInstance.darkColor.cgColor
+        contentView.layer.shadowOpacity = Constants.shadowOpacity
+        contentView.layer.shadowOffset = Constants.shadowOffset
+        textLabel?.textColor = Style.sharedInstance.textColor
     }
     
     override func layoutSubviews() {

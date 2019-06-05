@@ -27,5 +27,7 @@ struct Constants {
     static let keyboardHeightIPhone : CGFloat = 258.0
     static let keyboardHeightIPhoneX : CGFloat = 333.0
     static let margin : CGFloat = 8.0
+    static let shadowOpacity : Float = 0.5
+    static let shadowOffset = CGSize(width: 1, height: 2)
     
 }
