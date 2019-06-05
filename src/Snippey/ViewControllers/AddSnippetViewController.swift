@@ -8,43 +8,31 @@
 
 import UIKit
 
+// UIViewController acting as entry form for new snippets in the app. Validates entry length against given constraints and saves new snippets on completion.
 class AddSnippetViewController: UIViewController {
+    
+    // MAKR: - Properties
     
     var delegate : AddSnippetViewControllerDelegate?
     var textView: UITextView?
     var snippetLengthLabel: UILabel?
     
+    // MAKR: - UIViewController Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Controls
-        textView = UITextView()
-        view.addSubview(textView!)
-        textView!.delegate = self
-        snippetLengthLabel = InsetLabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 32))
-        updateTextLengthLabel(text: String()) // Empty string
-        snippetLengthLabel?.textAlignment = .right
-        textView!.inputAccessoryView = snippetLengthLabel!
-        textView?.keyboardType = .default
+        createSnippetTextView()
+        createCharacterCountLabel() // requires textview to exist
         
-        // Autolayout
-        textView!.translatesAutoresizingMaskIntoConstraints = false
-        textView!.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.margin).isActive = true
-        textView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.margin).isActive = true
-        textView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.margin).isActive = true
-        textView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.margin).isActive = true
-        
-        // Styling
-        textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 1)
-        // Start with placeholder
-        textView!.text = "add-new-snippet-alert-text-placeholder".localized
-        textView!.textColor = Style.sharedInstance.placeholderColor
         // HACK: Explicitly set view background color to avoid messing up appearance of UIView
-        view.backgroundColor = Style.sharedInstance.viewBackgroundColor
+        view.backgroundColor = Constants.lightColor
         
         // Navigation item
         title = "add-new-snippet-alert-title".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addSnippet))
+        navigationItem.rightBarButtonItem?.isEnabled = false
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddSnippet))
     }
     
@@ -53,6 +41,7 @@ class AddSnippetViewController: UIViewController {
         
         // Place cursor into single textview on display
         textView!.becomeFirstResponder()
+        // For imitation of placeholder behavior
         textView!.selectedTextRange = textView!.textRange(from: textView!.beginningOfDocument, to: textView!.beginningOfDocument)
     }
     
@@ -78,9 +67,39 @@ class AddSnippetViewController: UIViewController {
         dismiss()
     }
     
-    func dismiss() {
+    // MARK: - Private
+    
+    fileprivate func createCharacterCountLabel() {
+        snippetLengthLabel = InsetLabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 32))
+        snippetLengthLabel?.textAlignment = .right
+        updateTextLengthLabel(text: String()) // Empty string
+        textView!.inputAccessoryView = snippetLengthLabel!
+    }
+    
+    fileprivate func createSnippetTextView() {
+        textView = UITextView()
+        view.addSubview(textView!)
+        textView!.delegate = self
+        textView?.keyboardType = .default
+        
+        // Autolayout
+        textView!.translatesAutoresizingMaskIntoConstraints = false
+        textView!.topAnchor.constraint(equalTo: view.topAnchor, constant: Constants.margin).isActive = true
+        textView!.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.margin).isActive = true
+        textView!.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: Constants.margin).isActive = true
+        textView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.margin).isActive = true
+        
+        // Styling
+        textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 1)
+        // Start with placeholder
+        textView!.text = "add-new-snippet-alert-text-placeholder".localized
+        textView!.textColor = Constants.placeholderColor
+    }
+    
+    fileprivate func dismiss() {
         dismiss(animated: true, completion: nil)
     }
+    
 }
 
 protocol AddSnippetViewControllerDelegate {
@@ -104,7 +123,7 @@ extension AddSnippetViewController : UITextViewDelegate {
         if updatedText.isEmpty {
             
             textView.text = "add-new-snippet-alert-text-placeholder".localized
-            textView.textColor = Style.sharedInstance.placeholderColor
+            textView.textColor = Constants.placeholderColor
             updateTextLengthLabel(text: String())
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
@@ -118,8 +137,8 @@ extension AddSnippetViewController : UITextViewDelegate {
             // length of the replacement string is greater than 0, set
             // the text color to black then set its text to the
             // replacement string
-        else if textView.textColor == Style.sharedInstance.placeholderColor && !text.isEmpty {
-            textView.textColor = Style.sharedInstance.textColor
+        else if textView.textColor == Constants.placeholderColor && !text.isEmpty {
+            textView.textColor = Constants.textColor
             textView.text = text
             updateTextLengthLabel(text: text)
         }
@@ -138,21 +157,22 @@ extension AddSnippetViewController : UITextViewDelegate {
     // Make sure cursor is not placed elsewhere while showing placeholder
     func textViewDidChangeSelection(_ textView: UITextView) {
         if self.view.window != nil {
-            if textView.textColor == Style.sharedInstance.placeholderColor {
+            if textView.textColor == Constants.placeholderColor {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }
     }
     
+    // Updates the label with the correct length and validates the textView's text length against the given constaints
     func updateTextLengthLabel(text: String) {
         
-        let lengthViolation = text.count > Constants.maximumSnippetLength
+        let lengthViolation = text.count == 0 || text.count > Constants.maximumSnippetLength
         
         // Do not allow snippets exceeding length
         navigationItem.rightBarButtonItem?.isEnabled = !lengthViolation
         
         var attributes = [NSAttributedString.Key: AnyObject]()
-        attributes[.foregroundColor] = lengthViolation ? UIColor.red : Style.sharedInstance.textColor
+        attributes[.foregroundColor] = lengthViolation ? UIColor.red : Constants.textColor
         let attributedString = NSAttributedString(string: "\(text.count) / \(Constants.maximumSnippetLength)", attributes: attributes)
         snippetLengthLabel?.attributedText = attributedString
     }

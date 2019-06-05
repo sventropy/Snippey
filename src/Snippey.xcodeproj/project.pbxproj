@@ -27,8 +27,6 @@
 		5CAF4C0D229AD7A200CB9823 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF4C0B229AD7A200CB9823 /* Localizable.strings */; };
 		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
 		5CAF4C1D229B156E00CB9823 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4BEC229A920C00CB9823 /* Util.swift */; };
-		5CBEF9AC22A6FB0100C0DD56 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBEF9AB22A6FB0100C0DD56 /* Style.swift */; };
-		5CC3970622A7056700D9BDD8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CBEF9AB22A6FB0100C0DD56 /* Style.swift */; };
 		5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
 		5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
 		5CC5A51F22A6D22700BC2800 /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */; };
@@ -95,7 +93,6 @@
 		5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
 		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5CBEF9AB22A6FB0100C0DD56 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+AutoScroll.swift"; sourceTree = "<group>"; };
 		5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UITableView+Reorder.swift"; path = "Dependencies/SwiftReorder/Source/UITableView+Reorder.swift"; sourceTree = "<group>"; };
@@ -156,15 +153,14 @@
 		5C504E9B1F6B0CAB00625257 /* Snippey */ = {
 			isa = PBXGroup;
 			children = (
-				5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */,
+				5C71976822A85485002E5961 /* Controls */,
+				5C71976722A85469002E5961 /* ViewControllers */,
 				5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */,
 				5C504EA31F6B0CAB00625257 /* Assets.xcassets */,
 				5C504EA81F6B0CAB00625257 /* Info.plist */,
 				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
 				5CAF4C0B229AD7A200CB9823 /* Localizable.strings */,
 				5C76046B22835C90003F86A3 /* Snippey.entitlements */,
-				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
-				5C71976522A7F02E002E5961 /* InsetLabel.swift */,
 			);
 			path = Snippey;
 			sourceTree = "<group>";
@@ -179,6 +175,23 @@
 			path = SnippeyKeyboard;
 			sourceTree = "<group>";
 		};
+		5C71976722A85469002E5961 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */,
+				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		5C71976822A85485002E5961 /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				5C71976522A7F02E002E5961 /* InsetLabel.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		5C935CD222933F5700825E58 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -186,7 +199,6 @@
 				5C935CD322933FB800825E58 /* Data.swift */,
 				5C8FCC101FA66F3000DA157C /* Snippet.swift */,
 				5C935CD92293401400825E58 /* SnippetTableViewCell.swift */,
-				5CBEF9AB22A6FB0100C0DD56 /* Style.swift */,
 				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
 				5CAF4BEC229A920C00CB9823 /* Util.swift */,
 			);
@@ -372,7 +384,6 @@
 				5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */,
 				5CC5A52122A6D22700BC2800 /* ReorderController+DestinationRow.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
-				5CBEF9AC22A6FB0100C0DD56 /* Style.swift in Sources */,
 				5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */,
 				5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
@@ -395,7 +406,6 @@
 				5C935CD522933FB800825E58 /* Data.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
 				5C935CD822933FD600825E58 /* Constants.swift in Sources */,
-				5CC3970622A7056700D9BDD8 /* Style.swift in Sources */,
 				5C935CDB2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

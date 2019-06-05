@@ -21,30 +21,33 @@ class KeyboardViewController: UIInputViewController {
     var toolbar: UIToolbar = UIToolbar()
     var stackView: UIView = UIView()
     
-    // MARK: - UIView Lifecycle
+    // MARK: - UIViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         
-        // Create UI elements
+        // Create controls
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         // TODO: Redunant to app --> extract
         tableView.separatorStyle = .none
+        tableView.backgroundColor = Constants.mediumColor
+        
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
+        
         backspaceButton.title = "⌫"
         backspaceButton.action = #selector(backspaceTouchUp)
+        
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
+        
         inputView?.addSubview(stackView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         
         // Clear everything and reload
         snippets.removeAll()
@@ -77,15 +80,10 @@ class KeyboardViewController: UIInputViewController {
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
         
         // Styling
-        Style.sharedInstance.apply(window: view.window!)
+        Constants.applyStyle(window: view.window!)
         
         // Override global tint
-        toolbar.tintColor = Style.sharedInstance.textColor
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear")
+        toolbar.tintColor = Constants.textColor
     }
     
     // MARK: - Keyboard Extension
