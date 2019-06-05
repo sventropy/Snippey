@@ -18,8 +18,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Create view controller without storyboard
         window = UIWindow(frame: UIScreen.main.bounds)
-        window?.rootViewController = UINavigationController(rootViewController: ViewController())
-        window?.makeKeyAndVisible()
+        window!.rootViewController = UINavigationController(rootViewController: ViewController())
+        window!.makeKeyAndVisible()
+        
+        // Apply style
+        Constants.applyStyle(window: window!)
         
         return true
     }

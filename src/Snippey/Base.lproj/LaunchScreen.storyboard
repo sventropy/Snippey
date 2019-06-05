@@ -24,11 +24,11 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Snippey" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMB-TM-0no">
                                 <rect key="frame" x="127.5" y="233" width="159.5" height="51"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="42"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" red="0.25227606296539307" green="0.39916515350341797" blue="0.27872875332832336" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.16862800717353821" green="0.16862747073173523" blue="0.16862562298774719" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="dMB-TM-0no" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="189" id="1PQ-nH-5e7"/>
                             <constraint firstItem="dMB-TM-0no" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="GL2-zY-JLo"/>

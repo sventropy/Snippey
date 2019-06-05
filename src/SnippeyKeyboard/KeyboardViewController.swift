@@ -21,33 +21,33 @@ class KeyboardViewController: UIInputViewController {
     var toolbar: UIToolbar = UIToolbar()
     var stackView: UIView = UIView()
     
-    // MARK: - UIView Lifecycle
+    // MARK: - UIViewController Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewDidLoad")
         
-        // Create UI elements
+        // Create controls
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        // TODO: Redunant to app --> extract
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = Constants.mediumColor
+        
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
+        
         backspaceButton.title = "⌫"
         backspaceButton.action = #selector(backspaceTouchUp)
+        
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-        inputView?.addSubview(stackView)
         
-        // Styling
-        tableView.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.backgroundColor = Constants.keyboardBackgroundColor
-        toolbar.tintColor = Constants.textColor
+        inputView?.addSubview(stackView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print("viewWillAppear")
         
         // Clear everything and reload
         snippets.removeAll()
@@ -62,7 +62,7 @@ class KeyboardViewController: UIInputViewController {
         toolbar.setItems(toolbarItems, animated: true)
         
         // Autolayout
-        inputView?.heightAnchor.constraint(equalToConstant: needsInputModeSwitchKey ? 258.0 : 333.0).isActive = true // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
+        inputView?.heightAnchor.constraint(equalToConstant: needsInputModeSwitchKey ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX).isActive = true // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -77,12 +77,13 @@ class KeyboardViewController: UIInputViewController {
         toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: 48.0).isActive = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        print("viewDidAppear")
+        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        
+        // Styling
+        Constants.applyStyle(window: view.window!)
+        
+        // Override global tint
+        toolbar.tintColor = Constants.textColor
     }
     
     // MARK: - Keyboard Extension
