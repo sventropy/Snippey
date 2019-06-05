@@ -30,4 +30,7 @@ struct Constants {
     static let shadowOpacity : Float = 0.5
     static let shadowOffset = CGSize(width: 1, height: 2)
     
+    // Constaints
+    static let maximumSnippetLength : Int = 200
+    
 }

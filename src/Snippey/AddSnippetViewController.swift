@@ -12,6 +12,7 @@ class AddSnippetViewController: UIViewController {
     
     var delegate : AddSnippetViewControllerDelegate?
     var textView: UITextView?
+    var snippetLengthLabel: UILabel?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,11 @@ class AddSnippetViewController: UIViewController {
         textView = UITextView()
         view.addSubview(textView!)
         textView!.delegate = self
+        snippetLengthLabel = InsetLabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 32))
+        updateTextLengthLabel(text: String()) // Empty string
+        snippetLengthLabel?.textAlignment = .right
+        textView!.inputAccessoryView = snippetLengthLabel!
+        textView?.keyboardType = .default
         
         // Autolayout
         textView!.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +37,7 @@ class AddSnippetViewController: UIViewController {
         textView!.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: Constants.margin).isActive = true
         
         // Styling
-        textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        textView!.font = UIFont.systemFont(ofSize: UIFont.systemFontSize + 1)
         // Start with placeholder
         textView!.text = "add-new-snippet-alert-text-placeholder".localized
         textView!.textColor = Style.sharedInstance.placeholderColor
@@ -91,7 +97,7 @@ protocol AddSnippetViewControllerDelegate {
 
 extension AddSnippetViewController : UITextViewDelegate {
     
-    // Based on solution #2 from https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
+    // Placeholder behavior, based on solution #2 from https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         // Combine the textView text and the replacement text to
@@ -105,8 +111,13 @@ extension AddSnippetViewController : UITextViewDelegate {
             
             textView.text = "add-new-snippet-alert-text-placeholder".localized
             textView.textColor = Style.sharedInstance.placeholderColor
+            updateTextLengthLabel(text: String())
             
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+        }
+            // Do not allow new lines
+        else if text == "\n" {
+            return false
         }
             
             // Else if the text view's placeholder is showing and the
@@ -116,11 +127,12 @@ extension AddSnippetViewController : UITextViewDelegate {
         else if textView.textColor == Style.sharedInstance.placeholderColor && !text.isEmpty {
             textView.textColor = Style.sharedInstance.textColor
             textView.text = text
+            updateTextLengthLabel(text: text)
         }
-            
             // For every other case, the text should change with the usual
             // behavior...
         else {
+            updateTextLengthLabel(text: updatedText)
             return true
         }
         
@@ -136,6 +148,19 @@ extension AddSnippetViewController : UITextViewDelegate {
                 textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
             }
         }
+    }
+    
+    func updateTextLengthLabel(text: String) {
+        
+        let lengthViolation = text.count > Constants.maximumSnippetLength
+        
+        // Do not allow snippets exceeding length
+        navigationItem.rightBarButtonItem?.isEnabled = !lengthViolation
+        
+        var attributes = [NSAttributedString.Key: AnyObject]()
+        attributes[.foregroundColor] = lengthViolation ? UIColor.red : Style.sharedInstance.textColor
+        let attributedString = NSAttributedString(string: "\(text.count) / \(Constants.maximumSnippetLength)", attributes: attributes)
+        snippetLengthLabel?.attributedText = attributedString
     }
     
 }
