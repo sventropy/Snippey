@@ -13,7 +13,6 @@
 		5C504EA71F6B0CAB00625257 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */; };
 		5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
 		5C504ED51F6B0E4C00625257 /* SnippeyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		5C71976422A7E441002E5961 /* RootNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976322A7E441002E5961 /* RootNavigationController.swift */; };
 		5C71976622A7F02E002E5961 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976522A7F02E002E5961 /* InsetLabel.swift */; };
 		5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
 		5C935CD422933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
@@ -82,7 +81,6 @@
 		5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SnippeyKeyboard.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		5C71976322A7E441002E5961 /* RootNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationController.swift; sourceTree = "<group>"; };
 		5C71976522A7F02E002E5961 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
 		5C76046B22835C90003F86A3 /* Snippey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snippey.entitlements; sourceTree = "<group>"; };
 		5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnippeyKeyboard.entitlements; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 				5C504EA81F6B0CAB00625257 /* Info.plist */,
 				5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */,
 				5CAF4C0B229AD7A200CB9823 /* Localizable.strings */,
-				5C71976322A7E441002E5961 /* RootNavigationController.swift */,
 				5C76046B22835C90003F86A3 /* Snippey.entitlements */,
 				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
 				5C71976522A7F02E002E5961 /* InsetLabel.swift */,
@@ -379,7 +376,6 @@
 				5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */,
 				5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
-				5C71976422A7E441002E5961 /* RootNavigationController.swift in Sources */,
 				5CAF4BED229A920C00CB9823 /* Util.swift in Sources */,
 				5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */,
 				5C71976622A7F02E002E5961 /* InsetLabel.swift in Sources */,
