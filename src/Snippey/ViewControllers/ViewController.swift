@@ -14,7 +14,6 @@ class ViewController: UITableViewController {
     
     var snippets : [Snippet] = []
     var dataAccess : DataAccess?
-    var noSnippetsLabel : UILabel?
 
     // UIViewController Lifecycle
 
@@ -27,6 +26,10 @@ class ViewController: UITableViewController {
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
+        let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        backgroundLabel.text = "No Snippets. Create some!"
+        backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
+        tableView.backgroundView = backgroundLabel
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +37,7 @@ class ViewController: UITableViewController {
 
         snippets = dataAccess?.loadSnippets() ?? [Snippet]()
         tableView.reloadData()
+        toggleNoSnippetsLabel()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,6 +89,9 @@ class ViewController: UITableViewController {
             snippets.remove(at: indexPath.row)
             dataAccess?.storeSnippets(snippets: snippets)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            // Update background label in table view
+            toggleNoSnippetsLabel()
         }
      }
     
@@ -101,6 +108,10 @@ class ViewController: UITableViewController {
 
         // Show
         present(navigationController, animated: true, completion: nil)
+    }
+    
+    private func toggleNoSnippetsLabel() {
+        tableView.backgroundView?.isHidden = snippets.count > 0
     }
     
 }

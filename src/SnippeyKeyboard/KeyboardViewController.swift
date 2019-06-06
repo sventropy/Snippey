@@ -33,6 +33,11 @@ class KeyboardViewController: UIInputViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        // TODO redunant to app, consolidate
+        let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+        backgroundLabel.text = "No Snippets. Create some!"
+        backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
+        tableView.backgroundView = backgroundLabel
         
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
@@ -81,6 +86,8 @@ class KeyboardViewController: UIInputViewController {
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        
+        tableView.backgroundView?.isHidden = snippets.count > 0
     }
     
     // MARK: - Keyboard Extension

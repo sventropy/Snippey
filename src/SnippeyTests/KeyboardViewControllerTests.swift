@@ -33,7 +33,14 @@ class KeyboardViewControllerTests: XCTestCase {
     }
     
     func testNoItemsLoadedMessageDisplayed() {
-        XCTFail()
+        // Remove all test snippets before loading
+        dataAccess!.testSnippets.removeAll()
+        viewController?.viewWillAppear(true) // re-simulate trigger screen appearing
+        
+        XCTAssertNotNil(viewController!.tableView.backgroundView)
+        if let label = viewController!.tableView.backgroundView {
+            XCTAssertFalse(label.isHidden)
+        }
     }
     
 }

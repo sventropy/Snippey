@@ -72,6 +72,7 @@ class AddSnippetViewController: UIViewController {
     fileprivate func createCharacterCountLabel() {
         snippetLengthLabel = InsetLabel(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 32))
         snippetLengthLabel?.textAlignment = .right
+        snippetLengthLabel?.textColor = Constants.textColor // HACK: Does not work via UIAppearance
         updateTextLengthLabel(text: String()) // Empty string
         textView!.inputAccessoryView = snippetLengthLabel!
     }

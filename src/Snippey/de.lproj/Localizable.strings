@@ -7,6 +7,7 @@
 */
 
 "list-title" = "Schnipsel";
+"list-no-snippets-label" = "Keine Schnipsel. Leg welche an!";
 "add-new-snippet-alert-title" = "Neuer Schnipsel";
 "add-new-snippet-alert-text-placeholder" = "Schnipsel Text hier eingeben";
 "add-new-snippet-alert-add-button-label" = "Hinzufügen";

@@ -35,7 +35,7 @@ class StyleController {
         UITextView.appearance().textColor = Constants.textColor
         
         // label
-        UILabel.appearance().textColor = Constants.textColor
+        UILabel.appearance(whenContainedInInstancesOf: [UITableView.self]).textAlignment = .center
     }
     
     /// Applies style to all relevant aspects of a given UITableViewCell. This is not done via UIAppearance since components like the contentView of the tableViewCell are to cumbersome to style that way

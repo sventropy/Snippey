@@ -8,7 +8,7 @@
 
 import UIKit
 
-// Custom UILabel implementation adding insets to the label on the left and right
+/// Custom UILabel implementation adding insets to the label on the left and right
 class InsetLabel: UILabel {
 
     override func drawText(in rect: CGRect) {
