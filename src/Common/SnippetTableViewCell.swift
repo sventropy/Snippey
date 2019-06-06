@@ -8,7 +8,7 @@
 
 import UIKit
 
-// UITableViewCell implementation
+/// UITableViewCell implementation for both application and keyboard
 class SnippetTableViewCell : UITableViewCell {
     
     // MARK: - Initialization
@@ -16,15 +16,14 @@ class SnippetTableViewCell : UITableViewCell {
     // HACK: Alter behavior of initializing standard tableview cell in basic display
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
-        initCellStyle()
-        initCellBehavior()
-        
+        applyCellBehavior()
+        StyleController.applyCellStyle(tableViewCell: self)
     }
     
     init() {
         super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
-        initCellStyle()
-        initCellBehavior()
+        applyCellBehavior()
+        StyleController.applyCellStyle(tableViewCell: self)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -37,27 +36,16 @@ class SnippetTableViewCell : UITableViewCell {
         super.layoutSubviews()
         
         // Fix cell spacing by insets
-        textLabel?.frame = textLabel!.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 4, right: 16))
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 4, left: 8, bottom: 4, right: 8))
+        textLabel?.frame = textLabel!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: Constants.margin / 2, right: Constants.margin * 2))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constants.margin / 2, left: Constants.margin, bottom: Constants.margin / 2, right: Constants.margin))
     }
     
     // MARK: - Private
     
-    private func initCellBehavior() {
+    private func applyCellBehavior() {
         
         // This tells the UITableViewCell label to show multiple lines
-        textLabel?.numberOfLines = 0
+        textLabel?.numberOfLines = Int.zero
     }
 
-    private func initCellStyle() {
-        // Style here, since to cumbersome via UIAppearance
-        contentView.layer.cornerRadius = Constants.cornerRadius
-        contentView.layer.shadowColor = Constants.darkColor.cgColor
-        contentView.layer.shadowOpacity = Constants.shadowOpacity
-        contentView.layer.shadowOffset = Constants.shadowOffset
-        contentView.layer.borderColor = Constants.darkColor.cgColor
-        contentView.layer.borderWidth = 1
-        textLabel?.textColor = Constants.textColor
-        backgroundColor = Constants.mediumColor
-    }
 }

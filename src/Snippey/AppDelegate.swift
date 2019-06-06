@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window!.makeKeyAndVisible()
         
         // Apply style
-        Constants.applyStyle(window: window!)
+        StyleController.applyStyle()
         
         return true
     }

@@ -8,7 +8,10 @@
 
 import Foundation
 
+/// Wrapper for all data access for both app and keyboard extension
 class Data {
+    
+    //MARK: - Properties
     
     static let sharedInstance = Data()
     var defaults: UserDefaults? {
@@ -16,6 +19,7 @@ class Data {
         return UserDefaults(suiteName: Constants.appGroup)
     }
     
+    /// Creates the default set of snippets to populate the app and keyboard with and triggers storing it in the appgroup's user defaults
     func initializeDefaultSnippets() {
         
         print("Loading default snippets, if none exist")
@@ -35,6 +39,7 @@ class Data {
         print("Existing snippets found. Did not store default snippets")
     }
     
+    /// Reads all stored snippets from the appgroup's userdefaults
     func loadSnippets() -> [Snippet] {
         
         print("Loading stored snippets")
@@ -53,6 +58,7 @@ class Data {
         return snippets
     }
     
+    /// Stores the given set of snippets in the appgroup's userdefaults
     func storeSnippets(snippets: [Snippet]) {
         
         print("Storing \(snippets.count) snippets")

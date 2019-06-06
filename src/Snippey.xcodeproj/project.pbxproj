@@ -14,6 +14,10 @@
 		5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
 		5C504ED51F6B0E4C00625257 /* SnippeyKeyboard.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 5C504ECE1F6B0E4C00625257 /* SnippeyKeyboard.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		5C71976622A7F02E002E5961 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976522A7F02E002E5961 /* InsetLabel.swift */; };
+		5C71976A22A8DAF4002E5961 /* StyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976922A8DAF4002E5961 /* StyleController.swift */; };
+		5C71976B22A8DAF4002E5961 /* StyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976922A8DAF4002E5961 /* StyleController.swift */; };
+		5C71976D22A8ECB3002E5961 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976C22A8ECB3002E5961 /* String+Localized.swift */; };
+		5C71976E22A8ECB3002E5961 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976C22A8ECB3002E5961 /* String+Localized.swift */; };
 		5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
 		5C935CD422933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
 		5C935CD522933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
@@ -80,6 +84,8 @@
 		5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewController.swift; sourceTree = "<group>"; };
 		5C504ED21F6B0E4C00625257 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C71976522A7F02E002E5961 /* InsetLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
+		5C71976922A8DAF4002E5961 /* StyleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleController.swift; sourceTree = "<group>"; };
+		5C71976C22A8ECB3002E5961 /* String+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localized.swift"; sourceTree = "<group>"; };
 		5C76046B22835C90003F86A3 /* Snippey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snippey.entitlements; sourceTree = "<group>"; };
 		5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnippeyKeyboard.entitlements; sourceTree = "<group>"; };
 		5C8FCC101FA66F3000DA157C /* Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
@@ -199,6 +205,8 @@
 				5C935CD322933FB800825E58 /* Data.swift */,
 				5C8FCC101FA66F3000DA157C /* Snippet.swift */,
 				5C935CD92293401400825E58 /* SnippetTableViewCell.swift */,
+				5C71976C22A8ECB3002E5961 /* String+Localized.swift */,
+				5C71976922A8DAF4002E5961 /* StyleController.swift */,
 				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
 				5CAF4BEC229A920C00CB9823 /* Util.swift */,
 			);
@@ -377,11 +385,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C71976D22A8ECB3002E5961 /* String+Localized.swift in Sources */,
 				5CC5A51F22A6D22700BC2800 /* ReorderController+AutoScroll.swift in Sources */,
 				5CC5A52322A6D22700BC2800 /* ReorderController+GestureRecognizer.swift in Sources */,
 				5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */,
 				5C935CD422933FB800825E58 /* Data.swift in Sources */,
 				5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */,
+				5C71976A22A8DAF4002E5961 /* StyleController.swift in Sources */,
 				5CC5A52122A6D22700BC2800 /* ReorderController+DestinationRow.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
 				5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */,
@@ -400,11 +410,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C71976E22A8ECB3002E5961 /* String+Localized.swift in Sources */,
 				5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */,
 				5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5CAF4BEE229A926D00CB9823 /* Util.swift in Sources */,
 				5C935CD522933FB800825E58 /* Data.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
+				5C71976B22A8DAF4002E5961 /* StyleController.swift in Sources */,
 				5C935CD822933FD600825E58 /* Constants.swift in Sources */,
 				5C935CDB2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);

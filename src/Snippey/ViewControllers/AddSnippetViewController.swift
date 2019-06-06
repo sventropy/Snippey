@@ -172,9 +172,10 @@ extension AddSnippetViewController : UITextViewDelegate {
         navigationItem.rightBarButtonItem?.isEnabled = !lengthViolation
         
         var attributes = [NSAttributedString.Key: AnyObject]()
-        attributes[.foregroundColor] = lengthViolation ? UIColor.red : Constants.textColor
+        attributes[.foregroundColor] = lengthViolation ? Constants.errorColor : Constants.textColor
         let attributedString = NSAttributedString(string: "\(text.count) / \(Constants.maximumSnippetLength)", attributes: attributes)
         snippetLengthLabel?.attributedText = attributedString
     }
     
 }
+

@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 
+/// Keyboard extension view controller implementation providing the list of snippets as a keyboard
 class KeyboardViewController: UIInputViewController {
     
     // MARK: - Properties
@@ -30,9 +31,6 @@ class KeyboardViewController: UIInputViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        // TODO: Redunant to app --> extract
-        tableView.separatorStyle = .none
-        tableView.backgroundColor = Constants.mediumColor
         
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
@@ -44,6 +42,9 @@ class KeyboardViewController: UIInputViewController {
         stackView.addSubview(toolbar)
         
         inputView?.addSubview(stackView)
+        
+        // Styling
+        StyleController.applyStyle()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,12 +79,6 @@ class KeyboardViewController: UIInputViewController {
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
-        
-        // Styling
-        Constants.applyStyle(window: view.window!)
-        
-        // Override global tint
-        toolbar.tintColor = Constants.textColor
     }
     
     // MARK: - Keyboard Extension

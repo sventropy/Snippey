@@ -9,8 +9,7 @@
 import Foundation
 import UIKit
 
-// MARK: Constants
-
+/// Collection of constants used throughout the app and keyboard extension
 struct Constants {
     
     // Strings
@@ -29,6 +28,7 @@ struct Constants {
     static let margin : CGFloat = 8.0
     static let shadowOpacity : Float = 0.5
     static let shadowOffset = CGSize(width: 1, height: 2)
+    static let cellBorderWidth : CGFloat = 1
     
     // Constaints
     static let maximumSnippetLength : Int = 200
@@ -38,30 +38,10 @@ struct Constants {
     static var darkColor  : UIColor { return UIColor(hexString: "#353535") }
     static var lightColor  : UIColor { return UIColor(hexString: "#FFFFFF") }
     static var mediumColor : UIColor { return UIColor(hexString: "#D8D8D8") }
+    static var errorColor = UIColor.red
     // Not applied yet to table view action due to effort (no official API)
     //    var deleteColor : UIColor { return UIColor(hexString: "#A10D00")}
     static var textColor : UIColor { return darkColor }
     static var placeholderColor : UIColor {return mediumColor }
     
-    // Styling
-    static func applyStyle(window: UIWindow) {
-        
-        // tint
-        window.tintColor = accentColor
-        
-        // backround
-        UITableView.appearance().backgroundColor = mediumColor
-        UINavigationBar.appearance().barTintColor = darkColor
-        UITableViewCell.appearance().backgroundColor = mediumColor
-        UIView.appearance(whenContainedInInstancesOf: [UITableViewCell.self]).backgroundColor = lightColor
-        UITextView.appearance().backgroundColor = lightColor
-        
-        // text
-        UITextView.appearance().textColor = textColor
-        UILabel.appearance().textColor = textColor
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: accentColor]
-        
-        // keyboard
-        UITextField.appearance().keyboardAppearance = .light
-    }
 }

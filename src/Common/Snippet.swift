@@ -8,6 +8,11 @@
 
 import UIKit
 
+/// Wrapper struct for snippets. Enables easy (de-)serialization
 struct Snippet: Codable {
+    
+    // MARK: - Properties
+    
+    /// The snippets text
     let text: String
 }

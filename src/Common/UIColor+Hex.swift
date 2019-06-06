@@ -8,9 +8,10 @@
 
 import UIKit
 
-// Found on https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
-
+/// UIColor extension enabling transformation of HEX color code strings to UIColor via a convenience initializer
+/// Found on https://stackoverflow.com/questions/24263007/how-to-use-hex-color-values
 extension UIColor {
+    
     convenience init(hexString: String) {
         let hex = hexString.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
         var int = UInt32()

@@ -28,9 +28,6 @@ class ViewController: UITableViewController {
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
-        tableView.separatorStyle = .none
-        tableView.contentInset = UIEdgeInsets(top: Constants.margin / 2, left: 0, bottom: Constants.margin / 2, right: 0)
-        tableView.backgroundColor = Constants.mediumColor
     }
     
     override func viewWillAppear(_ animated: Bool) {

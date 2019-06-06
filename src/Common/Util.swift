@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+/// Common utility functions
 class Util {
     
     static func printViewsIntrinsicSizeRecursive(views:[UIView]!) {
@@ -35,8 +36,4 @@ class Util {
     }
 }
 
-extension String {
-    var localized: String {
-        return NSLocalizedString(self, comment:"")
-    }
-}
+
