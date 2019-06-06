@@ -10,8 +10,13 @@ import XCTest
 
 class AddSnippetViewControllerTests: XCTestCase {
 
+    var addSnippetViewController : AddSnippetViewController?
+    
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        addSnippetViewController = AddSnippetViewController()
+        addSnippetViewController?.viewDidLoad()
+        addSnippetViewController?.viewWillAppear(true)
     }
 
     override func tearDown() {
@@ -20,9 +25,31 @@ class AddSnippetViewControllerTests: XCTestCase {
 
     //TODO
     // test save, no text
-    // test save, text > 200
-    // test save, 0 < text < 200
-    // test enter newline
-    // test empty text placeholder displayed
-    // test filling & removing text = placeholder displayed
+    func testNoTextSaveDisabled() {
+        //textView is empty by default
+        XCTAssertFalse(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
+    }
+    
+    func testTextLargerThresholdSaveDisabled() {
+        // String is 205 characters long
+        let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 0, length: 4), replacementText: "testtesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttesttest")
+        XCTAssertFalse(shouldChange)
+        XCTAssertFalse(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
+    }
+    
+    func testTextLargerZeroAndSmallerThresholdSaveEnabled() {
+        let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 0, length: 4), replacementText: "test")
+        XCTAssertFalse(shouldChange) // update of text is handled manually in delegate function
+        XCTAssertTrue(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
+    }
+    
+    func testTextEmptyPlaceholderDisplayed() {
+        XCTAssertEqual(addSnippetViewController!.textView!.text, "add-new-snippet-alert-text-placeholder".localized)
+    }
+    
+    func testEnterNewlineCharacterRejected(){
+        let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 0, length: 4), replacementText: "\n")
+        XCTAssertFalse(shouldChange) // update of text is handled manually in delegate function
+        XCTAssertEqual(addSnippetViewController!.textView!.text, "add-new-snippet-alert-text-placeholder".localized) // Still the placeholder
+    }
 }
