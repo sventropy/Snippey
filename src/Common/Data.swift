@@ -8,54 +8,40 @@
 
 import Foundation
 
+/// Protocol for data access
+protocol DataAccess {
+    func loadSnippets() -> [Snippet]
+    func storeSnippets(snippets: [Snippet])
+}
+
 /// Wrapper for all data access for both app and keyboard extension
-class Data {
+class Data : DataAccess {
     
-    //MARK: - Properties
+    // MARK: - Properties
     
-    static let sharedInstance = Data()
-    var defaults: UserDefaults? {
+    private var defaults: UserDefaults? {
         // Initialize defaults for app group
         return UserDefaults(suiteName: Constants.appGroup)
     }
     
-    /// Creates the default set of snippets to populate the app and keyboard with and triggers storing it in the appgroup's user defaults
-    func initializeDefaultSnippets() {
-        
-        print("Loading default snippets, if none exist")
-
-        // Check for existing snippets, not required, only for unwrapping
-        guard (defaults?.data(forKey: Constants.defaultsSnippetsKey)) != nil
-            else {
-                // Store default snippets (once)
-                let defaultSnippets = [Snippet(text: "¯\\_(ツ)_/¯") , Snippet(text: "щ（ﾟДﾟщ）"), Snippet(text: "t(-_-t)")]
-                storeSnippets(snippets: defaultSnippets)
-                print("\(defaultSnippets.count) snippets stored")
-                
-                return
-            }
-        
-        // Not loaded defaults, check found default snippets
-        print("Existing snippets found. Did not store default snippets")
-    }
+    // MARK: - DataAccess Protocol API
     
     /// Reads all stored snippets from the appgroup's userdefaults
     func loadSnippets() -> [Snippet] {
         
         print("Loading stored snippets")
-
-        // Load data from defaults
-        guard let snippetArrayData = defaults?.data(forKey: Constants.defaultsSnippetsKey)
-            else {
-                print("No data found")
-                // return empty result
-                return [Snippet]()
-        }
         
-        // Convert snippets to model
-        let snippets = try! PropertyListDecoder().decode([Snippet].self, from: snippetArrayData)
-        print("\(snippets.count) snippets loaded")
-        return snippets
+        var snippets : [Snippet]?
+        if let snippetArrayData = defaults?.data(forKey: Constants.defaultsSnippetsKey) {
+            // Convert snippets to model
+            snippets = try! PropertyListDecoder().decode([Snippet].self, from: snippetArrayData)
+        } else {
+            // Initialize and load default snippets
+            snippets = initializeDefaultSnippets()
+        }
+
+        print("\(snippets!.count) snippets loaded")
+        return snippets!
     }
     
     /// Stores the given set of snippets in the appgroup's userdefaults
@@ -68,5 +54,20 @@ class Data {
         defaults?.set(snippetArrayData, forKey: Constants.defaultsSnippetsKey)
         
         print("Snippets stored")
+    }
+  
+    // MARK: - Private
+    
+    /// Creates the default set of snippets to populate the app and keyboard with and triggers storing it in the appgroup's user defaults
+    private func initializeDefaultSnippets() -> [Snippet] {
+        
+        print("Initializing default snippets")
+        
+        // Store default snippets (once)
+        let defaultSnippets = [Snippet(text: "¯\\_(ツ)_/¯") , Snippet(text: "щ（ﾟДﾟщ）"), Snippet(text: "t(-_-t)")]
+        storeSnippets(snippets: defaultSnippets)
+        print("\(defaultSnippets.count) snippets stored")
+        
+        return defaultSnippets
     }
 }

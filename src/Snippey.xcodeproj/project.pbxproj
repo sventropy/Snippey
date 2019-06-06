@@ -21,6 +21,24 @@
 		5C71977022A8F0E3002E5961 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */; };
 		5C71977222A8F0F6002E5961 /* AddSnippetViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */; };
 		5C71977422A8F120002E5961 /* KeyboardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */; };
+		5C71977522A8F4EB002E5961 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
+		5C71977622A8F522002E5961 /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
+		5C71977722A8FA7F002E5961 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
+		5C71977822A8FB88002E5961 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD622933FD600825E58 /* Constants.swift */; };
+		5C71977922A8FB91002E5961 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
+		5C71977A22A8FBA3002E5961 /* AddSnippetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */; };
+		5C71977B22A8FBC9002E5961 /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51C22A6D22700BC2800 /* ReorderController.swift */; };
+		5C71977C22A8FBC9002E5961 /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */; };
+		5C71977D22A8FBC9002E5961 /* ReorderController+DestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51B22A6D22700BC2800 /* ReorderController+DestinationRow.swift */; };
+		5C71977E22A8FBC9002E5961 /* ReorderController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */; };
+		5C71977F22A8FBC9002E5961 /* ReorderController+SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */; };
+		5C71978022A8FBC9002E5961 /* UITableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */; };
+		5C71978122A8FBD9002E5961 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976C22A8ECB3002E5961 /* String+Localized.swift */; };
+		5C71978222A8FBEF002E5961 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976522A7F02E002E5961 /* InsetLabel.swift */; };
+		5C71978322A8FC03002E5961 /* SnippetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD92293401400825E58 /* SnippetTableViewCell.swift */; };
+		5C71978422A8FC0D002E5961 /* StyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976922A8DAF4002E5961 /* StyleController.swift */; };
+		5C71978622A8FC4A002E5961 /* TestDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71978522A8FC4A002E5961 /* TestDataAccess.swift */; };
+		5C7197A822A904BE002E5961 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
 		5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
 		5C935CD422933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
 		5C935CD522933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
@@ -89,6 +107,7 @@
 		5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetViewControllerTests.swift; sourceTree = "<group>"; };
 		5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewControllerTests.swift; sourceTree = "<group>"; };
+		5C71978522A8FC4A002E5961 /* TestDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataAccess.swift; sourceTree = "<group>"; };
 		5C76046B22835C90003F86A3 /* Snippey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snippey.entitlements; sourceTree = "<group>"; };
 		5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnippeyKeyboard.entitlements; sourceTree = "<group>"; };
 		5C8FCC101FA66F3000DA157C /* Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
@@ -217,11 +236,12 @@
 		5CAF4C14229B14D900CB9823 /* SnippeyTests */ = {
 			isa = PBXGroup;
 			children = (
-				5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */,
-				5CAF4C17229B14D900CB9823 /* Info.plist */,
-				5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */,
 				5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */,
+				5CAF4C17229B14D900CB9823 /* Info.plist */,
 				5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */,
+				5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */,
+				5C71978522A8FC4A002E5961 /* TestDataAccess.swift */,
+				5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */,
 			);
 			path = SnippeyTests;
 			sourceTree = "<group>";
@@ -429,9 +449,27 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C71977022A8F0E3002E5961 /* ViewControllerTests.swift in Sources */,
+				5C71977E22A8FBC9002E5961 /* ReorderController+GestureRecognizer.swift in Sources */,
+				5C71977522A8F4EB002E5961 /* Data.swift in Sources */,
+				5C71978022A8FBC9002E5961 /* UITableView+Reorder.swift in Sources */,
+				5C71977A22A8FBA3002E5961 /* AddSnippetViewController.swift in Sources */,
+				5C71977C22A8FBC9002E5961 /* ReorderController+AutoScroll.swift in Sources */,
 				5C71977422A8F120002E5961 /* KeyboardViewControllerTests.swift in Sources */,
+				5C71977B22A8FBC9002E5961 /* ReorderController.swift in Sources */,
+				5C71977922A8FB91002E5961 /* UIColor+Hex.swift in Sources */,
+				5C71977D22A8FBC9002E5961 /* ReorderController+DestinationRow.swift in Sources */,
+				5C71978222A8FBEF002E5961 /* InsetLabel.swift in Sources */,
+				5C71977622A8F522002E5961 /* Snippet.swift in Sources */,
+				5C71978322A8FC03002E5961 /* SnippetTableViewCell.swift in Sources */,
+				5C7197A822A904BE002E5961 /* KeyboardViewController.swift in Sources */,
+				5C71978422A8FC0D002E5961 /* StyleController.swift in Sources */,
+				5C71978622A8FC4A002E5961 /* TestDataAccess.swift in Sources */,
+				5C71978122A8FBD9002E5961 /* String+Localized.swift in Sources */,
+				5C71977F22A8FBC9002E5961 /* ReorderController+SnapshotView.swift in Sources */,
+				5C71977722A8FA7F002E5961 /* ViewController.swift in Sources */,
 				5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */,
 				5C71977222A8F0F6002E5961 /* AddSnippetViewControllerTests.swift in Sources */,
+				5C71977822A8FB88002E5961 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

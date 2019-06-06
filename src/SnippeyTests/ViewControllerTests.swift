@@ -9,32 +9,37 @@
 import XCTest
 
 class ViewControllerTests: XCTestCase {
+    
+    var viewController : ViewController?
+    var dataAccess : TestDataAccess?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        viewController = ViewController()
+        dataAccess = TestDataAccess()
+        viewController?.dataAccess = dataAccess
+        viewController?.viewDidLoad()
+        viewController?.viewWillAppear(true)
+        viewController?.viewDidAppear(true)
     }
 
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    // test number of items displayed is correct
+    func testNumberOfItemsInTableCorrect() {
+        XCTAssertEqual(viewController!.tableView(viewController!.tableView, numberOfRowsInSection: 0), dataAccess!.testSnippets.count)
     }
     
-    //TODO
-    // test number of items displayed is correct
     // test no items loaded
-    // test add button pressed
-    // test swipedelete
-    // test reorder
-
+    func testNoItemsLoadedMessageDisplayed() {
+        // Remove all test snippets before loading
+        dataAccess!.testSnippets.removeAll()
+        XCTAssertNotNil(viewController!.noSnippetsLabel)
+        if let label = viewController!.noSnippetsLabel {
+            XCTAssertFalse(label.isHidden)
+        }
+    }
 }
+

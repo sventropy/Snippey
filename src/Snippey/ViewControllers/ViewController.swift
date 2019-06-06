@@ -13,7 +13,9 @@ class ViewController: UITableViewController {
     // MARK: Properties
     
     var snippets : [Snippet] = []
-    
+    var dataAccess : DataAccess?
+    var noSnippetsLabel : UILabel?
+
     // UIViewController Lifecycle
 
     override func viewDidLoad() {
@@ -21,9 +23,6 @@ class ViewController: UITableViewController {
         
         // Add title
         self.navigationItem.title = "list-title".localized
-        
-        // Setup data
-        Data.sharedInstance.initializeDefaultSnippets()
         
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
@@ -33,7 +32,7 @@ class ViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        snippets = Data.sharedInstance.loadSnippets()
+        snippets = dataAccess?.loadSnippets() ?? [Snippet]()
         tableView.reloadData()
     }
     
@@ -84,7 +83,7 @@ class ViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             snippets.remove(at: indexPath.row)
-            Data.sharedInstance.storeSnippets(snippets: snippets)
+            dataAccess?.storeSnippets(snippets: snippets)
             tableView.deleteRows(at: [indexPath], with: .fade)
         }
      }
@@ -112,7 +111,7 @@ extension ViewController : AddSnippetViewControllerDelegate {
         
         self.snippets.append(Snippet(text: snippetText))
         // Update model
-        Data.sharedInstance.storeSnippets(snippets: self.snippets)
+        dataAccess?.storeSnippets(snippets: self.snippets)
         // Reload ui
         self.tableView.reloadData()
     }
@@ -127,7 +126,7 @@ extension ViewController : TableViewReorderDelegate {
         snippets.insert(snippet, at: destinationIndexPath.row)
         
         // Update UI
-        Data.sharedInstance.storeSnippets(snippets: snippets)
+        dataAccess?.storeSnippets(snippets: snippets)
     }
 }
 

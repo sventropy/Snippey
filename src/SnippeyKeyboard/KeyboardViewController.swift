@@ -15,6 +15,8 @@ class KeyboardViewController: UIInputViewController {
     // MARK: - Properties
     
     var snippets: [Snippet] = []
+    // Data access is exposed as property to allow testing the implementation of this class
+    var dataAccess: DataAccess = Data()
     
     var tableView: UITableView = UITableView()
     var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
@@ -52,7 +54,7 @@ class KeyboardViewController: UIInputViewController {
         
         // Clear everything and reload
         snippets.removeAll()
-        snippets = Data.sharedInstance.loadSnippets()
+        snippets = dataAccess.loadSnippets()
         tableView.reloadData()
         
         // Compute correct toolbar items, must be done in viewWillAppear

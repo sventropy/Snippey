@@ -53,6 +53,16 @@
                ReferencedContainer = "container:Snippey.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5C71978A22A903EA002E5961"
+               BuildableName = "SnippeyUITests.xctest"
+               BlueprintName = "SnippeyUITests"
+               ReferencedContainer = "container:Snippey.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
