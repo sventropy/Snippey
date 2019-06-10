@@ -8,9 +8,14 @@
 
 import UIKit
 
+/// View Controller presenting background information on the app and a reset feature to wipe all data
 class InfoTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     var dataAccess : DataAccess?
+    
+    // MARK: - UIViewController
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,7 +45,7 @@ class InfoTableViewController: UITableViewController {
         case 2:
             rows = 1
         default:
-            assertionFailure("tableview misconfigured!")
+            assertionFailure(Constants.switchAssertionFailureMessage)
         }
         return rows
     }
@@ -59,7 +64,7 @@ class InfoTableViewController: UITableViewController {
             case 1:
                 cell.textLabel?.text = "info-link-sventropy-github".localized
             default:
-                assertionFailure("Tableview misconfigured!")
+                assertionFailure(Constants.switchAssertionFailureMessage)
             }
         case 1:
             // Open source dependencies
@@ -69,7 +74,7 @@ class InfoTableViewController: UITableViewController {
             cell.textLabel?.textColor = .red
             cell.textLabel?.text = "info-button-reset".localized
         default:
-            assertionFailure("tableview misconfigured!")
+            assertionFailure(Constants.switchAssertionFailureMessage)
         }
 
         return cell
@@ -85,7 +90,7 @@ class InfoTableViewController: UITableViewController {
             case 2:
             header.textLabel?.text = "info-section-header-reset".localized
             default:
-            assertionFailure("tableview misconfigured!")
+            assertionFailure(Constants.switchAssertionFailureMessage)
         }
         return header
     }
@@ -96,28 +101,20 @@ class InfoTableViewController: UITableViewController {
             // App Info
             switch indexPath.row {
             case 0:
-                openUrl(urlString: "https://blablabla.blabla.me")
+                Util.openUrl(urlString: "https://blablabla.blabla.me")
             case 1:
-                openUrl(urlString: "https://github.com/sventropy")
+                Util.openUrl(urlString: "https://github.com/sventropy")
             default:
-                assertionFailure("Tableview misconfigured!")
+                assertionFailure(Constants.switchAssertionFailureMessage)
             }
         case 1:
             // Open source dependencies
-            openUrl(urlString: "https://github.com/adamshin/SwiftReorder")
+            Util.openUrl(urlString: "https://github.com/adamshin/SwiftReorder")
         case 2:
-            // Reset button
-            let alertController = UIAlertController(title: "info-reset-alert-title".localized, message: "info-reset-alert-message".localized, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "info-reset-alert-delete-button-title".localized, style: .destructive, handler: { (action) in
-                self.dataAccess?.resetSnippets()
-            }))
-            alertController.addAction(UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized, style: .cancel, handler: { (action) in
-                alertController.dismiss(animated: true, completion: nil)
-            }))
-            present(alertController, animated: true, completion: nil)
+            showResetConfirmationAlert()
             
         default:
-            assertionFailure("tableview misconfigured!")
+            assertionFailure(Constants.switchAssertionFailureMessage)
         }
         
         tableView.deselectRow(at: indexPath, animated: false)
@@ -129,10 +126,18 @@ class InfoTableViewController: UITableViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    private func openUrl(urlString: String) {
-        guard let validUrl = URL(string: urlString) else { return }
-        UIApplication.shared.open(validUrl, options: [:], completionHandler: nil)
+    // MARK: - Private
+    
+    fileprivate func showResetConfirmationAlert() {
+        // Reset button
+        let alertController = UIAlertController(title: "info-reset-alert-title".localized, message: "info-reset-alert-message".localized, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "info-reset-alert-delete-button-title".localized, style: .destructive, handler: { (action) in
+            self.dataAccess?.resetSnippets()
+        }))
+        alertController.addAction(UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized, style: .cancel, handler: { (action) in
+            alertController.dismiss(animated: true, completion: nil)
+        }))
+        present(alertController, animated: true, completion: nil)
     }
- 
 }
 

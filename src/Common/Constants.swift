@@ -20,6 +20,7 @@ struct Constants {
     static let infoHeaderViewReuseIdentifier = "infoHeaderView"
     static let appleKeyboardDefaultsKey = "AppleKeyboards"
     static let snippeyKeyboardBundleId = "de.sventropy.app.Snippey.SnippeyKeyboard"
+    static let switchAssertionFailureMessage = "UITableView misconfigured!"
     
     // UI Magic Numbers
     static let cornerRadius : CGFloat = 4.0

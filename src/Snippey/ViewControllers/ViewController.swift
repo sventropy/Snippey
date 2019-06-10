@@ -140,9 +140,7 @@ class ViewController: UITableViewController {
     }
     
     @objc func openAppSettings() {
-        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
-            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
-        }
+        Util.openUrl(urlString: UIApplication.openSettingsURLString)
     }
     
     // MARK: - Private
