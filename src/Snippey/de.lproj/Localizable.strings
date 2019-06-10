@@ -26,3 +26,7 @@
 "info-reset-alert-title" = "Willst Du wirklich alle gespeicherten Schnipsel löschen?";
 "info-reset-alert-message" = "Die Löschung kann nicht rückgängig gemacht werden";
 "info-reset-alert-delete-button-title" = "Alle löschen";
+
+"access-snippet-list-label" = "Die Liste aller Schnipsel, die in der App gespeichert sind";
+"access-add-textView-label" = "Text Eingabe zur Anlage neuer Schnipsel";
+"access-add-save-button-hint" = "Wird aktiviert sobald Text eingegeben wird und dieser kürzer ist als die maximale Länge";

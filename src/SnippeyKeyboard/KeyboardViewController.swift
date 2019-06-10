@@ -123,15 +123,15 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
        let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
 
         // Configure the cell...
-        let emoticon = snippets[indexPath.row]
-        cell.textLabel?.text = emoticon.text
+        let snippet = snippets[indexPath.row]
+        cell.textLabel?.text = snippet.text
 
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let emoticon = snippets[indexPath.row]
-        self.textDocumentProxy.insertText(emoticon.text)
+        let snippet = snippets[indexPath.row]
+        self.textDocumentProxy.insertText(snippet.text)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 

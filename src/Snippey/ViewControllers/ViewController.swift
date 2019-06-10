@@ -31,6 +31,7 @@ class ViewController: UITableViewController {
         backgroundLabel.text = "list-no-snippets-label".localized
         backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
         tableView.backgroundView = backgroundLabel
+        tableView.accessibilityLabel = "access-snippet-list-label".localized
     }
 
     override func viewWillAppear(_ animated: Bool) {

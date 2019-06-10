@@ -33,6 +33,7 @@ class AddSnippetViewController: UIViewController {
         title = "add-new-snippet-alert-title".localized
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(addSnippet))
         navigationItem.rightBarButtonItem?.isEnabled = false
+        navigationItem.rightBarButtonItem?.accessibilityHint = "access-add-save-button-hint".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelAddSnippet))
     }
 
@@ -82,6 +83,7 @@ class AddSnippetViewController: UIViewController {
         view.addSubview(textView!)
         textView!.delegate = self
         textView?.keyboardType = .default
+        textView!.accessibilityHint = "access-add-textView-label".localized
 
         // Autolayout
         textView!.translatesAutoresizingMaskIntoConstraints = false

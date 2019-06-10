@@ -79,6 +79,8 @@ class InfoTableViewController: UITableViewController {
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
 
+        cell.accessibilityTraits.insert(.button) // in conjunction with static text
+
         return cell
     }
 
@@ -103,15 +105,15 @@ class InfoTableViewController: UITableViewController {
             // App Info
             switch indexPath.row {
             case 0:
-                Util.openUrl(urlString: "https://blablabla.blabla.me")
+                Util.openUrl(urlString: Constants.urlSnippeyAppStore)
             case 1:
-                Util.openUrl(urlString: "https://github.com/sventropy")
+                Util.openUrl(urlString: Constants.urlSnippeyDevGitHub)
             default:
                 assertionFailure(Constants.switchAssertionFailureMessage)
             }
         case 1:
             // Open source dependencies
-            Util.openUrl(urlString: "https://github.com/adamshin/SwiftReorder")
+            Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
         case 2:
             showResetConfirmationAlert()
 

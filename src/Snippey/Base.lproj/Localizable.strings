@@ -27,3 +27,6 @@
 "info-reset-alert-message" = "Deletion cannot be undone";
 "info-reset-alert-delete-button-title" = "Delete all";
 
+"access-snippet-list-label" = "The list of all snippets stored in the app";
+"access-add-textView-label" = "Text input for the creation of ew snippets";
+"access-add-save-button-hint" = "Enabled when text is entered and below length threshold";
