@@ -10,18 +10,18 @@ import XCTest
 
 class ViewControllerTests: XCTestCase {
     
-    var window : UIWindow?
     var viewController : ViewController?
     var dataAccess : TestDataAccess?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        window = UIWindow()
         viewController = ViewController()
+        UIApplication.shared.keyWindow?.rootViewController = viewController // HACK: To make the window update viewcontroller properties on navigation/presentation as usual
         dataAccess = TestDataAccess()
         viewController!.dataAccess = dataAccess
-        window!.rootViewController = viewController
-        window!.makeKeyAndVisible()
+        viewController?.viewDidLoad()
+        viewController?.viewWillAppear(true)
+        
     }
 
     override func tearDown() {
@@ -46,7 +46,11 @@ class ViewControllerTests: XCTestCase {
     func testAddPressedAddSnippetViewControllerPresented() {
         viewController?.addSnippet()
         // add snippet controller is wrapped in UINavigationController
-        XCTAssertTrue(viewController?.presentedViewController is UINavigationController)
+        let navigationControllerPresented = viewController?.presentedViewController is UINavigationController
+        XCTAssertTrue(navigationControllerPresented)
+        if navigationControllerPresented {
+            XCTAssertTrue((viewController?.presentedViewController as! UINavigationController).topViewController is AddSnippetViewController)
+        }
     }
 }
 

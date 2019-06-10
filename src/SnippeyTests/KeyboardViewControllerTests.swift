@@ -20,7 +20,6 @@ class KeyboardViewControllerTests: XCTestCase {
         viewController?.dataAccess = dataAccess!
         viewController?.viewDidLoad()
         viewController?.viewWillAppear(true)
-        viewController?.viewDidAppear(true)
     }
 
     override func tearDown() {
