@@ -12,6 +12,7 @@ import Foundation
 protocol DataAccess {
     func loadSnippets() -> [Snippet]
     func storeSnippets(snippets: [Snippet])
+    func resetSnippets()
 }
 
 /// Wrapper for all data access for both app and keyboard extension
@@ -52,6 +53,11 @@ class Data : DataAccess {
         
         print("Snippets stored")
     }
+    
+    /// Deletes all snippets stored in the user defaults
+    func resetSnippets() {
+         UserDefaults(suiteName: Constants.appGroup)?.removeObject(forKey: Constants.defaultsSnippetsKey)
+    }
   
     // MARK: - Private
     
@@ -61,7 +67,7 @@ class Data : DataAccess {
         print("Initializing default snippets")
         
         // Store default snippets (once)
-        let defaultSnippets = [Snippet(text: "default-snippet-welcome-text")]
+        let defaultSnippets = [Snippet(text: "default-snippet-welcome-text".localized)]
         storeSnippets(snippets: defaultSnippets)
         print("\(defaultSnippets.count) snippets stored")
         

@@ -16,6 +16,8 @@ struct Constants {
     static let cellReuseIdentifier = "snippetCell"
     static let appGroup = "group.de.sventropy.app.snippey"
     static let defaultsSnippetsKey = "snippets"
+    static let infoCellReuseIdentifier = "infoCell"
+    static let infoHeaderViewReuseIdentifier = "infoHeaderView"
     
     // UI Magic Numbers
     static let cornerRadius : CGFloat = 4.0

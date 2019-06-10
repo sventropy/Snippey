@@ -12,4 +12,16 @@
 "add-new-snippet-alert-text-placeholder" = "Enter snippet text here";
 "add-new-snippet-alert-add-button-label" = "Add";
 "add-new-snippet-alert-cancel-button-label" = "Cancel";
-"default-snippet-welcome-text" = "Welcome to Snippey a simple app allowing you to store text snippets you frequently use and insert them in any app using the provided keyboard.\nSnippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets in the app. Delete the ones you don't longer like by swiping left. Reorder snippets by dragging them.\n\nAnd now, enjoy using Snippey!"
+"default-snippet-welcome-text" = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you frequently use and insert them in any app using the provided keyboard.\nSnippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets in the app. Delete the ones you don't longer like by swiping left. Reorder snippets by dragging them.\n\nAnd now, enjoy using Snippey!";
+"info-title" = "Info";
+"info-back-button-title" = "Back";
+"info-link-snippey-appstore" = "Snippey in the App Store";
+"info-link-sventropy-github" = "Snippey Developer at GitHub";
+"info-link-deps-swiftreorder" = "SwiftReorder";
+"info-button-reset" = "Delete all snippets";
+"info-section-header-links" = "Links";
+"info-section-header-deps" = "Open Source Dependencies";
+"info-section-header-reset" = "Reset App";
+"info-reset-alert-title" = "Do you really want to delete all snippets stored?";
+"info-reset-alert-message" = "Deletion cannot be undone";
+"info-reset-alert-delete-button-title" = "Delete all";

@@ -46,6 +46,7 @@ class ViewController: UITableViewController {
         
         // Add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "?", style: .plain, target: self, action: #selector(showInfo))
     }
     
     // MARK: UITableViewController
@@ -100,6 +101,8 @@ class ViewController: UITableViewController {
         return .delete
     }
     
+    // MARK: - Actions
+    
     @objc func addSnippet() {
 
         // Build alert to allow adding new snippet
@@ -107,6 +110,14 @@ class ViewController: UITableViewController {
         addSnippetViewController.delegate = self
         let navigationController = UINavigationController(rootViewController: addSnippetViewController)
 
+        // Show
+        present(navigationController, animated: true, completion: nil)
+    }
+    
+    @objc func showInfo() {
+        let infoViewController = InfoTableViewController()
+        infoViewController.dataAccess = dataAccess
+        let navigationController = UINavigationController(rootViewController: infoViewController)
         // Show
         present(navigationController, animated: true, completion: nil)
     }
@@ -121,11 +132,11 @@ extension ViewController : AddSnippetViewControllerDelegate {
     
     func didAddNewSnippet(snippetText: String) {
         
-        self.snippets.append(Snippet(text: snippetText))
+        snippets.append(Snippet(text: snippetText))
         // Update model
         dataAccess?.storeSnippets(snippets: self.snippets)
         // Reload ui
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -141,5 +152,3 @@ extension ViewController : TableViewReorderDelegate {
         dataAccess?.storeSnippets(snippets: snippets)
     }
 }
-
-
