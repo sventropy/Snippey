@@ -221,6 +221,7 @@
 		5C71976822A85485002E5961 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */,
 				5C71976522A7F02E002E5961 /* InsetLabel.swift */,
 			);
 			path = Controls;
@@ -236,7 +237,6 @@
 				5C71976C22A8ECB3002E5961 /* String+Localized.swift */,
 				5C71976922A8DAF4002E5961 /* StyleController.swift */,
 				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
-				5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";

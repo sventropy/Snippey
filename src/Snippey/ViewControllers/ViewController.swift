@@ -28,7 +28,7 @@ class ViewController: UITableViewController {
         tableView.reorder.delegate = self
         tableView.allowsSelection = false
         let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        backgroundLabel.text = "No Snippets. Create some!"
+        backgroundLabel.text = "list-no-snippets-label".localized
         backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
         tableView.backgroundView = backgroundLabel
     }
@@ -39,14 +39,27 @@ class ViewController: UITableViewController {
         snippets = dataAccess?.loadSnippets() ?? [Snippet]()
         tableView.reloadData()
         toggleNoSnippetsLabel()
+        
+        // In case the keyboard is not configured in the Settings app, remind the user to do so
+        if !isKeyboardExtensionEnabled() {
+            tableView.tableHeaderView = createTableHeaderView()
+        } else {
+            tableView.tableHeaderView = nil
+        }
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        // Fix header view frame, in case it is shown
+        tableView.updateHeaderViewFrame()
+    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         // Add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "?", style: .plain, target: self, action: #selector(showInfo))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-title".localized, style: .plain, target: self, action: #selector(showInfo))
     }
     
     // MARK: UITableViewController
@@ -101,6 +114,10 @@ class ViewController: UITableViewController {
         return .delete
     }
     
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+    
     // MARK: - Actions
     
     @objc func addSnippet() {
@@ -122,10 +139,37 @@ class ViewController: UITableViewController {
         present(navigationController, animated: true, completion: nil)
     }
     
+    @objc func openAppSettings() {
+        if let settingsUrl = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(settingsUrl, options: [:], completionHandler: nil)
+        }
+    }
+    
+    // MARK: - Private
+    
     private func toggleNoSnippetsLabel() {
         tableView.backgroundView?.isHidden = snippets.count > 0
     }
     
+    private func isKeyboardExtensionEnabled() -> Bool {
+        guard let keyboards = UserDefaults.standard.object(forKey: Constants.appleKeyboardDefaultsKey) as? [String] else {
+            return false
+        }
+        return keyboards.contains(Constants.snippeyKeyboardBundleId)
+    }
+    
+    private func createTableHeaderView() -> UILabel {
+        let headerLabel = UILabel()
+        headerLabel.lineBreakMode = .byWordWrapping
+        headerLabel.numberOfLines = 0
+        headerLabel.text = "list-header-label-text".localized
+        headerLabel.font = UIFont.systemFont(ofSize: UIFont.systemFontSize)
+        headerLabel.textColor = Constants.darkColor
+        headerLabel.textAlignment = .left
+        headerLabel.isUserInteractionEnabled = true
+        headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAppSettings)))
+        return headerLabel
+    }
 }
 
 extension ViewController : AddSnippetViewControllerDelegate {
@@ -150,5 +194,17 @@ extension ViewController : TableViewReorderDelegate {
         
         // Update UI
         dataAccess?.storeSnippets(snippets: snippets)
+    }
+}
+
+extension UITableView {
+    func updateHeaderViewFrame() {
+        if let header = tableHeaderView {
+            // Adapt the frame to fit the rest of the design
+            let newSize = header.systemLayoutSizeFitting(CGSize(width: bounds.width - Constants.margin * 4, height: CGFloat.zero))
+            let adaptedSize = CGSize(width: newSize.width, height: newSize.height + Constants.margin * 2)
+            let newFrame = CGRect(origin: CGPoint(x: Constants.margin * 3, y: CGFloat.zero), size: adaptedSize)
+            header.frame = newFrame
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 "list-title" = "Snippets";
 "list-no-snippets-label" = "No Snippets. Create some!";
+"list-header-label-text" = "The Snippey keyboard is not active in the Settings app. Tap here to open the Settings app and enable the keyboard in \"General\", \"Keyboard\", \"Keyboards\".";
 "add-new-snippet-alert-title" = "New Snippet";
 "add-new-snippet-alert-text-placeholder" = "Enter snippet text here";
 "add-new-snippet-alert-add-button-label" = "Add";
@@ -25,3 +26,4 @@
 "info-reset-alert-title" = "Do you really want to delete all snippets stored?";
 "info-reset-alert-message" = "Deletion cannot be undone";
 "info-reset-alert-delete-button-title" = "Delete all";
+
