@@ -52,5 +52,9 @@ class ViewControllerTests: XCTestCase {
             XCTAssertTrue((viewController?.presentedViewController as! UINavigationController).topViewController is AddSnippetViewController)
         }
     }
+    
+    func testTableViewCellsNotSelectable() {
+        XCTAssertFalse((viewController?.tableView.allowsSelection)!)
+    }
 }
 

@@ -26,6 +26,7 @@ class ViewController: UITableViewController {
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
+        tableView.allowsSelection = false
         let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         backgroundLabel.text = "No Snippets. Create some!"
         backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
