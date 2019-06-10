@@ -12,3 +12,4 @@
 "add-new-snippet-alert-text-placeholder" = "Schnipsel Text hier eingeben";
 "add-new-snippet-alert-add-button-label" = "Hinzufügen";
 "add-new-snippet-alert-cancel-button-label" = "Abbrechen";
+"default-snippet-welcome-text" = "Das ist Snippey, eine einfache App die Dir erlaubt Text Schnipsel die du oft brauchst zu speichern und über die Snippey Tastatur in jeder App zu verwenden.\nSchnipsel können aus Text, Emojis oder beidem bestehen 😃😉.\nFüge neue Schnipsel in der App hinzu. Lösche nicht mehr gebrauchte Schnipsel durch Wischen nach links in der Liste. Ändere die Reihenfolge durch drücken und halten.\n\nUnd jetzt, viel Spass mit Snippey!"

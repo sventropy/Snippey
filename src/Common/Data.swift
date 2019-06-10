@@ -19,10 +19,7 @@ class Data : DataAccess {
     
     // MARK: - Properties
     
-    private var defaults: UserDefaults? {
-        // Initialize defaults for app group
-        return UserDefaults(suiteName: Constants.appGroup)
-    }
+    private var defaults: UserDefaults? = UserDefaults(suiteName: Constants.appGroup)
     
     // MARK: - DataAccess Protocol API
     
@@ -64,7 +61,7 @@ class Data : DataAccess {
         print("Initializing default snippets")
         
         // Store default snippets (once)
-        let defaultSnippets = [Snippet(text: "¯\\_(ツ)_/¯") , Snippet(text: "щ（ﾟДﾟщ）"), Snippet(text: "t(-_-t)")]
+        let defaultSnippets = [Snippet(text: "default-snippet-welcome-text")]
         storeSnippets(snippets: defaultSnippets)
         print("\(defaultSnippets.count) snippets stored")
         

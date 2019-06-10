@@ -43,6 +43,7 @@ class StyleController {
         
         tableViewCell.backgroundColor = Constants.mediumColor
         tableViewCell.textLabel?.textColor = Constants.textColor
+        tableViewCell.textLabel?.textAlignment = .left
         tableViewCell.contentView.backgroundColor = Constants.lightColor
         tableViewCell.contentView.layer.cornerRadius = Constants.cornerRadius
         tableViewCell.contentView.layer.shadowColor = Constants.darkColor.cgColor

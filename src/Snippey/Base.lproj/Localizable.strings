@@ -12,3 +12,4 @@
 "add-new-snippet-alert-text-placeholder" = "Enter snippet text here";
 "add-new-snippet-alert-add-button-label" = "Add";
 "add-new-snippet-alert-cancel-button-label" = "Cancel";
+"default-snippet-welcome-text" = "Welcome to Snippey a simple app allowing you to store text snippets you frequently use and insert them in any app using the provided keyboard.\nSnippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets in the app. Delete the ones you don't longer like by swiping left. Reorder snippets by dragging them.\n\nAnd now, enjoy using Snippey!"
