@@ -48,7 +48,5 @@ class StyleController {
         tableViewCell.contentView.layer.shadowColor = Constants.darkColor.cgColor
         tableViewCell.contentView.layer.shadowOpacity = Constants.shadowOpacity
         tableViewCell.contentView.layer.shadowOffset = Constants.shadowOffset
-        tableViewCell.contentView.layer.borderColor = Constants.darkColor.cgColor
-        tableViewCell.contentView.layer.borderWidth = Constants.cellBorderWidth
     }
 }
