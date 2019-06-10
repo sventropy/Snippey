@@ -9,20 +9,20 @@
 import UIKit
 
 class ViewController: UITableViewController {
-    
+
     // MARK: Properties
-    
-    var snippets : [Snippet] = []
-    var dataAccess : DataAccess?
+
+    var snippets: [Snippet] = []
+    var dataAccess: DataAccess?
 
     // UIViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Add title
         self.navigationItem.title = "list-title".localized
-        
+
         // Setup tableview
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
@@ -32,14 +32,14 @@ class ViewController: UITableViewController {
         backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
         tableView.backgroundView = backgroundLabel
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         snippets = dataAccess?.loadSnippets() ?? [Snippet]()
         tableView.reloadData()
         toggleNoSnippetsLabel()
-        
+
         // In case the keyboard is not configured in the Settings app, remind the user to do so
         if !isKeyboardExtensionEnabled() {
             tableView.tableHeaderView = createTableHeaderView()
@@ -47,55 +47,55 @@ class ViewController: UITableViewController {
             tableView.tableHeaderView = nil
         }
     }
-    
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
+
         // Fix header view frame, in case it is shown
         tableView.updateHeaderViewFrame()
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+
         // Add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-title".localized, style: .plain, target: self, action: #selector(showInfo))
     }
-    
+
     // MARK: UITableViewController
-    
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return snippets.count
     }
-    
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+
         // Handle reordering
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
-        
+
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.cellReuseIdentifier, for: indexPath)
-        
+
         // Configure the cell...
         let emoticon = snippets[indexPath.row]
         cell.textLabel?.text = emoticon.text
-        
+
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
+
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         return true
     }
-    
+
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Only delete handled here
@@ -104,22 +104,22 @@ class ViewController: UITableViewController {
             snippets.remove(at: indexPath.row)
             dataAccess?.storeSnippets(snippets: snippets)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            
+
             // Update background label in table view
             toggleNoSnippetsLabel()
         }
      }
-    
+
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return UITableView.automaticDimension
     }
-    
+
     // MARK: - Actions
-    
+
     @objc func addSnippet() {
 
         // Build alert to allow adding new snippet
@@ -130,7 +130,7 @@ class ViewController: UITableViewController {
         // Show
         present(navigationController, animated: true, completion: nil)
     }
-    
+
     @objc func showInfo() {
         let infoViewController = InfoTableViewController()
         infoViewController.dataAccess = dataAccess
@@ -138,24 +138,24 @@ class ViewController: UITableViewController {
         // Show
         present(navigationController, animated: true, completion: nil)
     }
-    
+
     @objc func openAppSettings() {
         Util.openUrl(urlString: UIApplication.openSettingsURLString)
     }
-    
+
     // MARK: - Private
-    
+
     private func toggleNoSnippetsLabel() {
         tableView.backgroundView?.isHidden = snippets.count > 0
     }
-    
+
     private func isKeyboardExtensionEnabled() -> Bool {
         guard let keyboards = UserDefaults.standard.object(forKey: Constants.appleKeyboardDefaultsKey) as? [String] else {
             return false
         }
         return keyboards.contains(Constants.snippeyKeyboardBundleId)
     }
-    
+
     private func createTableHeaderView() -> UILabel {
         let headerLabel = UILabel()
         headerLabel.lineBreakMode = .byWordWrapping
@@ -170,10 +170,10 @@ class ViewController: UITableViewController {
     }
 }
 
-extension ViewController : AddSnippetViewControllerDelegate {
-    
+extension ViewController: AddSnippetViewControllerDelegate {
+
     func didAddNewSnippet(snippetText: String) {
-        
+
         snippets.append(Snippet(text: snippetText))
         // Update model
         dataAccess?.storeSnippets(snippets: self.snippets)
@@ -182,14 +182,14 @@ extension ViewController : AddSnippetViewControllerDelegate {
     }
 }
 
-extension ViewController : TableViewReorderDelegate {
-    
+extension ViewController: TableViewReorderDelegate {
+
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         // Update data source
         let snippet = snippets[sourceIndexPath.row]
         snippets.remove(at: sourceIndexPath.row)
         snippets.insert(snippet, at: destinationIndexPath.row)
-        
+
         // Update UI
         dataAccess?.storeSnippets(snippets: snippets)
     }

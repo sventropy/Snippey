@@ -15,5 +15,4 @@ class InsetLabel: UILabel {
         let insets = UIEdgeInsets.init(top: 0, left: Constants.margin, bottom: 0, right: Constants.margin)
         super.drawText(in: rect.inset(by: insets))
     }
-    
 }

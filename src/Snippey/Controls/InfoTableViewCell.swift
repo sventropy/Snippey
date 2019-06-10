@@ -12,12 +12,12 @@ import UIKit
 class InfoTableViewCell: UITableViewCell {
 
         // MARK: - Initialization
-        
+
         // HACK: Alter behavior of initializing standard tableview cell in basic display
         override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
             super.init(style: .default, reuseIdentifier: reuseIdentifier)
         }
-        
+
         init() {
             super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
         }

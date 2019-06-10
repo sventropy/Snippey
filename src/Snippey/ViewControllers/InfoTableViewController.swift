@@ -10,21 +10,24 @@ import UIKit
 
 /// View Controller presenting background information on the app and a reset feature to wipe all data
 class InfoTableViewController: UITableViewController {
-    
+
     // MARK: - Properties
-    
-    var dataAccess : DataAccess?
-    
+
+    var dataAccess: DataAccess?
+
     // MARK: - UIViewController
-   
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.register(InfoTableViewCell.self, forCellReuseIdentifier: Constants.infoCellReuseIdentifier )
-        tableView.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: Constants.infoHeaderViewReuseIdentifier)
+        tableView.register(UITableViewHeaderFooterView.self,
+                           forHeaderFooterViewReuseIdentifier: Constants.infoHeaderViewReuseIdentifier)
 
         navigationItem.title = "info-title".localized
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-back-button-title".localized, style: .done, target: self, action: #selector(dismissInfo))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-back-button-title".localized,
+                                                           style: .done, target: self,
+                                                           action: #selector(dismissInfo))
     }
 
     // MARK: - Table view data source
@@ -50,7 +53,6 @@ class InfoTableViewController: UITableViewController {
         return rows
     }
 
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.infoCellReuseIdentifier, for: indexPath)
 
@@ -79,22 +81,22 @@ class InfoTableViewController: UITableViewController {
 
         return cell
     }
-    
+
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = UITableViewHeaderFooterView(reuseIdentifier: Constants.infoHeaderViewReuseIdentifier)
         switch section {
-            case 0:
+        case 0:
             header.textLabel?.text = "info-section-header-links".localized
-            case 1:
+        case 1:
             header.textLabel?.text = "info-section-header-deps".localized
-            case 2:
+        case 2:
             header.textLabel?.text = "info-section-header-reset".localized
-            default:
+        default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
         return header
     }
-    
+
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
@@ -112,32 +114,35 @@ class InfoTableViewController: UITableViewController {
             Util.openUrl(urlString: "https://github.com/adamshin/SwiftReorder")
         case 2:
             showResetConfirmationAlert()
-            
+
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
-        
+
         tableView.deselectRow(at: indexPath, animated: false)
     }
-    
+
     // MARK: - Actions
-    
+
     @objc func dismissInfo() {
         dismiss(animated: true, completion: nil)
     }
-    
+
     // MARK: - Private
-    
+
     fileprivate func showResetConfirmationAlert() {
         // Reset button
-        let alertController = UIAlertController(title: "info-reset-alert-title".localized, message: "info-reset-alert-message".localized, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "info-reset-alert-delete-button-title".localized, style: .destructive, handler: { (action) in
+        let alertController = UIAlertController(title: "info-reset-alert-title".localized,
+                                                message: "info-reset-alert-message".localized,
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "info-reset-alert-delete-button-title".localized,
+                                                style: .destructive, handler: { (_) in
             self.dataAccess?.resetSnippets()
         }))
-        alertController.addAction(UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized, style: .cancel, handler: { (action) in
+        alertController.addAction(UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized,
+                                                style: .cancel, handler: { (_) in
             alertController.dismiss(animated: true, completion: nil)
         }))
         present(alertController, animated: true, completion: nil)
     }
 }
-

@@ -9,9 +9,9 @@
 import XCTest
 
 class KeyboardViewControllerTests: XCTestCase {
-    
-    var viewController : KeyboardViewController?
-    var dataAccess : TestDataAccess?
+
+    var viewController: KeyboardViewController?
+    var dataAccess: TestDataAccess?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -28,18 +28,19 @@ class KeyboardViewControllerTests: XCTestCase {
 
     // test number of items displayed is correct
     func testNumberOfItemsInTableCorrect() {
-        XCTAssertEqual(viewController!.tableView(viewController!.tableView, numberOfRowsInSection: 0), dataAccess!.testSnippets.count)
+        XCTAssertEqual(viewController!.tableView(viewController!.tableView, numberOfRowsInSection: 0),
+                       dataAccess!.testSnippets.count)
     }
-    
+
     func testNoItemsLoadedMessageDisplayed() {
         // Remove all test snippets before loading
         dataAccess!.testSnippets.removeAll()
         viewController?.viewWillAppear(true) // re-simulate trigger screen appearing
-        
+
         XCTAssertNotNil(viewController!.tableView.backgroundView)
         if let label = viewController!.tableView.backgroundView {
             XCTAssertFalse(label.isHidden)
         }
     }
-    
+
 }
