@@ -72,7 +72,7 @@ class ViewControllerTests: XCTestCase {
             }
         }
     }
-    
+
     func testDidAddSnippetStoresSnippet() {
         let countBefore = dataAccess!.testSnippets.count
         viewController.didAddNewSnippet(snippetText: "TestSnippetText")
@@ -81,4 +81,11 @@ class ViewControllerTests: XCTestCase {
         XCTAssertEqual(countAfter, countBefore + 1)
     }
     
+    func testReorderDoesChangeSnippetPosition() {
+        viewController.tableView(viewController.tableView, reorderRowAt: IndexPath(row: 1, section: 0), to: IndexPath(row: 2, section: 0))
+        // Verify position change of "2" and "3"
+        XCTAssertEqual(viewController.snippets[2].text, "2")
+        XCTAssertEqual(viewController.snippets[1].text, "3")
+    }
+
 }
