@@ -7,10 +7,11 @@
 //
 
 import XCTest
+@testable import Snippey
 
 class DataTests: XCTestCase {
 
-    var data: Data?
+    var data: DataAccess?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,7 +21,7 @@ class DataTests: XCTestCase {
         // the two for now.)
         UserDefaults(suiteName: Constants.appGroup)?.removeObject(forKey: Constants.defaultsSnippetsKey)
         // Initialize instance
-        data = Data()
+        data = DataAccess()
     }
 
     override func tearDown() {

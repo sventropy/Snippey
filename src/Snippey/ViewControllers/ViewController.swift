@@ -10,12 +10,12 @@ import UIKit
 
 class ViewController: UITableViewController {
 
-    // MARK: Properties
+    // MARK: - Properties
 
     var snippets: [Snippet] = []
-    var dataAccess: DataAccess?
+    var dataAccess: DataAccessProtocol?
 
-    // UIViewController Lifecycle
+    // MARK: - UIViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class ViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-title".localized, style: .plain, target: self, action: #selector(showInfo))
     }
 
-    // MARK: UITableViewController
+    // MARK: - UITableViewController
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return snippets.count
@@ -71,7 +71,7 @@ class ViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        // Handle reordering
+        // Handle reordering, required by SwiftReorder
         if let spacer = tableView.reorder.spacerCell(for: indexPath) {
             return spacer
         }
@@ -171,6 +171,8 @@ class ViewController: UITableViewController {
     }
 }
 
+// MARK: - Implementation of add delegate
+
 extension ViewController: AddSnippetViewControllerDelegate {
 
     func didAddNewSnippet(snippetText: String) {
@@ -182,6 +184,8 @@ extension ViewController: AddSnippetViewControllerDelegate {
         tableView.reloadData()
     }
 }
+
+// MARK: - Implementation of reorder delegate
 
 extension ViewController: TableViewReorderDelegate {
 

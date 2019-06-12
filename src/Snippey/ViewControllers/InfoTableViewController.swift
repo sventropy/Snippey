@@ -13,7 +13,7 @@ class InfoTableViewController: UITableViewController {
 
     // MARK: - Properties
 
-    var dataAccess: DataAccess?
+    var dataAccess: DataAccessProtocol?
 
     // MARK: - UIViewController
 

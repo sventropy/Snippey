@@ -7,21 +7,22 @@
 //
 
 import XCTest
+@testable import Snippey
 
 class ViewControllerTests: XCTestCase {
 
-    var viewController: ViewController?
-    var dataAccess: TestDataAccess?
+    var viewController: ViewController!
+    var dataAccess: MockDataAccess!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         viewController = ViewController()
         // HACK: To make the window update viewcontroller properties on navigation/presentation as usual
         UIApplication.shared.keyWindow?.rootViewController = viewController
-        dataAccess = TestDataAccess()
-        viewController!.dataAccess = dataAccess
-        viewController?.viewDidLoad()
-        viewController?.viewWillAppear(true)
+        dataAccess = MockDataAccess()
+        viewController.dataAccess = dataAccess
+        viewController.viewDidLoad()
+        viewController.viewWillAppear(true)
     }
 
     override func tearDown() {
@@ -29,28 +30,28 @@ class ViewControllerTests: XCTestCase {
     }
 
     func testNumberOfItemsInTableCorrect() {
-        XCTAssertEqual(viewController!.tableView(viewController!.tableView, numberOfRowsInSection: 0),
-                       dataAccess!.testSnippets.count)
+        XCTAssertEqual(viewController.tableView(viewController.tableView, numberOfRowsInSection: 0),
+                       dataAccess.testSnippets.count)
     }
 
     func testNoItemsLoadedMessageDisplayed() {
         // Remove all test snippets before loading
-        dataAccess!.testSnippets.removeAll()
-        viewController?.viewWillAppear(true) // re-simulate trigger screen appearing
+        dataAccess.testSnippets.removeAll()
+        viewController.viewWillAppear(true) // re-simulate trigger screen appearing
 
-        XCTAssertNotNil(viewController!.tableView.backgroundView)
-        if let label = viewController!.tableView.backgroundView {
+        XCTAssertNotNil(viewController.tableView.backgroundView)
+        if let label = viewController.tableView.backgroundView {
             XCTAssertFalse(label.isHidden)
         }
     }
 
     func testAddPressedAddSnippetViewControllerPresented() {
-        viewController?.addSnippet()
+        viewController.addSnippet()
         // add snippet controller is wrapped in UINavigationController
-        let navigationControllerPresented = viewController?.presentedViewController is UINavigationController
+        let navigationControllerPresented = viewController.presentedViewController is UINavigationController
         XCTAssertTrue(navigationControllerPresented)
         if navigationControllerPresented {
-            if let navigationController = viewController?.presentedViewController as? UINavigationController {
+            if let navigationController = viewController.presentedViewController as? UINavigationController {
                 XCTAssertTrue(navigationController.topViewController is AddSnippetViewController)
             }
         }
@@ -59,4 +60,25 @@ class ViewControllerTests: XCTestCase {
     func testTableViewCellsNotSelectable() {
         XCTAssertFalse((viewController?.tableView.allowsSelection)!)
     }
+
+    func testShowInfoPressedAInfoViewControllerPresented() {
+        viewController.showInfo()
+        // info controller is wrapped in UINavigationController
+        let navigationControllerPresented = viewController.presentedViewController is UINavigationController
+        XCTAssertTrue(navigationControllerPresented)
+        if navigationControllerPresented {
+            if let navigationController = viewController.presentedViewController as? UINavigationController {
+                XCTAssertTrue(navigationController.topViewController is InfoTableViewController)
+            }
+        }
+    }
+    
+    func testDidAddSnippetStoresSnippet() {
+        let countBefore = dataAccess!.testSnippets.count
+        viewController.didAddNewSnippet(snippetText: "TestSnippetText")
+        XCTAssertTrue(dataAccess!.storeSnippetsCalled)
+        let countAfter = dataAccess!.testSnippets.count
+        XCTAssertEqual(countAfter, countBefore + 1)
+    }
+    
 }

@@ -9,14 +9,14 @@
 import Foundation
 
 /// Protocol for data access
-protocol DataAccess {
+protocol DataAccessProtocol {
     func loadSnippets() -> [Snippet]
     func storeSnippets(snippets: [Snippet])
     func resetSnippets()
 }
 
 /// Wrapper for all data access for both app and keyboard extension
-class Data: DataAccess {
+class DataAccess: DataAccessProtocol {
 
     // MARK: - Properties
 

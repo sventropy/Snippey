@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Create view controller without storyboard
         window = UIWindow(frame: UIScreen.main.bounds)
         let viewController = ViewController()
-        viewController.dataAccess = Data()
+        viewController.dataAccess = DataAccess()
         window!.rootViewController = UINavigationController(rootViewController: viewController)
         window!.makeKeyAndVisible()
 

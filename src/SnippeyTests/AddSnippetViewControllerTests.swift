@@ -7,14 +7,18 @@
 //
 
 import XCTest
+@testable import Snippey
 
 class AddSnippetViewControllerTests: XCTestCase {
 
     var addSnippetViewController: AddSnippetViewController?
+    var addSnippetViewControllerDelegate: MockAddSnippetViewControllerDelegate?
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         addSnippetViewController = AddSnippetViewController()
+        addSnippetViewControllerDelegate = MockAddSnippetViewControllerDelegate()
+        addSnippetViewController?.delegate = addSnippetViewControllerDelegate
         addSnippetViewController?.viewDidLoad()
         addSnippetViewController?.viewWillAppear(true)
     }
@@ -62,4 +66,27 @@ class AddSnippetViewControllerTests: XCTestCase {
         XCTAssertEqual(addSnippetViewController!.textView!.text,
                        "add-new-snippet-alert-text-placeholder".localized) // Still the placeholder
     }
+    
+    func testSaveCallsDelegate() {
+        addSnippetViewController?.addSnippet()
+        XCTAssert(addSnippetViewControllerDelegate!.didAddSnippet)
+    }
+    
+    func testSaveCallsDelegateWithText() {
+        addSnippetViewController?.textView?.text = "TestText"
+        addSnippetViewController?.addSnippet()
+        XCTAssertEqual(addSnippetViewControllerDelegate!.text, addSnippetViewController!.textView!.text)
+    }
+}
+
+class MockAddSnippetViewControllerDelegate : AddSnippetViewControllerDelegate {
+    
+    var didAddSnippet: Bool = false
+    var text: String = ""
+    
+    func didAddNewSnippet(snippetText: String) {
+        didAddSnippet = true
+        text = snippetText
+    }
+    
 }

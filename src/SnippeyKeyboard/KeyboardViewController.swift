@@ -16,7 +16,7 @@ class KeyboardViewController: UIInputViewController {
 
     var snippets: [Snippet] = []
     // Data access is exposed as property to allow testing the implementation of this class
-    var dataAccess: DataAccess = Data()
+    var dataAccess: DataAccessProtocol = DataAccess()
 
     var tableView: UITableView = UITableView()
     var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
@@ -131,7 +131,7 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let snippet = snippets[indexPath.row]
-        self.textDocumentProxy.insertText(snippet.text)
+        textDocumentProxy.insertText(snippet.text)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 
