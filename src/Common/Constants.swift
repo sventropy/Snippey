@@ -21,7 +21,7 @@ struct Constants {
     static let appleKeyboardDefaultsKey = "AppleKeyboards"
     static let snippeyKeyboardBundleId = "de.sventropy.app.Snippey.SnippeyKeyboard"
     static let switchAssertionFailureMessage = "UITableView misconfigured!"
-    static let urlSnippeyAppStore = "https://blablabla.blabla.me"
+    static let urlSnippeyPrivacyPolicy = "https://github.com/sventropy/Snippey-Privacy-Policy"
     static let urlSnippeyDevGitHub = "https://github.com/sventropy"
     static let urlSwiftReorderGitHub = "https://github.com/adamshin/SwiftReorder"
 

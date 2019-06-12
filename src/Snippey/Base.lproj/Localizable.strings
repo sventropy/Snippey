@@ -16,7 +16,7 @@
 "default-snippet-welcome-text" = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you frequently use and insert them in any app using the provided keyboard.\nSnippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets in the app. Delete the ones you don't longer like by swiping left. Reorder snippets by dragging them.\n\nAnd now, enjoy using Snippey!";
 "info-title" = "Info";
 "info-back-button-title" = "Back";
-"info-link-snippey-appstore" = "Snippey in the App Store";
+"info-link-snippey-privacy-policy" = "Snippey Privacy Policy";
 "info-link-sventropy-github" = "Snippey Developer at GitHub";
 "info-link-deps-swiftreorder" = "SwiftReorder";
 "info-button-reset" = "Delete all snippets";

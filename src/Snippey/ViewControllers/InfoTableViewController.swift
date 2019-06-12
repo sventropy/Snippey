@@ -62,7 +62,7 @@ class InfoTableViewController: UITableViewController {
             // App Info
             switch indexPath.row {
             case 0:
-                cell.textLabel?.text = "info-link-snippey-appstore".localized
+                cell.textLabel?.text = "info-link-snippey-privacy-policy".localized
             case 1:
                 cell.textLabel?.text = "info-link-sventropy-github".localized
             default:
@@ -105,7 +105,7 @@ class InfoTableViewController: UITableViewController {
             // App Info
             switch indexPath.row {
             case 0:
-                Util.openUrl(urlString: Constants.urlSnippeyAppStore)
+                Util.openUrl(urlString: Constants.urlSnippeyPrivacyPolicy)
             case 1:
                 Util.openUrl(urlString: Constants.urlSnippeyDevGitHub)
             default:
