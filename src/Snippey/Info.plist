@@ -45,5 +45,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>UIApplicationOpenSettingsURLString</key>
+	<string>Help enabling the keyboard in the Settings app</string>
 </dict>
 </plist>

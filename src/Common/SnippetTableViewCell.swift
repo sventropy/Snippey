@@ -9,41 +9,45 @@
 import UIKit
 
 /// UITableViewCell implementation for both application and keyboard
-class SnippetTableViewCell : UITableViewCell {
-    
+class SnippetTableViewCell: UITableViewCell {
+
     // MARK: - Initialization
-    
+
     // HACK: Alter behavior of initializing standard tableview cell in basic display
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         applyCellBehavior()
         StyleController.applyCellStyle(tableViewCell: self)
     }
-    
+
     init() {
         super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
         applyCellBehavior()
         StyleController.applyCellStyle(tableViewCell: self)
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
     // MARK: - View Lifecycle
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         // Fix cell spacing by insets
-        textLabel?.frame = textLabel!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: Constants.margin / 2, right: Constants.margin * 2))
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: Constants.margin / 2, left: Constants.margin, bottom: Constants.margin / 2, right: Constants.margin))
+        textLabel?.frame = textLabel!.frame.inset(by:
+            UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero,
+                         bottom: Constants.margin / 2, right: Constants.margin * 2))
+        contentView.frame = contentView.frame.inset(by:
+            UIEdgeInsets(top: Constants.margin / 2, left: Constants.margin,
+                         bottom: Constants.margin / 2, right: Constants.margin))
     }
-    
+
     // MARK: - Private
-    
+
     private func applyCellBehavior() {
-        
+
         // This tells the UITableViewCell label to show multiple lines
         textLabel?.numberOfLines = Int.zero
     }

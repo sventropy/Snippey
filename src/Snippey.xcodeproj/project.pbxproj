@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C15A6F222AE5F1600BC016E /* DataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F122AE5F1600BC016E /* DataTests.swift */; };
+		5C15A6F422AE67BC00BC016E /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F322AE67BC00BC016E /* InfoTableViewController.swift */; };
+		5C15A6F622AE79E000BC016E /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */; };
+		5C15A6FB22AED90B00BC016E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6FA22AED90B00BC016E /* Util.swift */; };
+		5C3B041322B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */; };
 		5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */; };
 		5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
 		5C504EA41F6B0CAB00625257 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C504EA31F6B0CAB00625257 /* Assets.xcassets */; };
@@ -21,34 +26,22 @@
 		5C71977022A8F0E3002E5961 /* ViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */; };
 		5C71977222A8F0F6002E5961 /* AddSnippetViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */; };
 		5C71977422A8F120002E5961 /* KeyboardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */; };
-		5C71977522A8F4EB002E5961 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
-		5C71977622A8F522002E5961 /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
-		5C71977722A8FA7F002E5961 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
-		5C71977822A8FB88002E5961 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD622933FD600825E58 /* Constants.swift */; };
-		5C71977922A8FB91002E5961 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
-		5C71977A22A8FBA3002E5961 /* AddSnippetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */; };
 		5C71977B22A8FBC9002E5961 /* ReorderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51C22A6D22700BC2800 /* ReorderController.swift */; };
 		5C71977C22A8FBC9002E5961 /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */; };
 		5C71977D22A8FBC9002E5961 /* ReorderController+DestinationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51B22A6D22700BC2800 /* ReorderController+DestinationRow.swift */; };
 		5C71977E22A8FBC9002E5961 /* ReorderController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */; };
 		5C71977F22A8FBC9002E5961 /* ReorderController+SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */; };
 		5C71978022A8FBC9002E5961 /* UITableView+Reorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51A22A6D22700BC2800 /* UITableView+Reorder.swift */; };
-		5C71978122A8FBD9002E5961 /* String+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976C22A8ECB3002E5961 /* String+Localized.swift */; };
-		5C71978222A8FBEF002E5961 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976522A7F02E002E5961 /* InsetLabel.swift */; };
-		5C71978322A8FC03002E5961 /* SnippetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD92293401400825E58 /* SnippetTableViewCell.swift */; };
-		5C71978422A8FC0D002E5961 /* StyleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71976922A8DAF4002E5961 /* StyleController.swift */; };
-		5C71978622A8FC4A002E5961 /* TestDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71978522A8FC4A002E5961 /* TestDataAccess.swift */; };
-		5C7197A822A904BE002E5961 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
+		5C71978622A8FC4A002E5961 /* MockDataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C71978522A8FC4A002E5961 /* MockDataAccess.swift */; };
 		5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
-		5C935CD422933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
-		5C935CD522933FB800825E58 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* Data.swift */; };
+		5C935CD422933FB800825E58 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* DataAccess.swift */; };
+		5C935CD522933FB800825E58 /* DataAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD322933FB800825E58 /* DataAccess.swift */; };
 		5C935CD722933FD600825E58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD622933FD600825E58 /* Constants.swift */; };
 		5C935CD822933FD600825E58 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD622933FD600825E58 /* Constants.swift */; };
 		5C935CDA2293401400825E58 /* SnippetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD92293401400825E58 /* SnippetTableViewCell.swift */; };
 		5C935CDB2293401400825E58 /* SnippetTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C935CD92293401400825E58 /* SnippetTableViewCell.swift */; };
 		5C935CDC229340AC00825E58 /* Snippet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C8FCC101FA66F3000DA157C /* Snippet.swift */; };
 		5CAF4C0D229AD7A200CB9823 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5CAF4C0B229AD7A200CB9823 /* Localizable.strings */; };
-		5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */; };
 		5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
 		5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */; };
 		5CC5A51F22A6D22700BC2800 /* ReorderController+AutoScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */; };
@@ -58,6 +51,7 @@
 		5CC5A52322A6D22700BC2800 /* ReorderController+GestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51D22A6D22700BC2800 /* ReorderController+GestureRecognizer.swift */; };
 		5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC5A51E22A6D22700BC2800 /* ReorderController+SnapshotView.swift */; };
 		5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */; };
+		5CE1A3B022B001E4007F5653 /* KeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +86,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5C15A6F122AE5F1600BC016E /* DataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTests.swift; sourceTree = "<group>"; };
+		5C15A6F322AE67BC00BC016E /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
+		5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoTableViewCell.swift; path = Snippey/Controls/InfoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		5C15A6FA22AED90B00BC016E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderViewFrame.swift"; sourceTree = "<group>"; };
 		5C504E991F6B0CAB00625257 /* Snippey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5C504E9E1F6B0CAB00625257 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,18 +106,17 @@
 		5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerTests.swift; sourceTree = "<group>"; };
 		5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSnippetViewControllerTests.swift; sourceTree = "<group>"; };
 		5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardViewControllerTests.swift; sourceTree = "<group>"; };
-		5C71978522A8FC4A002E5961 /* TestDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDataAccess.swift; sourceTree = "<group>"; };
+		5C71978522A8FC4A002E5961 /* MockDataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataAccess.swift; sourceTree = "<group>"; };
 		5C76046B22835C90003F86A3 /* Snippey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Snippey.entitlements; sourceTree = "<group>"; };
 		5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SnippeyKeyboard.entitlements; sourceTree = "<group>"; };
 		5C8FCC101FA66F3000DA157C /* Snippet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Snippet.swift; sourceTree = "<group>"; };
-		5C935CD322933FB800825E58 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5C935CD322933FB800825E58 /* DataAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAccess.swift; sourceTree = "<group>"; };
 		5C935CD622933FD600825E58 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		5C935CD92293401400825E58 /* SnippetTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippetTableViewCell.swift; sourceTree = "<group>"; };
 		5CAF4BFE229AD3B700CB9823 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5CAF4C0C229AD7A200CB9823 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CAF4C0E229AD92100CB9823 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5CAF4C13229B14D900CB9823 /* SnippeyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnippeyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnippeyTests.swift; sourceTree = "<group>"; };
 		5CAF4C17229B14D900CB9823 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Hex.swift"; sourceTree = "<group>"; };
 		5CC5A51922A6D22700BC2800 /* ReorderController+AutoScroll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "ReorderController+AutoScroll.swift"; path = "Dependencies/SwiftReorder/Source/ReorderController+AutoScroll.swift"; sourceTree = "<group>"; };
@@ -207,6 +205,7 @@
 			children = (
 				5CD5FD7822A315F500CF046D /* AddSnippetViewController.swift */,
 				5C504E9E1F6B0CAB00625257 /* ViewController.swift */,
+				5C15A6F322AE67BC00BC016E /* InfoTableViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -214,6 +213,7 @@
 		5C71976822A85485002E5961 /* Controls */ = {
 			isa = PBXGroup;
 			children = (
+				5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */,
 				5C71976522A7F02E002E5961 /* InsetLabel.swift */,
 			);
 			path = Controls;
@@ -223,12 +223,14 @@
 			isa = PBXGroup;
 			children = (
 				5C935CD622933FD600825E58 /* Constants.swift */,
-				5C935CD322933FB800825E58 /* Data.swift */,
+				5C935CD322933FB800825E58 /* DataAccess.swift */,
 				5C8FCC101FA66F3000DA157C /* Snippet.swift */,
 				5C935CD92293401400825E58 /* SnippetTableViewCell.swift */,
 				5C71976C22A8ECB3002E5961 /* String+Localized.swift */,
 				5C71976922A8DAF4002E5961 /* StyleController.swift */,
 				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
+				5C15A6FA22AED90B00BC016E /* Util.swift */,
+				5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -237,10 +239,10 @@
 			isa = PBXGroup;
 			children = (
 				5C71977122A8F0F6002E5961 /* AddSnippetViewControllerTests.swift */,
+				5C15A6F122AE5F1600BC016E /* DataTests.swift */,
 				5CAF4C17229B14D900CB9823 /* Info.plist */,
 				5C71977322A8F120002E5961 /* KeyboardViewControllerTests.swift */,
-				5CAF4C15229B14D900CB9823 /* SnippeyTests.swift */,
-				5C71978522A8FC4A002E5961 /* TestDataAccess.swift */,
+				5C71978522A8FC4A002E5961 /* MockDataAccess.swift */,
 				5C71976F22A8F0E3002E5961 /* ViewControllerTests.swift */,
 			);
 			path = SnippeyTests;
@@ -270,6 +272,7 @@
 				5C504E961F6B0CAB00625257 /* Frameworks */,
 				5C504E971F6B0CAB00625257 /* Resources */,
 				5C504ED91F6B0E4C00625257 /* Embed App Extensions */,
+				5C15A6FC22AEDCF300BC016E /* Run Script */,
 			);
 			buildRules = (
 			);
@@ -404,6 +407,27 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5C15A6FC22AEDCF300BC016E /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run swiftlint if available. If not, log a warning\nif which swiftlint >/dev/null; then\n    swiftlint\nelse\n    echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		5C504E951F6B0CAB00625257 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -413,12 +437,17 @@
 				5CC5A51F22A6D22700BC2800 /* ReorderController+AutoScroll.swift in Sources */,
 				5CC5A52322A6D22700BC2800 /* ReorderController+GestureRecognizer.swift in Sources */,
 				5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */,
-				5C935CD422933FB800825E58 /* Data.swift in Sources */,
+				5CE1A3B022B001E4007F5653 /* KeyboardViewController.swift in Sources */,
+				5C15A6F422AE67BC00BC016E /* InfoTableViewController.swift in Sources */,
+				5C935CD422933FB800825E58 /* DataAccess.swift in Sources */,
 				5CD5FD7922A315F500CF046D /* AddSnippetViewController.swift in Sources */,
+				5C15A6FB22AED90B00BC016E /* Util.swift in Sources */,
 				5C71976A22A8DAF4002E5961 /* StyleController.swift in Sources */,
 				5CC5A52122A6D22700BC2800 /* ReorderController+DestinationRow.swift in Sources */,
+				5C3B041322B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift in Sources */,
 				5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */,
 				5CC5A52022A6D22700BC2800 /* UITableView+Reorder.swift in Sources */,
+				5C15A6F622AE79E000BC016E /* InfoTableViewCell.swift in Sources */,
 				5CC3970822A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
 				5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */,
@@ -436,7 +465,7 @@
 				5C71976E22A8ECB3002E5961 /* String+Localized.swift in Sources */,
 				5C8FCC111FA66F3000DA157C /* Snippet.swift in Sources */,
 				5CC3970922A708B800D9BDD8 /* UIColor+Hex.swift in Sources */,
-				5C935CD522933FB800825E58 /* Data.swift in Sources */,
+				5C935CD522933FB800825E58 /* DataAccess.swift in Sources */,
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
 				5C71976B22A8DAF4002E5961 /* StyleController.swift in Sources */,
 				5C935CD822933FD600825E58 /* Constants.swift in Sources */,
@@ -450,26 +479,15 @@
 			files = (
 				5C71977022A8F0E3002E5961 /* ViewControllerTests.swift in Sources */,
 				5C71977E22A8FBC9002E5961 /* ReorderController+GestureRecognizer.swift in Sources */,
-				5C71977522A8F4EB002E5961 /* Data.swift in Sources */,
 				5C71978022A8FBC9002E5961 /* UITableView+Reorder.swift in Sources */,
-				5C71977A22A8FBA3002E5961 /* AddSnippetViewController.swift in Sources */,
 				5C71977C22A8FBC9002E5961 /* ReorderController+AutoScroll.swift in Sources */,
 				5C71977422A8F120002E5961 /* KeyboardViewControllerTests.swift in Sources */,
+				5C15A6F222AE5F1600BC016E /* DataTests.swift in Sources */,
 				5C71977B22A8FBC9002E5961 /* ReorderController.swift in Sources */,
-				5C71977922A8FB91002E5961 /* UIColor+Hex.swift in Sources */,
 				5C71977D22A8FBC9002E5961 /* ReorderController+DestinationRow.swift in Sources */,
-				5C71978222A8FBEF002E5961 /* InsetLabel.swift in Sources */,
-				5C71977622A8F522002E5961 /* Snippet.swift in Sources */,
-				5C71978322A8FC03002E5961 /* SnippetTableViewCell.swift in Sources */,
-				5C7197A822A904BE002E5961 /* KeyboardViewController.swift in Sources */,
-				5C71978422A8FC0D002E5961 /* StyleController.swift in Sources */,
-				5C71978622A8FC4A002E5961 /* TestDataAccess.swift in Sources */,
-				5C71978122A8FBD9002E5961 /* String+Localized.swift in Sources */,
+				5C71978622A8FC4A002E5961 /* MockDataAccess.swift in Sources */,
 				5C71977F22A8FBC9002E5961 /* ReorderController+SnapshotView.swift in Sources */,
-				5C71977722A8FA7F002E5961 /* ViewController.swift in Sources */,
-				5CAF4C16229B14D900CB9823 /* SnippeyTests.swift in Sources */,
 				5C71977222A8F0F6002E5961 /* AddSnippetViewControllerTests.swift in Sources */,
-				5C71977822A8FB88002E5961 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

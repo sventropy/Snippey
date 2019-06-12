@@ -8,9 +8,10 @@
 
 import Foundation
 
-/// String extension providing property to access localized representation of the string, if localized version exists in Localizable.strings
+/// String extension providing property to access localized representation of the string,
+/// if localized version exists in Localizable.strings
 extension String {
     var localized: String {
-        return NSLocalizedString(self, comment:"")
+        return NSLocalizedString(self, comment: "")
     }
 }
