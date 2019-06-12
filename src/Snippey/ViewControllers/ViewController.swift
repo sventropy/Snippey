@@ -199,15 +199,3 @@ extension ViewController: TableViewReorderDelegate {
         dataAccess?.storeSnippets(snippets: snippets)
     }
 }
-
-extension UITableView {
-    func updateHeaderViewFrame() {
-        if let header = tableHeaderView {
-            // Adapt the frame to fit the rest of the design
-            let newSize = header.systemLayoutSizeFitting(CGSize(width: bounds.width - Constants.margin * 4, height: CGFloat.zero))
-            let adaptedSize = CGSize(width: newSize.width, height: newSize.height + Constants.margin * 2)
-            let newFrame = CGRect(origin: CGPoint(x: Constants.margin * 3, y: CGFloat.zero), size: adaptedSize)
-            header.frame = newFrame
-        }
-    }
-}
