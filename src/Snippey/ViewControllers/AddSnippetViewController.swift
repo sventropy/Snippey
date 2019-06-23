@@ -135,26 +135,25 @@ extension AddSnippetViewController: UITextViewDelegate {
         else if text == "\n" {
             return false
         }
-
             // Else if the text view's placeholder is showing and the
             // length of the replacement string is greater than 0, set
             // the text color to black then set its text to the
             // replacement string
         else if textView.textColor == Constants.placeholderColor && !text.isEmpty {
+
             textView.textColor = Constants.textColor
             textView.text = text
             updateTextLengthLabel(text: text)
         }
-            // For every other case, the text should change with the usual
-            // behavior...
-        else {
+            // For every other non-empty case (e.g. backspaces are represented here as empty strings,
+            // the text should change with the usual behavior...
+        else if !text.isEmpty {
             updateTextLengthLabel(text: updatedText)
             return true
         }
 
-        // ...otherwise return false since the updates have already
-        // been made
-        return false
+        // ...otherwise fallback to default behavior
+        return true
     }
 
     // Make sure cursor is not placed elsewhere while showing placeholder
