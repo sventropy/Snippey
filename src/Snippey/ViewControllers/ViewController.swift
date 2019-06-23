@@ -47,6 +47,7 @@ class ViewController: UITableViewController {
         } else {
             tableView.tableHeaderView = nil
         }
+
     }
 
     override func viewWillLayoutSubviews() {

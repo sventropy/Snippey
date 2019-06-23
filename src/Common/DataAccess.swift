@@ -34,8 +34,7 @@ class DataAccess: DataAccessProtocol {
             // Convert snippets to model
             snippets = try? PropertyListDecoder().decode([Snippet].self, from: snippetArrayData)
         } else {
-            // Initialize and load default snippets
-            snippets = initializeDefaultSnippets()
+            snippets = [Snippet]()
         }
 
         print("\(snippets!.count) snippets loaded")
@@ -57,21 +56,5 @@ class DataAccess: DataAccessProtocol {
     /// Deletes all snippets stored in the user defaults
     func resetSnippets() {
          UserDefaults(suiteName: Constants.appGroup)?.removeObject(forKey: Constants.defaultsSnippetsKey)
-    }
-
-    // MARK: - Private
-
-    /// Creates the default set of snippets to populate the app and keyboard with and triggers
-    /// storing it in the appgroup's user defaults
-    private func initializeDefaultSnippets() -> [Snippet] {
-
-        print("Initializing default snippets")
-
-        // Store default snippets (once)
-        let defaultSnippets = [Snippet(text: "default-snippet-welcome-text".localized)]
-        storeSnippets(snippets: defaultSnippets)
-        print("\(defaultSnippets.count) snippets stored")
-
-        return defaultSnippets
     }
 }
