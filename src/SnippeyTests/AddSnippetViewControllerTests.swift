@@ -34,23 +34,24 @@ class AddSnippetViewControllerTests: XCTestCase {
 
     func testTextLargerThresholdSaveDisabled() {
         // String is 205 characters long
-        let shouldChange = addSnippetViewController!.textView(
-            addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 0, length: 4),
-            replacementText: """
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttest
-                                """)
-        XCTAssertFalse(shouldChange)
+        addSnippetViewController!.textView?.text = """
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttest
+                                                    """
         XCTAssertFalse(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
+        let shouldChange = addSnippetViewController!.textView(
+            addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 205, length: 1),
+            replacementText: "x")
+        XCTAssertTrue(shouldChange)
     }
 
     func testTextLargerZeroAndSmallerThresholdSaveEnabled() {
         let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!,
                                                               shouldChangeTextIn: NSRange(location: 0, length: 4),
                                                               replacementText: "test")
-        XCTAssertFalse(shouldChange) // update of text is handled manually in delegate function
+        XCTAssertTrue(shouldChange) // update of text is handled manually in delegate function
         XCTAssertTrue(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
     }
 
