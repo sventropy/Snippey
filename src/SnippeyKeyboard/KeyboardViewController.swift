@@ -117,9 +117,9 @@ class KeyboardViewController: UIInputViewController {
 
     @objc func backspaceLongPress(gesture: UILongPressGestureRecognizer) {
         print("Backspace long pressed")
-        
+
         if gesture.state == .began {
-            longpressDeleteTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { timer in
+            longpressDeleteTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
                 self.textDocumentProxy.deleteBackward()
             })
         } else if gesture.state == .ended || gesture.state == .cancelled {
