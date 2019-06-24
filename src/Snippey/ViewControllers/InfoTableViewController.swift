@@ -29,6 +29,10 @@ class InfoTableViewController: UITableViewController {
                                                            style: .done, target: self,
                                                            action: #selector(dismissInfo))
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Table view data source
 

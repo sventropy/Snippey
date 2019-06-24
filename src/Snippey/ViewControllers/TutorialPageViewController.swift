@@ -143,12 +143,19 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // TODO: Styling?
+        // Override default background color
         view.backgroundColor = Constants.lightColor
 
         let imageView = initializeImageView()
         let label = initializeLabel(imageView: imageView)
         initializeButton(label: label)
+        
+        // Override status bar behavior
+        setNeedsStatusBarAppearanceUpdate()
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
     }
     
     // MARK: - Actions

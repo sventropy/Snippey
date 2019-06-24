@@ -64,3 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
+
+extension UINavigationController {
+    override open var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
+}

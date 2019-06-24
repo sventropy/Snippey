@@ -32,6 +32,8 @@ class ViewController: UITableViewController {
         backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
         tableView.backgroundView = backgroundLabel
         tableView.accessibilityLabel = "access-snippet-list-label".localized
+        
+        setNeedsStatusBarAppearanceUpdate()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +73,10 @@ class ViewController: UITableViewController {
         // Add button
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-title".localized, style: .plain, target: self, action: #selector(showInfo))
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 
     // MARK: - UITableViewController

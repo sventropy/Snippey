@@ -17,7 +17,7 @@ class AddSnippetViewController: UIViewController {
     var textView: UITextView?
     var snippetLengthLabel: UILabel?
 
-    // MAKR: - UIViewController Lifecycle
+    // MAKR: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,12 @@ class AddSnippetViewController: UIViewController {
         // Add textView margin to the trailing end
         textView?.frame = textView!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: CGFloat.zero, right: Constants.margin * 2))
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Actions
 
     @objc func addSnippet() {
         // Ensure textView is filled
