@@ -158,7 +158,7 @@ class TutorialViewController: UIViewController {
         if step == .finish {
             // Mark tutorial completed
             dataAccess.storeHasSeenTutorial(hasSeenTutorial: true)
-            var viewController = ViewController()
+            let viewController = ViewController()
             viewController.dataAccess = dataAccess
             UIWindow.animate(withDuration: 0.2) {
                 UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: viewController)
@@ -194,17 +194,15 @@ class TutorialViewController: UIViewController {
         let label = UILabel()
         switch step {
         case .welcome:
-            //TODO: Localization
-            label.text = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you"
-                        + " frequently use and insert them in any app using the provided keyboard."
+            label.text = "tutorial-welcome".localized
         case .add:
-            label.text = "Snippets can be Text, Emojis or even a combination of both 😃😉.\n\nAdd new snippets here in the app."
+            label.text = "tutorial-add".localized
         case .delete:
-            label.text = "Delete the ones you don't longer like by swiping left."
+            label.text = "tutorial-delete".localized
         case .reorder:
-            label.text = "Reorder snippets by tapping long and dragging them."
+            label.text = "tutorial-reorder".localized
         case .finish:
-            label.text = "And now, enjoy using Snippey!"
+            label.text = "tutorial-finish".localized
         }
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 0
@@ -221,11 +219,11 @@ class TutorialViewController: UIViewController {
     fileprivate func initializeButton(label: UILabel) {
         let nextButton = UIButton()
         nextButton.setTitleColor(Constants.accentColor, for: .normal)
+        nextButton.setTitleColor(Constants.lightColor, for: .selected)
         if step == .finish {
-            //TODO: Localization
-            nextButton.setTitle("Finish", for: .normal)
+            nextButton.setTitle("tutorial-finish-button".localized, for: .normal)
         } else {
-            nextButton.setTitle("Next", for: .normal)
+            nextButton.setTitle("tutorial-next-button".localized, for: .normal)
         }
         view.addSubview(nextButton)
         nextButton.translatesAutoresizingMaskIntoConstraints = false
