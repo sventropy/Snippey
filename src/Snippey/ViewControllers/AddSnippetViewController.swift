@@ -150,6 +150,9 @@ extension AddSnippetViewController: UITextViewDelegate {
             textView.textColor = Constants.textColor
             textView.text = text
             updateTextLengthLabel(text: text)
+            
+            // text input is already handled
+            return false
         }
             // For every other non-empty case (e.g. backspaces are represented here as empty strings,
             // the text should change with the usual behavior...
