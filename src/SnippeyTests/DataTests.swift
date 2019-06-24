@@ -28,14 +28,6 @@ class DataTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testUserDefaultsInitialLoadDefaultSnippets() {
-        let snippets = data?.loadSnippets()
-        XCTAssertNotNil(snippets)
-        if let defaultSnippets = snippets {
-            XCTAssertEqual(defaultSnippets.count, 1)
-        }
-    }
-
     func testLoadSnippetsReflectsStoreSnippets() {
 
         data?.storeSnippets(snippets: [Snippet(text: "Stored snippet"), Snippet(text: "Stored snippet 2")])
