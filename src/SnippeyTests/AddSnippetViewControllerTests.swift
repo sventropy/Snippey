@@ -11,14 +11,14 @@ import XCTest
 
 class AddSnippetViewControllerTests: XCTestCase {
 
-    var addSnippetViewController: AddSnippetViewController?
-    var addSnippetViewControllerDelegate: MockAddSnippetViewControllerDelegate?
+    var addSnippetViewController: AddSnippetViewController!
+    var delegateMock: MockAddSnippetViewControllerDelegate!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         addSnippetViewController = AddSnippetViewController()
-        addSnippetViewControllerDelegate = MockAddSnippetViewControllerDelegate()
-        addSnippetViewController?.delegate = addSnippetViewControllerDelegate
+        delegateMock = MockAddSnippetViewControllerDelegate()
+        addSnippetViewController?.delegate = delegateMock
         addSnippetViewController?.viewDidLoad()
         addSnippetViewController?.viewWillAppear(true)
     }
@@ -34,16 +34,17 @@ class AddSnippetViewControllerTests: XCTestCase {
 
     func testTextLargerThresholdSaveDisabled() {
         // String is 205 characters long
-        let shouldChange = addSnippetViewController!.textView(
-            addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 0, length: 4),
-            replacementText: """
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
-                                testtesttesttesttesttest
-                                """)
-        XCTAssertFalse(shouldChange)
+        addSnippetViewController!.textView?.text = """
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttesttesttesttesttesttesttesttesttesttest
+                                                    testtesttesttesttesttest
+                                                    """
         XCTAssertFalse(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
+        let shouldChange = addSnippetViewController!.textView(
+            addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 205, length: 1),
+            replacementText: "x")
+        XCTAssertFalse(shouldChange)
     }
 
     func testTextLargerZeroAndSmallerThresholdSaveEnabled() {
@@ -66,27 +67,27 @@ class AddSnippetViewControllerTests: XCTestCase {
         XCTAssertEqual(addSnippetViewController!.textView!.text,
                        "add-new-snippet-alert-text-placeholder".localized) // Still the placeholder
     }
-    
+
     func testSaveCallsDelegate() {
         addSnippetViewController?.addSnippet()
-        XCTAssert(addSnippetViewControllerDelegate!.didAddSnippet)
+        XCTAssert(delegateMock!.didAddSnippet)
     }
-    
+
     func testSaveCallsDelegateWithText() {
         addSnippetViewController?.textView?.text = "TestText"
         addSnippetViewController?.addSnippet()
-        XCTAssertEqual(addSnippetViewControllerDelegate!.text, addSnippetViewController!.textView!.text)
+        XCTAssertEqual(delegateMock!.text, addSnippetViewController!.textView!.text)
     }
 }
 
-class MockAddSnippetViewControllerDelegate : AddSnippetViewControllerDelegate {
-    
+class MockAddSnippetViewControllerDelegate: AddSnippetViewControllerDelegate {
+
     var didAddSnippet: Bool = false
     var text: String = ""
-    
+
     func didAddNewSnippet(snippetText: String) {
         didAddSnippet = true
         text = snippetText
     }
-    
+
 }

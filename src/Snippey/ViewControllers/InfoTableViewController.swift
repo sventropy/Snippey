@@ -29,6 +29,10 @@ class InfoTableViewController: UITableViewController {
                                                            style: .done, target: self,
                                                            action: #selector(dismissInfo))
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
 
     // MARK: - Table view data source
 
@@ -46,7 +50,7 @@ class InfoTableViewController: UITableViewController {
         case 1:
             rows = 1
         case 2:
-            rows = 1
+            rows = 2
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
@@ -72,9 +76,17 @@ class InfoTableViewController: UITableViewController {
             // Open source dependencies
             cell.textLabel?.text = "info-link-deps-swiftreorder".localized
         case 2:
-            // Reset button
-            cell.textLabel?.textColor = .red
-            cell.textLabel?.text = "info-button-reset".localized
+            switch indexPath.row {
+            case 0:
+                // Restart tutorial button
+                cell.textLabel?.text = "info-restart-tutorial-button".localized
+            case 1:
+                // Reset button
+                cell.textLabel?.textColor = .red
+                cell.textLabel?.text = "info-button-reset".localized
+            default:
+                assertionFailure(Constants.switchAssertionFailureMessage)
+            }
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
@@ -115,8 +127,20 @@ class InfoTableViewController: UITableViewController {
             // Open source dependencies
             Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
         case 2:
-            showResetConfirmationAlert()
-
+            
+            switch indexPath.row {
+            case 0:
+                let tutorialPageViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+                tutorialPageViewController.dataAccess = dataAccess
+                UIWindow.animate(withDuration: 0.2) {
+                    UIApplication.shared.keyWindow!.rootViewController = tutorialPageViewController
+                }
+                dismissInfo()
+            case 1:
+                showResetConfirmationAlert()
+            default:
+                assertionFailure(Constants.switchAssertionFailureMessage)
+            }
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
@@ -139,7 +163,8 @@ class InfoTableViewController: UITableViewController {
                                                 preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "info-reset-alert-delete-button-title".localized,
                                                 style: .destructive, handler: { (_) in
-            self.dataAccess?.resetSnippets()
+                                                    self.dataAccess?.resetSnippets()
+                                                    self.dismissInfo()
         }))
         alertController.addAction(UIAlertAction(title: "add-new-snippet-alert-cancel-button-label".localized,
                                                 style: .cancel, handler: { (_) in

@@ -13,6 +13,8 @@ protocol DataAccessProtocol {
     func loadSnippets() -> [Snippet]
     func storeSnippets(snippets: [Snippet])
     func resetSnippets()
+    func hasSeenTutorial() -> Bool
+    func storeHasSeenTutorial(hasSeenTutorial: Bool)
 }
 
 /// Wrapper for all data access for both app and keyboard extension
@@ -34,8 +36,7 @@ class DataAccess: DataAccessProtocol {
             // Convert snippets to model
             snippets = try? PropertyListDecoder().decode([Snippet].self, from: snippetArrayData)
         } else {
-            // Initialize and load default snippets
-            snippets = initializeDefaultSnippets()
+            snippets = [Snippet]()
         }
 
         print("\(snippets!.count) snippets loaded")
@@ -56,22 +57,22 @@ class DataAccess: DataAccessProtocol {
 
     /// Deletes all snippets stored in the user defaults
     func resetSnippets() {
-         UserDefaults(suiteName: Constants.appGroup)?.removeObject(forKey: Constants.defaultsSnippetsKey)
+        print("Deleting all snippets")
+        defaults?.removeObject(forKey: Constants.defaultsSnippetsKey)
     }
-
-    // MARK: - Private
-
-    /// Creates the default set of snippets to populate the app and keyboard with and triggers
-    /// storing it in the appgroup's user defaults
-    private func initializeDefaultSnippets() -> [Snippet] {
-
-        print("Initializing default snippets")
-
-        // Store default snippets (once)
-        let defaultSnippets = [Snippet(text: "default-snippet-welcome-text".localized)]
-        storeSnippets(snippets: defaultSnippets)
-        print("\(defaultSnippets.count) snippets stored")
-
-        return defaultSnippets
+    
+    /// Determines whether the tutorial was already completed
+    func hasSeenTutorial() -> Bool {
+        print("Checking whether tutorial is required")
+        let hasSeenTutorial = defaults?.bool(forKey: Constants.defaultsTutorialKey)
+        let result = hasSeenTutorial != nil && hasSeenTutorial!
+        print("Tutorial already completed: \(result)")
+        return result
+    }
+    
+    /// Updates the status whether the tutorial was already completed
+    func storeHasSeenTutorial(hasSeenTutorial: Bool) {
+        print("Storing tutorial completion status \(hasSeenTutorial)")
+        defaults?.set(hasSeenTutorial, forKey: Constants.defaultsTutorialKey)
     }
 }

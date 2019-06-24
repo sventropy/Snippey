@@ -18,9 +18,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Create view controller without storyboard
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController()
-        viewController.dataAccess = DataAccess()
-        window!.rootViewController = UINavigationController(rootViewController: viewController)
+        let dataAccess = DataAccess()
+        
+        // Show tutorial if required
+        if !dataAccess.hasSeenTutorial() {
+            let tutorialPageViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            tutorialPageViewController.dataAccess = dataAccess
+            window!.rootViewController = tutorialPageViewController
+        } else {
+            let viewController = ViewController()
+            viewController.dataAccess = dataAccess
+            window!.rootViewController = UINavigationController(rootViewController: viewController)
+        }
         window!.makeKeyAndVisible()
 
         // Apply style
@@ -54,4 +63,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+}
+
+extension UINavigationController {
+    override open var childForStatusBarStyle: UIViewController? {
+        return self.topViewController
+    }
 }

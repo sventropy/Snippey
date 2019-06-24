@@ -17,6 +17,7 @@ class KeyboardViewController: UIInputViewController {
     var snippets: [Snippet] = []
     // Data access is exposed as property to allow testing the implementation of this class
     var dataAccess: DataAccessProtocol = DataAccess()
+    var longpressDeleteTimer: Timer?
 
     var tableView: UITableView = UITableView()
     var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
@@ -46,8 +47,12 @@ class KeyboardViewController: UIInputViewController {
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
 
-        backspaceButton.title = "⌫"
-        backspaceButton.action = #selector(backspaceTouchUp)
+        let backspaceLabel = UILabel()
+        backspaceLabel.text = "⌫"
+        backspaceLabel.isUserInteractionEnabled = true
+        backspaceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
+        backspaceLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
+        backspaceButton.customView = backspaceLabel
 
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
@@ -108,6 +113,19 @@ class KeyboardViewController: UIInputViewController {
     @objc func backspaceTouchUp(_ sender: Any) {
         print("Backspace pressed")
         textDocumentProxy.deleteBackward()
+    }
+
+    @objc func backspaceLongPress(gesture: UILongPressGestureRecognizer) {
+        print("Backspace long pressed")
+
+        if gesture.state == .began {
+            longpressDeleteTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: { _ in
+                self.textDocumentProxy.deleteBackward()
+            })
+        } else if gesture.state == .ended || gesture.state == .cancelled {
+            longpressDeleteTimer?.invalidate()
+            longpressDeleteTimer = nil
+        }
     }
 }
 

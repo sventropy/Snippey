@@ -80,7 +80,7 @@ class ViewControllerTests: XCTestCase {
         let countAfter = dataAccess!.testSnippets.count
         XCTAssertEqual(countAfter, countBefore + 1)
     }
-    
+
     func testReorderDoesChangeSnippetPosition() {
         viewController.tableView(viewController.tableView, reorderRowAt: IndexPath(row: 1, section: 0), to: IndexPath(row: 2, section: 0))
         // Verify position change of "2" and "3"

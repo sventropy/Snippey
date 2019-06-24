@@ -17,7 +17,7 @@ class AddSnippetViewController: UIViewController {
     var textView: UITextView?
     var snippetLengthLabel: UILabel?
 
-    // MAKR: - UIViewController Lifecycle
+    // MAKR: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,12 @@ class AddSnippetViewController: UIViewController {
         // Add textView margin to the trailing end
         textView?.frame = textView!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: CGFloat.zero, right: Constants.margin * 2))
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Actions
 
     @objc func addSnippet() {
         // Ensure textView is filled
@@ -135,26 +141,28 @@ extension AddSnippetViewController: UITextViewDelegate {
         else if text == "\n" {
             return false
         }
-
             // Else if the text view's placeholder is showing and the
             // length of the replacement string is greater than 0, set
             // the text color to black then set its text to the
             // replacement string
         else if textView.textColor == Constants.placeholderColor && !text.isEmpty {
+
             textView.textColor = Constants.textColor
             textView.text = text
             updateTextLengthLabel(text: text)
+            
+            // text input is already handled
+            return false
         }
-            // For every other case, the text should change with the usual
-            // behavior...
-        else {
+            // For every other non-empty case (e.g. backspaces are represented here as empty strings,
+            // the text should change with the usual behavior...
+        else if !text.isEmpty {
             updateTextLengthLabel(text: updatedText)
             return true
         }
 
-        // ...otherwise return false since the updates have already
-        // been made
-        return false
+        // ...otherwise fallback to default behavior
+        return true
     }
 
     // Make sure cursor is not placed elsewhere while showing placeholder
