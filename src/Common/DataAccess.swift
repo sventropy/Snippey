@@ -13,6 +13,8 @@ protocol DataAccessProtocol {
     func loadSnippets() -> [Snippet]
     func storeSnippets(snippets: [Snippet])
     func resetSnippets()
+    func hasSeenTutorial() -> Bool
+    func storeHasSeenTutorial(hasSeenTutorial: Bool)
 }
 
 /// Wrapper for all data access for both app and keyboard extension
@@ -55,6 +57,22 @@ class DataAccess: DataAccessProtocol {
 
     /// Deletes all snippets stored in the user defaults
     func resetSnippets() {
-         UserDefaults(suiteName: Constants.appGroup)?.removeObject(forKey: Constants.defaultsSnippetsKey)
+        print("Deleting all snippets")
+        defaults?.removeObject(forKey: Constants.defaultsSnippetsKey)
+    }
+    
+    /// Determines whether the tutorial was already completed
+    func hasSeenTutorial() -> Bool {
+        print("Checking whether tutorial is required")
+        let hasSeenTutorial = defaults?.bool(forKey: Constants.defaultsTutorialKey)
+        let result = hasSeenTutorial != nil && hasSeenTutorial!
+        print("Tutorial already completed: \(result)")
+        return result
+    }
+    
+    /// Updates the status whether the tutorial was already completed
+    func storeHasSeenTutorial(hasSeenTutorial: Bool) {
+        print("Storing tutorial completion status \(hasSeenTutorial)")
+        defaults?.set(hasSeenTutorial, forKey: Constants.defaultsTutorialKey)
     }
 }

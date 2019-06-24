@@ -14,6 +14,7 @@ class TutorialPageViewController: UIPageViewController {
     // MARK: - Properties
 
     var tutorialViewControllers = [UIViewController]()
+    var dataAccess: DataAccessProtocol?
     
     // MARK: - UIViewController
 
@@ -23,10 +24,15 @@ class TutorialPageViewController: UIPageViewController {
         // Explicitly setup delegate & datasource relationship
         dataSource = self
         delegate = self
+        
+        guard dataAccess != nil else {
+            assertionFailure("Data access instance required")
+            return
+        }
 
         // Fill list of view controllers with all instances to be presented
         for step in TutorialStep.allCases {
-            tutorialViewControllers.append(TutorialViewController(step: step, pageViewController: self))
+            tutorialViewControllers.append(TutorialViewController(step: step, pageViewController: self, dataAccess: dataAccess!))
         }
 
         // Set initial view controller for the tutorial
@@ -62,7 +68,7 @@ class TutorialPageViewController: UIPageViewController {
 }
 
 /// UIPageViewController specific delegate implementation
-extension TutorialPageViewController : UIPageViewControllerDelegate, UIPageViewControllerDataSource {
+extension TutorialPageViewController: UIPageViewControllerDelegate, UIPageViewControllerDataSource {
     
     func pageViewController(_: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         if let tutorialViewController = viewController as? TutorialViewController {
@@ -117,12 +123,14 @@ class TutorialViewController: UIViewController {
 
     var step: TutorialStep
     var tutorialPageViewController: TutorialPageViewController
+    var dataAccess: DataAccessProtocol
 
     // MARK: - Initializers
     
-    init(step: TutorialStep, pageViewController: TutorialPageViewController) {
+    init(step: TutorialStep, pageViewController: TutorialPageViewController, dataAccess: DataAccessProtocol) {
         self.step = step
         self.tutorialPageViewController = pageViewController
+        self.dataAccess = dataAccess
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -149,10 +157,11 @@ class TutorialViewController: UIViewController {
         
         if step == .finish {
             // Mark tutorial completed
-            UserDefaults(suiteName: Constants.appGroup)?.set(true, forKey: "hasSeenTutorial")
-            UserDefaults(suiteName: Constants.appGroup)?.synchronize()
+            dataAccess.storeHasSeenTutorial(hasSeenTutorial: true)
+            var viewController = ViewController()
+            viewController.dataAccess = dataAccess
             UIWindow.animate(withDuration: 0.2) {
-                UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: ViewController())
+                UIApplication.shared.keyWindow?.rootViewController = UINavigationController(rootViewController: viewController)
             }
             tutorialPageViewController.dismiss(animated: true, completion: nil)
         } else {
@@ -185,10 +194,11 @@ class TutorialViewController: UIViewController {
         let label = UILabel()
         switch step {
         case .welcome:
-            label.text = "Welcome to Snippey!\nSnippey allows you to store text snippets you"
+            //TODO: Localization
+            label.text = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you"
                         + " frequently use and insert them in any app using the provided keyboard."
         case .add:
-            label.text = "Snippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets here in the app."
+            label.text = "Snippets can be Text, Emojis or even a combination of both 😃😉.\n\nAdd new snippets here in the app."
         case .delete:
             label.text = "Delete the ones you don't longer like by swiping left."
         case .reorder:
@@ -212,6 +222,7 @@ class TutorialViewController: UIViewController {
         let nextButton = UIButton()
         nextButton.setTitleColor(Constants.accentColor, for: .normal)
         if step == .finish {
+            //TODO: Localization
             nextButton.setTitle("Finish", for: .normal)
         } else {
             nextButton.setTitle("Next", for: .normal)

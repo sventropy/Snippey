@@ -16,16 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
-        // Show tutorial if required
-        let hasSeenTutorial = UserDefaults(suiteName: Constants.appGroup)?.bool(forKey: "hasSeenTutorial")
-
         // Create view controller without storyboard
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewController = ViewController()
-        viewController.dataAccess = DataAccess()
-        if hasSeenTutorial == nil || !hasSeenTutorial! {
-            window!.rootViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+        let dataAccess = DataAccess()
+        
+        // Show tutorial if required
+        if !dataAccess.hasSeenTutorial() {
+            let tutorialPageViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            tutorialPageViewController.dataAccess = dataAccess
+            window!.rootViewController = tutorialPageViewController
         } else {
+            let viewController = ViewController()
+            viewController.dataAccess = dataAccess
             window!.rootViewController = UINavigationController(rootViewController: viewController)
         }
         window!.makeKeyAndVisible()
