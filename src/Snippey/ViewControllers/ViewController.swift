@@ -47,14 +47,23 @@ class ViewController: UITableViewController {
         } else {
             tableView.tableHeaderView = nil
         }
-
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        if !isKeyboardExtensionEnabled() {
+            // Fix header view frame, in case it is shown
+            tableView.tableHeaderView?.frame = tableView.tableHeaderView!.frame.inset(by:
+                UIEdgeInsets(top: 0, left: Constants.margin, bottom: 0, right: Constants.margin))
+        }
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-
-        // Fix header view frame, in case it is shown
-        tableView.updateHeaderViewFrame()
+        if !isKeyboardExtensionEnabled() {
+            // Fix header view frame, in case it is shown
+            tableView.updateHeaderViewFrame()
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
