@@ -181,8 +181,22 @@ class TutorialViewController: UIViewController {
     
     fileprivate func initializeImageView() -> UIImageView {
         
-        // TODO: Replace with real pictures once design is finalized
-        let imageView = UIImageView(image: UIImage(named: "8bit_cut_100"))
+        var imageName: String?
+        
+        // Determine icon for tutorial page based on step
+        switch step {
+        case .welcome:
+            imageName = "appicon-167"
+        case .add:
+            imageName = "add"
+        case .delete:
+            imageName = "delete"
+        case .reorder:
+            imageName = "reorder"
+        case .finish:
+            imageName = "appicon-167"
+        }
+        let imageView = UIImageView(image: UIImage(named: imageName!))
         view.addSubview(imageView)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
@@ -198,7 +212,10 @@ class TutorialViewController: UIViewController {
     }
     
     fileprivate func initializeLabel(imageView: UIImageView) -> UILabel {
+        
         let label = UILabel()
+        
+        // Determine text for tutorial page based on step
         switch step {
         case .welcome:
             label.text = "tutorial-welcome".localized
