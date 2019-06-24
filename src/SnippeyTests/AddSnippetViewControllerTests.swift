@@ -44,14 +44,14 @@ class AddSnippetViewControllerTests: XCTestCase {
         let shouldChange = addSnippetViewController!.textView(
             addSnippetViewController!.textView!, shouldChangeTextIn: NSRange(location: 205, length: 1),
             replacementText: "x")
-        XCTAssertTrue(shouldChange)
+        XCTAssertFalse(shouldChange)
     }
 
     func testTextLargerZeroAndSmallerThresholdSaveEnabled() {
         let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!,
                                                               shouldChangeTextIn: NSRange(location: 0, length: 4),
                                                               replacementText: "test")
-        XCTAssertTrue(shouldChange) // update of text is handled manually in delegate function
+        XCTAssertFalse(shouldChange) // update of text is handled manually in delegate function
         XCTAssertTrue(addSnippetViewController!.navigationItem.rightBarButtonItem!.isEnabled)
     }
 

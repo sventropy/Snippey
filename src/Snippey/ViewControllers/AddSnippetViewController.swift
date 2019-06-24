@@ -17,7 +17,7 @@ class AddSnippetViewController: UIViewController {
     var textView: UITextView?
     var snippetLengthLabel: UILabel?
 
-    // MAKR: - UIViewController Lifecycle
+    // MAKR: - UIViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +51,12 @@ class AddSnippetViewController: UIViewController {
         // Add textView margin to the trailing end
         textView?.frame = textView!.frame.inset(by: UIEdgeInsets(top: CGFloat.zero, left: CGFloat.zero, bottom: CGFloat.zero, right: Constants.margin * 2))
     }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    // MARK: - Actions
 
     @objc func addSnippet() {
         // Ensure textView is filled
@@ -144,6 +150,9 @@ extension AddSnippetViewController: UITextViewDelegate {
             textView.textColor = Constants.textColor
             textView.text = text
             updateTextLengthLabel(text: text)
+            
+            // text input is already handled
+            return false
         }
             // For every other non-empty case (e.g. backspaces are represented here as empty strings,
             // the text should change with the usual behavior...

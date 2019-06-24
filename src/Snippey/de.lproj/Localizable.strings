@@ -9,11 +9,20 @@
 "list-title" = "Schnipsel";
 "list-no-snippets-label" = "Keine Schnipsel. Leg welche an!";
 "list-header-label-text" = "Die Snippey Tastatur ist nicht aktiv. Tippe hier um die Einstellungen App zu öffnen und die Tastatur unter \"Allgemein\", \"Tastatur\", \"Tastaturen\" zu aktivieren.";
+
 "add-new-snippet-alert-title" = "Neuer Schnipsel";
 "add-new-snippet-alert-text-placeholder" = "Schnipsel Text hier eingeben";
 "add-new-snippet-alert-add-button-label" = "Hinzufügen";
 "add-new-snippet-alert-cancel-button-label" = "Abbrechen";
-"default-snippet-welcome-text" = "Willkommen bei Snippey!\n\nSnippey erlaubt Dir Text Schnipsel die du oft brauchst zu speichern und über die Snippey Tastatur in jeder App zu verwenden.\nSchnipsel können aus Text, Emojis oder beidem bestehen 😃😉.\nFüge neue Schnipsel in der App hinzu. Lösche nicht mehr gebrauchte Schnipsel durch Wischen nach links in der Liste. Ändere die Reihenfolge durch drücken und halten.\n\nUnd jetzt, viel Spass mit Snippey!";
+
+"tutorial-welcome" = "Willkommen bei Snippey!\n\nSnippey erlaubt Dir Text Schnipsel die du oft brauchst zu speichern und über die Snippey Tastatur in jeder App zu verwenden.";
+"tutorial-add" = "Schnipsel können aus Text, Emojis oder beidem bestehen 😃😉.\n\nFüge neue Schnipsel hier in der App hinzu";
+"tutorial-delete" = "Lösche nicht mehr gebrauchte Schnipsel durch Wischen nach links in der Liste.";
+"tutorial-reorder" = "Ändere die Reihenfolge durch Gedrückthalten und Ziehen.";
+"tutorial-finish" = "Und jetzt, viel Spass mit Snippey!";
+"tutorial-next-button" = "Weiter";
+"tutorial-finish-button" = "Alles klar";
+
 "info-title" = "Info";
 "info-back-button-title" = "Zurück";
 "info-link-snippey-appstore" = "Snippey im App Store";
@@ -26,6 +35,7 @@
 "info-reset-alert-title" = "Willst Du wirklich alle gespeicherten Schnipsel löschen?";
 "info-reset-alert-message" = "Die Löschung kann nicht rückgängig gemacht werden";
 "info-reset-alert-delete-button-title" = "Alle löschen";
+"info-restart-tutorial-button" = "Anleitung erneut starten";
 
 "access-snippet-list-label" = "Die Liste aller Schnipsel, die in der App gespeichert sind";
 "access-add-textView-label" = "Text Eingabe zur Anlage neuer Schnipsel";

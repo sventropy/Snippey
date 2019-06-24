@@ -9,11 +9,20 @@
 "list-title" = "Snippets";
 "list-no-snippets-label" = "No Snippets. Create some!";
 "list-header-label-text" = "The Snippey keyboard is not active in the Settings app. Tap here to open the Settings app and enable the keyboard in \"General\", \"Keyboard\", \"Keyboards\".";
+
 "add-new-snippet-alert-title" = "New Snippet";
 "add-new-snippet-alert-text-placeholder" = "Enter snippet text here";
 "add-new-snippet-alert-add-button-label" = "Add";
 "add-new-snippet-alert-cancel-button-label" = "Cancel";
-"default-snippet-welcome-text" = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you frequently use and insert them in any app using the provided keyboard.\nSnippets can be Text, Emojis or even a combination of both 😃😉.\nAdd new snippets in the app. Delete the ones you don't longer like by swiping left. Reorder snippets by dragging them.\n\nAnd now, enjoy using Snippey!";
+
+"tutorial-welcome" = "Welcome to Snippey!\n\nSnippey allows you to store text snippets you frequently use and insert them in any app using the provided keyboard.";
+"tutorial-add" = "Snippets can be Text, Emojis or even a combination of both 😃😉.\n\nAdd new snippets here in the app.";
+"tutorial-delete" = "Delete the ones you don't longer like by swiping left.";
+"tutorial-reorder" = "Reorder snippets by tapping long and dragging them.";
+"tutorial-finish" = "And now, enjoy using Snippey!";
+"tutorial-next-button" = "Next";
+"tutorial-finish-button" = "All right";
+
 "info-title" = "Info";
 "info-back-button-title" = "Back";
 "info-link-snippey-privacy-policy" = "Snippey Privacy Policy";
@@ -26,6 +35,7 @@
 "info-reset-alert-title" = "Do you really want to delete all snippets stored?";
 "info-reset-alert-message" = "Deletion cannot be undone";
 "info-reset-alert-delete-button-title" = "Delete all";
+"info-restart-tutorial-button" = "Restart tutorial";
 
 "access-snippet-list-label" = "The list of all snippets stored in the app";
 "access-add-textView-label" = "Text input for the creation of ew snippets";

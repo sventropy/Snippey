@@ -42,7 +42,7 @@ class StyleController {
     /// like the contentView of the tableViewCell are to cumbersome to style that way
     class func applyCellStyle(tableViewCell: UITableViewCell) {
 
-        tableViewCell.backgroundColor = Constants.mediumColor
+        tableViewCell.backgroundColor = .clear
         tableViewCell.textLabel?.textColor = Constants.textColor
         tableViewCell.textLabel?.textAlignment = .left
         tableViewCell.contentView.backgroundColor = Constants.lightColor

@@ -16,6 +16,7 @@ struct Constants {
     static let cellReuseIdentifier = "snippetCell"
     static let appGroup = "group.de.sventropy.app.snippey"
     static let defaultsSnippetsKey = "snippets"
+    static let defaultsTutorialKey = "hasSeenTutorial"
     static let infoCellReuseIdentifier = "infoCell"
     static let infoHeaderViewReuseIdentifier = "infoHeaderView"
     static let appleKeyboardDefaultsKey = "AppleKeyboards"
