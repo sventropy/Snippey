@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UITableViewController {
 
@@ -34,6 +35,9 @@ class ViewController: UITableViewController {
         tableView.accessibilityLabel = "access-snippet-list-label".localized
         
         setNeedsStatusBarAppearanceUpdate()
+        
+        // Check when app enters foreground after being in background to show/hide table header label properly
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +55,14 @@ class ViewController: UITableViewController {
         }
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        if !isKeyboardExtensionEnabled() {
+            // Fix header view frame, in case it is shown
+            tableView.updateHeaderViewFrame()
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if !isKeyboardExtensionEnabled() {
@@ -60,13 +72,6 @@ class ViewController: UITableViewController {
         }
     }
 
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        if !isKeyboardExtensionEnabled() {
-            // Fix header view frame, in case it is shown
-            tableView.updateHeaderViewFrame()
-        }
-    }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -159,6 +164,15 @@ class ViewController: UITableViewController {
     @objc func openAppSettings() {
         Util.openUrl(urlString: UIApplication.openSettingsURLString)
     }
+    
+    @objc func applicationWillEnterForeGround() {
+        // In case the keyboard is not configured in the Settings app, remind the user to do so
+        if !isKeyboardExtensionEnabled() {
+            tableView.tableHeaderView = createTableHeaderView()
+        } else {
+            tableView.tableHeaderView = nil
+        }
+    }
 
     // MARK: - Private
 
@@ -167,10 +181,10 @@ class ViewController: UITableViewController {
     }
 
     private func isKeyboardExtensionEnabled() -> Bool {
-        guard let keyboards = UserDefaults.standard.object(forKey: Constants.appleKeyboardDefaultsKey) as? [String] else {
-            return false
+        if let keyboards = UserDefaults.standard.object(forKey: Constants.appleKeyboardDefaultsKey) as? [String] {
+            return keyboards.contains(Constants.snippeyKeyboardBundleId)
         }
-        return keyboards.contains(Constants.snippeyKeyboardBundleId)
+        return true
     }
 
     private func createTableHeaderView() -> UILabel {
