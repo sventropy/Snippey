@@ -24,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let viewController = ViewController()
         viewController.dataAccess = DataAccess()
         if hasSeenTutorial == nil || !hasSeenTutorial! {
-            window!.rootViewController = UINavigationController(rootViewController: TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil))
+            window!.rootViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         } else {
             window!.rootViewController = UINavigationController(rootViewController: viewController)
         }
