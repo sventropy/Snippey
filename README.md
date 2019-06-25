@@ -4,6 +4,8 @@ iOS keyboard extension app for text based snippets
 
 ## Description
 
+Also Beta 1 texts
+
 ### English
 
 Welcome to Snippey!
@@ -23,3 +25,27 @@ Schnipsel können aus Text, Emojis oder beidem bestehen 😃😉.
 Füge neue Schnipsel in der App hinzu. Lösche nicht mehr gebrauchte Schnipsel durch Wischen nach links in der Liste. Ändere die Reihenfolge durch drücken und halten.
 
 Und jetzt, viel Spass mit Snippey!
+
+
+## Beta 2
+
+Broken by AppStore Connect
+
+## Beta 3
+
+Beta texts
+
+### English
+
+- New tutorial ono first start to explain how to handle the app
+- Tutorial can be restarted from the info screen
+- Fixed a bug where the info about the keyboard not being enabled correctly disappears/reappears when bringing the app back to foreground
+- Fixed minor bugs around display and usability
+
+### German
+
+- Neue Anleitung beim ersten Start erklärt wie die App benutzt werden kann
+- Anleitung kann aus dem "Info" Screen neu gestartet werden
+- Fixed a bug where the info about the keyboard not being enabled correctly disappears/reappears when bringing the app back to foreground
+- Fehler behoben, der die Info Meldung bzgl. der Aktivierung der Tastatur korrekt anzeigt/verschwinden lässt wenn die App im Hintergrund war
+- Weitere kleinere Fehler bzgl. Oberfläche und Benutzbarkeit behoben
