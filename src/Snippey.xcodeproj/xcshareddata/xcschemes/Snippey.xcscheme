@@ -37,6 +37,13 @@
             BlueprintName = "Snippey"
             ReferencedContainer = "container:Snippey.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5C504ECD1F6B0E4C00625257"
+            BuildableName = "SnippeyKeyboard.appex"
+            BlueprintName = "SnippeyKeyboard"
+            ReferencedContainer = "container:Snippey.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
