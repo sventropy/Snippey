@@ -8,7 +8,7 @@
 
 "list-title" = "Schnipsel";
 "list-no-snippets-label" = "Keine Schnipsel. Leg welche an!";
-"list-header-label-text" = "Die Snippey Tastatur ist nicht aktiv. Tippe hier um die Einstellungen App zu öffnen und die Tastatur unter \"Allgemein\", \"Tastatur\", \"Tastaturen\" zu aktivieren.";
+"list-header-label-text" = "Die Snippey Tastatur ist nicht aktiv. Tippe hier um die \"Einstellungen\"-App zu öffnen und die Tastatur unter \"Allgemein\", \"Tastatur\", \"Tastaturen\" zu aktivieren.";
 
 "add-new-snippet-alert-title" = "Neuer Schnipsel";
 "add-new-snippet-alert-text-placeholder" = "Schnipsel Text hier eingeben";
@@ -31,7 +31,7 @@
 "info-button-reset" = "Alle Schnipsel löschen";
 "info-section-header-links" = "Links";
 "info-section-header-deps" = "Open Source Abhängigkeiten";
-"info-section-header-reset" = "App uurücksetzen";
+"info-section-header-reset" = "App zurücksetzen";
 "info-reset-alert-title" = "Willst Du wirklich alle gespeicherten Schnipsel löschen?";
 "info-reset-alert-message" = "Die Löschung kann nicht rückgängig gemacht werden";
 "info-reset-alert-delete-button-title" = "Alle löschen";
