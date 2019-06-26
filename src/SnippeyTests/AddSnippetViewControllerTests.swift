@@ -59,13 +59,15 @@ class AddSnippetViewControllerTests: XCTestCase {
         XCTAssertEqual(addSnippetViewController!.textView!.text, "add-new-snippet-alert-text-placeholder".localized)
     }
 
-    func testEnterNewlineCharacterRejected() {
+    func testEnterNewlineCharacterRejectedAfterMaxNewlines() {
+        let testText = "1\n2\n3\n4\n5"
+        addSnippetViewController!.textView!.text = testText
         let shouldChange = addSnippetViewController!.textView(addSnippetViewController!.textView!,
                                                               shouldChangeTextIn: NSRange(location: 0, length: 4),
                                                               replacementText: "\n")
         XCTAssertFalse(shouldChange) // update of text is handled manually in delegate function
         XCTAssertEqual(addSnippetViewController!.textView!.text,
-                       "add-new-snippet-alert-text-placeholder".localized) // Still the placeholder
+                       testText) // Still the placeholder
     }
 
     func testSaveCallsDelegate() {

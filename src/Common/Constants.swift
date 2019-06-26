@@ -38,6 +38,7 @@ struct Constants {
     static let shadowOpacity: Float = 0.5
     static let shadowOffset = CGSize(width: 1, height: 2)
     static let cellBorderWidth: CGFloat = 1
+    static let snippetMaximumNumberOfLines = 5
 
     // Constaints
     static let maximumSnippetLength: Int = 200
