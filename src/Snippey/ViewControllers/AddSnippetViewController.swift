@@ -88,8 +88,11 @@ class AddSnippetViewController: UIViewController {
         textView = UITextView()
         view.addSubview(textView!)
         textView!.delegate = self
-        textView?.keyboardType = .default
+        textView!.keyboardType = .default
         textView!.accessibilityHint = "access-add-textView-label".localized
+        // limit number of lines
+        textView!.textContainer.maximumNumberOfLines = Constants.snippetMaximumNumberOfLines
+        textView!.textContainer.lineBreakMode = .byTruncatingTail
 
         // Autolayout
         textView!.translatesAutoresizingMaskIntoConstraints = false
@@ -121,7 +124,15 @@ extension AddSnippetViewController: UITextViewDelegate {
 
     // Placeholder behavior, based on solution #2 from https://stackoverflow.com/questions/27652227/text-view-uitextview-placeholder-swift
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-
+        
+        // Check whether the maximum number of lines is reached
+        let existingLines = textView.text.components(separatedBy: CharacterSet.newlines)
+        let newLines = text.components(separatedBy: CharacterSet.newlines)
+        let linesAfterChange = existingLines.count + newLines.count - 1
+        if linesAfterChange > textView.textContainer.maximumNumberOfLines {
+            return false
+        }
+        
         // Combine the textView text and the replacement text to
         // create the updated text string
         let currentText: String = textView.text
@@ -136,10 +147,6 @@ extension AddSnippetViewController: UITextViewDelegate {
             updateTextLengthLabel(text: String())
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
-        }
-            // Do not allow new lines
-        else if text == "\n" {
-            return false
         }
             // Else if the text view's placeholder is showing and the
             // length of the replacement string is greater than 0, set
@@ -175,7 +182,7 @@ extension AddSnippetViewController: UITextViewDelegate {
     }
 
     // Updates the label with the correct length and validates the textView's text length against the given constaints
-    func updateTextLengthLabel(text: String) {
+    private func updateTextLengthLabel(text: String) {
 
         let lengthViolation = text.count == 0 || text.count > Constants.maximumSnippetLength
 
