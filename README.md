@@ -49,3 +49,17 @@ Beta texts
 - Fixed a bug where the info about the keyboard not being enabled correctly disappears/reappears when bringing the app back to foreground
 - Fehler behoben, der die Info Meldung bzgl. der Aktivierung der Tastatur korrekt anzeigt/verschwinden lässt wenn die App im Hintergrund war
 - Weitere kleinere Fehler bzgl. Oberfläche und Benutzbarkeit behoben
+
+## Beta 4
+
+Beta texts
+
+### English
+
+- fixed german localization texts
+- Snippets can now have up to five lines
+
+### German
+
+- Fehler in deutscher Lokalisierung behoben
+- Schnipsel können jetzt bis zu fünf Zeilen haben
