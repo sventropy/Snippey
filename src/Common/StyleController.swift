@@ -26,6 +26,7 @@ class StyleController {
         UITableView.appearance().contentInset = UIEdgeInsets(top: Constants.margin / 2, left: CGFloat.zero, bottom: Constants.margin / 2, right: CGFloat.zero)
 
         // nav bar
+        UINavigationBar.appearance().tintColor = Constants.accentColor
         UINavigationBar.appearance().barTintColor = Constants.darkColor
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.accentColor]
 

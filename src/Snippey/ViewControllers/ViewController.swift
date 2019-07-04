@@ -15,6 +15,7 @@ class ViewController: UITableViewController {
 
     var snippets: [Snippet] = []
     var dataAccess: DataAccessProtocol?
+    var infoButton = UIButton(type: .infoDark)
 
     // MARK: - UIViewController Lifecycle
 
@@ -35,11 +36,19 @@ class ViewController: UITableViewController {
         tableView.backgroundView = backgroundLabel
         tableView.accessibilityLabel = "access-snippet-list-label".localized
         
-        setNeedsStatusBarAppearanceUpdate()
+        // Add button
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
+        
+        // Info Button
+        infoButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showInfo)))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
         // Check when app enters foreground after being in background to show/hide table header label properly
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround),
                                                name: UIApplication.willEnterForegroundNotification, object: nil)
+        
+        infoButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        infoButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,9 +86,7 @@ class ViewController: UITableViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        // Add button
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSnippet))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-title".localized, style: .plain, target: self, action: #selector(showInfo))
+        
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
