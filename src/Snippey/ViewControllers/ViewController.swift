@@ -30,14 +30,16 @@ class ViewController: UITableViewController {
         tableView.allowsSelection = false
         let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
         backgroundLabel.text = "list-no-snippets-label".localized
-        backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
+        backgroundLabel.textColor = Constants.textColor
+        backgroundLabel.textAlignment = .center
         tableView.backgroundView = backgroundLabel
         tableView.accessibilityLabel = "access-snippet-list-label".localized
         
         setNeedsStatusBarAppearanceUpdate()
         
         // Check when app enters foreground after being in background to show/hide table header label properly
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -102,6 +104,7 @@ class ViewController: UITableViewController {
         // Configure the cell...
         let emoticon = snippets[indexPath.row]
         cell.textLabel?.text = emoticon.text
+        StyleController.applyCellStyle(tableViewCell: cell, isDark: false)
 
         return cell
     }

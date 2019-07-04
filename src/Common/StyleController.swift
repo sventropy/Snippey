@@ -19,7 +19,6 @@ class StyleController {
 
         // tint
         UIWindow.appearance().tintColor = Constants.accentColor
-        UIToolbar.appearance().tintColor = Constants.textColor // Override global tint
 
         // tableview
         UITableView.appearance().backgroundColor = Constants.mediumColor
@@ -33,21 +32,18 @@ class StyleController {
         // text view
         UITextView.appearance().backgroundColor = Constants.lightColor
         UITextView.appearance().textColor = Constants.textColor
-
-        // label
-        UILabel.appearance(whenContainedInInstancesOf: [UITableView.self]).textAlignment = .center
     }
 
     /// Applies style to all relevant aspects of a given UITableViewCell. This is not done via UIAppearance since components
     /// like the contentView of the tableViewCell are to cumbersome to style that way
-    class func applyCellStyle(tableViewCell: UITableViewCell) {
+    class func applyCellStyle(tableViewCell: UITableViewCell, isDark: Bool) {
 
         tableViewCell.backgroundColor = .clear
-        tableViewCell.textLabel?.textColor = Constants.textColor
+        tableViewCell.textLabel?.textColor = isDark ? Constants.lightColor : Constants.textColor
         tableViewCell.textLabel?.textAlignment = .left
-        tableViewCell.contentView.backgroundColor = Constants.lightColor
+        tableViewCell.contentView.backgroundColor = isDark ? Constants.darkColor : Constants.lightColor
         tableViewCell.contentView.layer.cornerRadius = Constants.cornerRadius
-        tableViewCell.contentView.layer.shadowColor = Constants.darkColor.cgColor
+        tableViewCell.contentView.layer.shadowColor = isDark ? UIColor.black.cgColor : Constants.darkColor.cgColor
         tableViewCell.contentView.layer.shadowOpacity = Constants.shadowOpacity
         tableViewCell.contentView.layer.shadowOffset = Constants.shadowOffset
     }

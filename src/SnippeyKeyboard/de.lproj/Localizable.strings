@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Snippey
+
+  Created by Hennessen, Sven on 04.07.19.
+  Copyright © 2019 Hennessen, Sven. All rights reserved.
+*/
+
+"list-no-snippets-label" = "Keine Schnipsel. Leg welche an!";

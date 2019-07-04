@@ -26,7 +26,7 @@ class InfoTableViewController: UITableViewController {
 
         navigationItem.title = "info-title".localized
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "info-back-button-title".localized,
-                                                           style: .done, target: self,
+                                                           style: .plain, target: self,
                                                            action: #selector(dismissInfo))
     }
     
