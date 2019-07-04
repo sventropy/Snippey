@@ -47,8 +47,9 @@ class KeyboardViewControllerTests: XCTestCase {
     func testKeyboardSwitcherNotShownOnIPhoneX() {
         viewController?.setNeedsInputModeSwitchKey(value: false)
         viewController?.viewWillAppear(true)
-        if let button = viewController?.keyboardSwitchButton {
-            let contains = viewController?.toolbar.items?.contains(button)
+        viewController?.viewWillLayoutSubviews()
+        if let barButtonItem = viewController?.keyboardSwitchBarButtonItem {
+            let contains = viewController?.toolbar.items?.contains(barButtonItem)
             XCTAssertNotNil(contains)
             if let cont = contains {
                 XCTAssertFalse(cont)
@@ -59,8 +60,9 @@ class KeyboardViewControllerTests: XCTestCase {
     func testKeyboardSwitcherShownOnIPhonePreX() {
         viewController?.setNeedsInputModeSwitchKey(value: true)
         viewController?.viewWillAppear(true)
-        if let button = viewController?.keyboardSwitchButton {
-            let contains = viewController?.toolbar.items?.contains(button)
+        viewController?.viewWillLayoutSubviews()
+        if let barButtonItem = viewController?.keyboardSwitchBarButtonItem {
+            let contains = viewController?.toolbar.items?.contains(barButtonItem)
             XCTAssertNotNil(contains)
             if let cont = contains {
                 XCTAssertTrue(cont)
