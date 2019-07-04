@@ -38,7 +38,8 @@ class ViewController: UITableViewController {
         setNeedsStatusBarAppearanceUpdate()
         
         // Check when app enters foreground after being in background to show/hide table header label properly
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround), name: UIApplication.willEnterForegroundNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround),
+                                               name: UIApplication.willEnterForegroundNotification, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {

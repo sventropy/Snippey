@@ -40,7 +40,6 @@ class KeyboardViewController: UIInputViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        // TODO redunant to app, consolidate
         let backgroundLabelFrame = CGRect(x: 0,
                                           y: 0,
                                           width: tableView.bounds.size.width,
