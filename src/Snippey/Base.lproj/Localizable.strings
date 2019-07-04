@@ -30,7 +30,7 @@
 "info-link-deps-swiftreorder" = "SwiftReorder";
 "info-button-reset" = "Delete all snippets";
 "info-section-header-links" = "Links";
-"info-section-header-deps" = "Open Source Dependencies";
+"info-section-header-deps" = "Dependencies";
 "info-section-header-reset" = "Reset App";
 "info-reset-alert-title" = "Do you really want to delete all snippets stored?";
 "info-reset-alert-message" = "Deletion cannot be undone";

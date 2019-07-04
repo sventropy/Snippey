@@ -48,7 +48,7 @@ class InfoTableViewController: UITableViewController {
         case 0:
             rows = 2
         case 1:
-            rows = 1
+            rows = 2
         case 2:
             rows = 2
         default:
@@ -74,7 +74,16 @@ class InfoTableViewController: UITableViewController {
             }
         case 1:
             // Open source dependencies
-            cell.textLabel?.text = "info-link-deps-swiftreorder".localized
+            switch indexPath.row {
+            case 0:
+                cell.textLabel?.text = "info-link-deps-swiftreorder".localized
+            case 1:
+                cell.textLabel?.text = Constants.urlIcons8
+            default:
+                assertionFailure(Constants.switchAssertionFailureMessage)
+            }
+            
+            
         case 2:
             switch indexPath.row {
             case 0:
@@ -125,7 +134,14 @@ class InfoTableViewController: UITableViewController {
             }
         case 1:
             // Open source dependencies
-            Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
+            switch indexPath.row {
+            case 0:
+                Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
+            case 1:
+                Util.openUrl(urlString: Constants.urlIcons8)
+            default:
+                assertionFailure(Constants.switchAssertionFailureMessage)
+            }
         case 2:
             
             switch indexPath.row {

@@ -20,12 +20,13 @@ class KeyboardViewController: UIInputViewController {
     var longpressDeleteTimer: Timer?
 
     var tableView: UITableView = UITableView()
-    var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
-    var backspaceButton: UIBarButtonItem = UIBarButtonItem()
+    var keyboardSwitchBarButtonItem = UIBarButtonItem()
+    var backspaceBarButtonItem = UIBarButtonItem()
     var toolbar: UIToolbar = UIToolbar()
     var stackView: UIView = UIView()
     var backgroundLabel: UILabel?
-    var backspaceLabel = UILabel()
+    var keyboardSwitchButton = UIButton()
+    var backspaceButton = UIButton()
     
     private var showDarkKeyboard: Bool = false
 
@@ -49,42 +50,26 @@ class KeyboardViewController: UIInputViewController {
         backgroundLabel!.textAlignment = .center
         tableView.backgroundView = backgroundLabel
 
-        keyboardSwitchButton.title = "⌨︎"
-        keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
-
-        backspaceLabel.text = "⌫"
-        backspaceLabel.isUserInteractionEnabled = true
-        backspaceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
-        backspaceLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
-        backspaceButton.customView = backspaceLabel
-
+        keyboardSwitchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardSwitchTouchUp)))
+        keyboardSwitchButton.setImage(StyleController.loadIconResized(assetName: "icons8-globe-50"), for: .normal)
+        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50"), for: .highlighted)
+        keyboardSwitchButton.imageEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        keyboardSwitchBarButtonItem.customView = keyboardSwitchButton
+        
+        backspaceButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
+        // Long press does only work with custom views in a UIBarButtonItem
+        backspaceButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50"), for: .normal)
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50"), for: .highlighted)
+        backspaceButton.imageEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
+        backspaceBarButtonItem.customView = backspaceButton
+        
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
 
         inputView?.addSubview(stackView)
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // Clear everything and reload
-        snippets.removeAll()
-        snippets = dataAccess.loadSnippets()
-        tableView.reloadData()
-
-        // Compute correct toolbar items, must be done in viewWillAppear
-        var toolbarItems =
-            [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton]
-        if needsInputModeSwitchKey {
-            toolbarItems.insert(keyboardSwitchButton, at: 0)
-        }
-        toolbar.setItems(toolbarItems, animated: true)
-
+        
         // Autolayout
-        // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
-        let showKeyboardSwitcher = needsInputModeSwitchKey
-                                ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX
-        inputView?.heightAnchor.constraint(equalToConstant: showKeyboardSwitcher).isActive = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -100,18 +85,45 @@ class KeyboardViewController: UIInputViewController {
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        backspaceButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        backspaceButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print(self.description + ": viewWillAppear")
+
+        // Clear everything and reload
+        snippets.removeAll()
+        snippets = dataAccess.loadSnippets()
+        tableView.reloadData()
 
         tableView.backgroundView?.isHidden = snippets.count > 0
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        // Compute correct toolbar items, must be done in viewWillAppear
+        var toolbarItems =
+            [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceBarButtonItem]
+        print("needsInputModeSwitchKey=\(needsInputModeSwitchKey)")
+        if needsInputModeSwitchKey {
+            toolbarItems.insert(keyboardSwitchBarButtonItem, at: 0)
+        }
+        toolbar.setItems(toolbarItems, animated: true)
+        
+        let keyboardHeight = needsInputModeSwitchKey
+            ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX
+        inputView?.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
+        
         showDarkKeyboard = textDocumentProxy.keyboardAppearance == .dark
         backgroundLabel!.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
         tableView.backgroundColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
         toolbar.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
-        backspaceLabel.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
-
+        toolbar.barTintColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
     }
     
     override func viewDidLayoutSubviews() {

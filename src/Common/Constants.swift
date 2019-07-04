@@ -25,13 +25,14 @@ struct Constants {
     static let urlSnippeyPrivacyPolicy = "https://github.com/sventropy/Snippey-Privacy-Policy"
     static let urlSnippeyDevGitHub = "https://github.com/sventropy"
     static let urlSwiftReorderGitHub = "https://github.com/adamshin/SwiftReorder"
+    static let urlIcons8 = "https://icons8.com"
 
     // UI Magic Numbers
     static let cornerRadius: CGFloat = 4.0
     static let textAreaSideInset: CGFloat = 5.0
     static let textAreaTopBottomInset: CGFloat = 8.0
     static let textAreaDefaultHeight: CGFloat = 320.0
-    static let toolbarHeight: CGFloat = 48.0
+    static let toolbarHeight: CGFloat = 52.0
     static let keyboardHeightIPhone: CGFloat = 258.0
     static let keyboardHeightIPhoneX: CGFloat = 333.0
     static let margin: CGFloat = 8.0
@@ -47,7 +48,7 @@ struct Constants {
     static var accentColor: UIColor { return UIColor(hexString: "#6DD48E") }
     static var darkColor: UIColor { return UIColor(hexString: "#353535") }
     static var lightColor: UIColor { return UIColor(hexString: "#FFFFFF") }
-    static var mediumColor: UIColor { return UIColor(hexString: "#D8D8D8") }
+    static var mediumColor: UIColor { return UIColor(hexString: "#d0d3da") }
     static var errorColor = UIColor.red
     // Not applied yet to table view action due to effort (no official API)
     //    var deleteColor : UIColor { return UIColor(hexString: "#A10D00")}

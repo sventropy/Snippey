@@ -47,4 +47,9 @@ class StyleController {
         tableViewCell.contentView.layer.shadowOpacity = Constants.shadowOpacity
         tableViewCell.contentView.layer.shadowOffset = Constants.shadowOffset
     }
+    
+    class func loadIconResized(assetName: String) -> UIImage {
+        guard let image = UIImage(named: assetName) else { return UIImage() }
+        return image.resized(to: CGSize(width: 44, height: 44))
+    }
 }
