@@ -82,12 +82,6 @@ class ViewController: UITableViewController {
                 UIEdgeInsets(top: 0, left: Constants.margin, bottom: 0, right: Constants.margin))
         }
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
-        
-    }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent

@@ -35,60 +35,20 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Apply app styling to keyboard
         StyleController.applyStyle()
 
-        // Create controls
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        let backgroundLabelFrame = CGRect(x: 0,
-                                          y: 0,
-                                          width: tableView.bounds.size.width,
-                                          height: tableView.bounds.size.height)
-        backgroundLabel = UILabel(frame: backgroundLabelFrame)
-        backgroundLabel!.text = "list-no-snippets-label".localized
-        backgroundLabel!.textAlignment = .center
-        tableView.backgroundView = backgroundLabel
-
-        keyboardSwitchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardSwitchTouchUp)))
-        keyboardSwitchButton.setImage(StyleController.loadIconResized(assetName: "icons8-globe-50"), for: .normal)
-        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50"), for: .highlighted)
-        keyboardSwitchButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
-        keyboardSwitchBarButtonItem.customView = keyboardSwitchButton
+        // Setup controls
+        setupTableView()
+        setupToolbarItems()
         
-        backspaceButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
-        // Long press does only work with custom views in a UIBarButtonItem
-        backspaceButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
-        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50"), for: .normal)
-        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50"), for: .highlighted)
-        backspaceButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
-        backspaceBarButtonItem.customView = backspaceButton
-        
+        // Build view hierarchy
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-
         inputView?.addSubview(stackView)
         
-        // Autolayout
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
-        toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
-        toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
-        backspaceButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        backspaceButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        // Setup layout
+        applyAutoLayoutConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -154,6 +114,62 @@ class KeyboardViewController: UIInputViewController {
             longpressDeleteTimer?.invalidate()
             longpressDeleteTimer = nil
         }
+    }
+    
+    // MARK: - Private
+    
+    fileprivate func setupTableView() {
+        // Create controls
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        let backgroundLabelFrame = CGRect(x: 0,
+                                          y: 0,
+                                          width: tableView.bounds.size.width,
+                                          height: tableView.bounds.size.height)
+        backgroundLabel = UILabel(frame: backgroundLabelFrame)
+        backgroundLabel!.text = "list-no-snippets-label".localized
+        backgroundLabel!.textAlignment = .center
+        tableView.backgroundView = backgroundLabel
+    }
+    
+    fileprivate func setupToolbarItems() {
+        keyboardSwitchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardSwitchTouchUp)))
+        keyboardSwitchButton.setImage(StyleController.loadIconResized(assetName: "icons8-globe-50"), for: .normal)
+        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50"), for: .highlighted)
+        keyboardSwitchButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
+        keyboardSwitchBarButtonItem.customView = keyboardSwitchButton
+        
+        backspaceButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
+        // Long press does only work with custom views in a UIBarButtonItem
+        backspaceButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50"), for: .normal)
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50"), for: .highlighted)
+        backspaceButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
+        backspaceBarButtonItem.customView = backspaceButton
+    }
+    
+    fileprivate func applyAutoLayoutConstraints() {
+        // Autolayout
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
+        toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+        toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        backspaceButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        backspaceButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
     }
 }
 

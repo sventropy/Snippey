@@ -25,4 +25,3 @@ class Util {
         UIApplication.shared.open(parsedUrl, options: [:], completionHandler: nil)
     }
 }
-
