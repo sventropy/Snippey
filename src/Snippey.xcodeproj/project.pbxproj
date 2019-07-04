@@ -12,6 +12,7 @@
 		5C15A6F422AE67BC00BC016E /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F322AE67BC00BC016E /* InfoTableViewController.swift */; };
 		5C15A6F622AE79E000BC016E /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */; };
 		5C15A6FB22AED90B00BC016E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6FA22AED90B00BC016E /* Util.swift */; };
+		5C28500922CDC3B100D92C99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C28500B22CDC3B100D92C99 /* Localizable.strings */; };
 		5C3B041322B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */; };
 		5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */; };
 		5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
@@ -92,6 +93,8 @@
 		5C15A6F322AE67BC00BC016E /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = InfoTableViewCell.swift; path = Snippey/Controls/InfoTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		5C15A6FA22AED90B00BC016E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		5C28500C22CDC40C00D92C99 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C28500D22CDC45600D92C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderViewFrame.swift"; sourceTree = "<group>"; };
 		5C504E991F6B0CAB00625257 /* Snippey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +200,7 @@
 			children = (
 				5C504ED21F6B0E4C00625257 /* Info.plist */,
 				5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */,
+				5C28500B22CDC3B100D92C99 /* Localizable.strings */,
 				5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */,
 			);
 			path = SnippeyKeyboard;
@@ -398,6 +402,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C28500922CDC3B100D92C99 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -511,6 +516,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		5C28500B22CDC3B100D92C99 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5C28500C22CDC40C00D92C99 /* de */,
+				5C28500D22CDC45600D92C99 /* Base */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		5C504EA51F6B0CAB00625257 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

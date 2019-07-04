@@ -17,13 +17,11 @@ class SnippetTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         applyCellBehavior()
-        StyleController.applyCellStyle(tableViewCell: self)
     }
 
     init() {
         super.init(style: .default, reuseIdentifier: Constants.cellReuseIdentifier)
         applyCellBehavior()
-        StyleController.applyCellStyle(tableViewCell: self)
     }
 
     required init?(coder aDecoder: NSCoder) {

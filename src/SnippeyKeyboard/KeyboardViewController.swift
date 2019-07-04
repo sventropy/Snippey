@@ -24,11 +24,17 @@ class KeyboardViewController: UIInputViewController {
     var backspaceButton: UIBarButtonItem = UIBarButtonItem()
     var toolbar: UIToolbar = UIToolbar()
     var stackView: UIView = UIView()
+    var backgroundLabel: UILabel?
+    var backspaceLabel = UILabel()
+    
+    private var showDarkKeyboard: Bool = false
 
     // MARK: - UIViewController Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        StyleController.applyStyle()
 
         // Create controls
         tableView.delegate = self
@@ -39,15 +45,14 @@ class KeyboardViewController: UIInputViewController {
                                           y: 0,
                                           width: tableView.bounds.size.width,
                                           height: tableView.bounds.size.height)
-        let backgroundLabel = UILabel(frame: backgroundLabelFrame)
-        backgroundLabel.text = "No Snippets. Create some!"
-        backgroundLabel.textColor = Constants.textColor // HACK: Does not work via UIAppearance
+        backgroundLabel = UILabel(frame: backgroundLabelFrame)
+        backgroundLabel!.text = "list-no-snippets-label".localized
+        backgroundLabel!.textAlignment = .center
         tableView.backgroundView = backgroundLabel
 
         keyboardSwitchButton.title = "⌨︎"
         keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
 
-        let backspaceLabel = UILabel()
         backspaceLabel.text = "⌫"
         backspaceLabel.isUserInteractionEnabled = true
         backspaceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
@@ -58,9 +63,6 @@ class KeyboardViewController: UIInputViewController {
         stackView.addSubview(toolbar)
 
         inputView?.addSubview(stackView)
-
-        // Styling
-        StyleController.applyStyle()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,21 @@ class KeyboardViewController: UIInputViewController {
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
 
         tableView.backgroundView?.isHidden = snippets.count > 0
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        showDarkKeyboard = textDocumentProxy.keyboardAppearance == .dark
+        backgroundLabel!.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
+        tableView.backgroundColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
+        toolbar.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
+        backspaceLabel.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
+
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
     }
 
     // MARK: - Keyboard Extension
@@ -143,6 +160,7 @@ extension KeyboardViewController: UITableViewDelegate, UITableViewDataSource {
         // Configure the cell...
         let snippet = snippets[indexPath.row]
         cell.textLabel?.text = snippet.text
+        StyleController.applyCellStyle(tableViewCell: cell, isDark: textDocumentProxy.keyboardAppearance == .dark)
 
         return cell
     }
