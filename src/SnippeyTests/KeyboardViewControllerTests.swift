@@ -71,6 +71,9 @@ class KeyboardViewControllerTests: XCTestCase {
     }
 
     func testKeyboardShowsSnippetText() {
+        while(viewController?.snippets.count == 0) {
+            sleep(1)
+        }
         let cellText = viewController?.tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text
         XCTAssertNotNil(cellText)
         let snippetText = viewController?.snippets[0].text
@@ -109,6 +112,7 @@ class MockKeyboardViewController: KeyboardViewController {
     private var _textDocumentProxy: MockTextDocumentProxy = MockTextDocumentProxy()
     override var needsInputModeSwitchKey: Bool { return _needsInputModeSwitchKey }
     override var textDocumentProxy: UITextDocumentProxy { return _textDocumentProxy }
+    fileprivate var snippetsLoaded = false
 
     convenience init() {
         self.init(nibName: nil, bundle: nil)
@@ -116,6 +120,14 @@ class MockKeyboardViewController: KeyboardViewController {
 
     func setNeedsInputModeSwitchKey(value: Bool) {
         _needsInputModeSwitchKey = value
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.snippets = self.dataAccess.loadSnippets()
+        self.tableView.backgroundView = self.backgroundLabel
+        self.tableView.backgroundView!.isHidden = self.snippets.count > 0
+        self.loadActivityIndicator!.stopAnimating()
+        self.tableView.reloadData()
     }
 }
 

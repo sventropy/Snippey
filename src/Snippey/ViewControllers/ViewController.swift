@@ -202,7 +202,7 @@ class ViewController: UITableViewController {
 
     // MARK: - Private
 
-    fileprivate func toggleNoSnippetsLabel() {
+    func toggleNoSnippetsLabel() {
         tableView.backgroundView = backgroundLabel
         loadActivityIndicator.stopAnimating()
         tableView.backgroundView?.isHidden = snippets.count > 0
@@ -228,7 +228,7 @@ class ViewController: UITableViewController {
         return headerLabel
     }
     
-    fileprivate func reloadSnippets(_ dataAcc: DataAccessProtocol) {
+    open func reloadSnippets(_ dataAcc: DataAccessProtocol) {
         loadActivityIndicator.startAnimating()
         tableView.backgroundView = loadActivityIndicator
         DispatchQueue.global(qos: .background).async {
