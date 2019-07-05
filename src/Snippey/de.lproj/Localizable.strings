@@ -30,7 +30,7 @@
 "info-link-deps-swiftreorder" = "SwiftReorder";
 "info-button-reset" = "Alle Schnipsel löschen";
 "info-section-header-links" = "Links";
-"info-section-header-deps" = "Open Source Abhängigkeiten";
+"info-section-header-deps" = "Abhängigkeiten";
 "info-section-header-reset" = "App zurücksetzen";
 "info-reset-alert-title" = "Willst Du wirklich alle gespeicherten Schnipsel löschen?";
 "info-reset-alert-message" = "Die Löschung kann nicht rückgängig gemacht werden";

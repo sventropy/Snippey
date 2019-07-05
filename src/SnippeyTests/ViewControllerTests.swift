@@ -11,16 +11,16 @@ import XCTest
 
 class ViewControllerTests: XCTestCase {
 
-    var viewController: ViewController!
+    var viewController: MockViewController!
     var dataAccess: MockDataAccess!
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        viewController = ViewController()
+        viewController = MockViewController()
         // HACK: To make the window update viewcontroller properties on navigation/presentation as usual
-        UIApplication.shared.keyWindow?.rootViewController = viewController
         dataAccess = MockDataAccess()
         viewController.dataAccess = dataAccess
+        UIApplication.shared.keyWindow?.rootViewController = viewController
         viewController.viewDidLoad()
         viewController.viewWillAppear(true)
     }
@@ -88,4 +88,18 @@ class ViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.snippets[1].text, "3")
     }
 
+}
+
+class MockViewController: ViewController {
+    
+    //HACK: Sync loading logic for tests
+    override func reloadSnippets(_ dataAcc: DataAccessProtocol) {
+        loadActivityIndicator.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
+        self.snippets = dataAcc.loadSnippets()
+        // Update UI via runloop
+        self.tableView.reloadData()
+        self.toggleNoSnippetsLabel()
+        
+    }
 }

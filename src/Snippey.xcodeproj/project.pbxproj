@@ -13,6 +13,9 @@
 		5C15A6F622AE79E000BC016E /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6F522AE79E000BC016E /* InfoTableViewCell.swift */; };
 		5C15A6FB22AED90B00BC016E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C15A6FA22AED90B00BC016E /* Util.swift */; };
 		5C28500922CDC3B100D92C99 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5C28500B22CDC3B100D92C99 /* Localizable.strings */; };
+		5C28500F22CE161300D92C99 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5C28500E22CE161300D92C99 /* Assets.xcassets */; };
+		5C36F1C722CE1A1500D0A88B /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C36F1C622CE1A1500D0A88B /* UIImage+Resized.swift */; };
+		5C36F1C822CE1A3C00D0A88B /* UIImage+Resized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C36F1C622CE1A1500D0A88B /* UIImage+Resized.swift */; };
 		5C3B041322B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */; };
 		5C504E9D1F6B0CAB00625257 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */; };
 		5C504E9F1F6B0CAB00625257 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C504E9E1F6B0CAB00625257 /* ViewController.swift */; };
@@ -95,6 +98,8 @@
 		5C15A6FA22AED90B00BC016E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 		5C28500C22CDC40C00D92C99 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		5C28500D22CDC45600D92C99 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		5C28500E22CE161300D92C99 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5C36F1C622CE1A1500D0A88B /* UIImage+Resized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Resized.swift"; sourceTree = "<group>"; };
 		5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+HeaderViewFrame.swift"; sourceTree = "<group>"; };
 		5C504E991F6B0CAB00625257 /* Snippey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Snippey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C504E9C1F6B0CAB00625257 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -202,6 +207,7 @@
 				5C504ED01F6B0E4C00625257 /* KeyboardViewController.swift */,
 				5C28500B22CDC3B100D92C99 /* Localizable.strings */,
 				5C76046C22835CCF003F86A3 /* SnippeyKeyboard.entitlements */,
+				5C28500E22CE161300D92C99 /* Assets.xcassets */,
 			);
 			path = SnippeyKeyboard;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				5CC3970722A708B800D9BDD8 /* UIColor+Hex.swift */,
 				5C15A6FA22AED90B00BC016E /* Util.swift */,
 				5C3B041222B0B99F00570BA7 /* UITableView+HeaderViewFrame.swift */,
+				5C36F1C622CE1A1500D0A88B /* UIImage+Resized.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -402,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C28500F22CE161300D92C99 /* Assets.xcassets in Resources */,
 				5C28500922CDC3B100D92C99 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -461,6 +469,7 @@
 				5C935CDC229340AC00825E58 /* Snippet.swift in Sources */,
 				5CC5A52422A6D22700BC2800 /* ReorderController+SnapshotView.swift in Sources */,
 				5C71976622A7F02E002E5961 /* InsetLabel.swift in Sources */,
+				5C36F1C722CE1A1500D0A88B /* UIImage+Resized.swift in Sources */,
 				5CC5A52222A6D22700BC2800 /* ReorderController.swift in Sources */,
 				5C935CD722933FD600825E58 /* Constants.swift in Sources */,
 				5C935CDA2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
@@ -478,6 +487,7 @@
 				5C504ED11F6B0E4C00625257 /* KeyboardViewController.swift in Sources */,
 				5C71976B22A8DAF4002E5961 /* StyleController.swift in Sources */,
 				5C935CD822933FD600825E58 /* Constants.swift in Sources */,
+				5C36F1C822CE1A3C00D0A88B /* UIImage+Resized.swift in Sources */,
 				5C935CDB2293401400825E58 /* SnippetTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

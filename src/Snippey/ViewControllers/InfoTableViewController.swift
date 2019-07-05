@@ -48,7 +48,7 @@ class InfoTableViewController: UITableViewController {
         case 0:
             rows = 2
         case 1:
-            rows = 1
+            rows = 2
         case 2:
             rows = 2
         default:
@@ -56,37 +56,18 @@ class InfoTableViewController: UITableViewController {
         }
         return rows
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: Constants.infoCellReuseIdentifier, for: indexPath)
 
         // Configure the static cells
         switch indexPath.section {
         case 0:
-            // App Info
-            switch indexPath.row {
-            case 0:
-                cell.textLabel?.text = "info-link-snippey-privacy-policy".localized
-            case 1:
-                cell.textLabel?.text = "info-link-sventropy-github".localized
-            default:
-                assertionFailure(Constants.switchAssertionFailureMessage)
-            }
+            setupAppInfoCells(indexPath, cell)
         case 1:
-            // Open source dependencies
-            cell.textLabel?.text = "info-link-deps-swiftreorder".localized
+            setupDependencyCells(indexPath, cell)
         case 2:
-            switch indexPath.row {
-            case 0:
-                // Restart tutorial button
-                cell.textLabel?.text = "info-restart-tutorial-button".localized
-            case 1:
-                // Reset button
-                cell.textLabel?.textColor = .red
-                cell.textLabel?.text = "info-button-reset".localized
-            default:
-                assertionFailure(Constants.switchAssertionFailureMessage)
-            }
+            setupResetCells(indexPath, cell)
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
@@ -110,37 +91,15 @@ class InfoTableViewController: UITableViewController {
         }
         return header
     }
-
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            // App Info
-            switch indexPath.row {
-            case 0:
-                Util.openUrl(urlString: Constants.urlSnippeyPrivacyPolicy)
-            case 1:
-                Util.openUrl(urlString: Constants.urlSnippeyDevGitHub)
-            default:
-                assertionFailure(Constants.switchAssertionFailureMessage)
-            }
+            didSelectAppInfoCell(indexPath)
         case 1:
-            // Open source dependencies
-            Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
+            didSelectDependencyCell(indexPath)
         case 2:
-            
-            switch indexPath.row {
-            case 0:
-                let tutorialPageViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
-                tutorialPageViewController.dataAccess = dataAccess
-                UIWindow.animate(withDuration: 0.2) {
-                    UIApplication.shared.keyWindow!.rootViewController = tutorialPageViewController
-                }
-                dismissInfo()
-            case 1:
-                showResetConfirmationAlert()
-            default:
-                assertionFailure(Constants.switchAssertionFailureMessage)
-            }
+            didSelectResetCell(indexPath)
         default:
             assertionFailure(Constants.switchAssertionFailureMessage)
         }
@@ -171,5 +130,83 @@ class InfoTableViewController: UITableViewController {
             alertController.dismiss(animated: true, completion: nil)
         }))
         present(alertController, animated: true, completion: nil)
+    }
+    
+    fileprivate func setupAppInfoCells(_ indexPath: IndexPath, _ cell: UITableViewCell) {
+        // App Info
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "info-link-snippey-privacy-policy".localized
+        case 1:
+            cell.textLabel?.text = "info-link-sventropy-github".localized
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
+    }
+    
+    fileprivate func setupDependencyCells(_ indexPath: IndexPath, _ cell: UITableViewCell) {
+        // Open source dependencies
+        switch indexPath.row {
+        case 0:
+            cell.textLabel?.text = "info-link-deps-swiftreorder".localized
+        case 1:
+            cell.textLabel?.text = Constants.urlIcons8
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
+    }
+    
+    fileprivate func setupResetCells(_ indexPath: IndexPath, _ cell: UITableViewCell) {
+        switch indexPath.row {
+        case 0:
+            // Restart tutorial button
+            cell.textLabel?.text = "info-restart-tutorial-button".localized
+        case 1:
+            // Reset button
+            cell.textLabel?.textColor = .red
+            cell.textLabel?.text = "info-button-reset".localized
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
+    }
+    
+    fileprivate func didSelectAppInfoCell(_ indexPath: IndexPath) {
+        // App Info
+        switch indexPath.row {
+        case 0:
+            Util.openUrl(urlString: Constants.urlSnippeyPrivacyPolicy)
+        case 1:
+            Util.openUrl(urlString: Constants.urlSnippeyDevGitHub)
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
+    }
+    
+    fileprivate func didSelectDependencyCell(_ indexPath: IndexPath) {
+        // Open source dependencies
+        switch indexPath.row {
+        case 0:
+            Util.openUrl(urlString: Constants.urlSwiftReorderGitHub)
+        case 1:
+            Util.openUrl(urlString: Constants.urlIcons8)
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
+    }
+    
+    fileprivate func didSelectResetCell(_ indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let tutorialPageViewController = TutorialPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
+            tutorialPageViewController.dataAccess = dataAccess
+            UIWindow.animate(withDuration: 0.2) {
+                UIApplication.shared.keyWindow!.rootViewController = tutorialPageViewController
+            }
+            dismissInfo()
+        case 1:
+            showResetConfirmationAlert()
+        default:
+            assertionFailure(Constants.switchAssertionFailureMessage)
+        }
     }
 }

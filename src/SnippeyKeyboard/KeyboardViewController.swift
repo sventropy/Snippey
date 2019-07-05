@@ -20,12 +20,14 @@ class KeyboardViewController: UIInputViewController {
     var longpressDeleteTimer: Timer?
 
     var tableView: UITableView = UITableView()
-    var keyboardSwitchButton: UIBarButtonItem = UIBarButtonItem()
-    var backspaceButton: UIBarButtonItem = UIBarButtonItem()
+    var keyboardSwitchBarButtonItem = UIBarButtonItem()
+    var backspaceBarButtonItem = UIBarButtonItem()
     var toolbar: UIToolbar = UIToolbar()
     var stackView: UIView = UIView()
     var backgroundLabel: UILabel?
-    var backspaceLabel = UILabel()
+    var keyboardSwitchButton = UIButton()
+    var backspaceButton = UIButton()
+    var loadActivityIndicator: UIActivityIndicatorView?
     
     private var showDarkKeyboard: Bool = false
 
@@ -34,91 +36,59 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Apply app styling to keyboard
         StyleController.applyStyle()
 
-        // Create controls
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        let backgroundLabelFrame = CGRect(x: 0,
-                                          y: 0,
-                                          width: tableView.bounds.size.width,
-                                          height: tableView.bounds.size.height)
-        backgroundLabel = UILabel(frame: backgroundLabelFrame)
-        backgroundLabel!.text = "list-no-snippets-label".localized
-        backgroundLabel!.textAlignment = .center
-        tableView.backgroundView = backgroundLabel
-
-        keyboardSwitchButton.title = "⌨︎"
-        keyboardSwitchButton.action = #selector(keyboardSwitchTouchUp)
-
-        backspaceLabel.text = "⌫"
-        backspaceLabel.isUserInteractionEnabled = true
-        backspaceLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
-        backspaceLabel.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
-        backspaceButton.customView = backspaceLabel
-
+        // Setup controls
+        setupTableView()
+        setupToolbarItems()
+        
+        // Build view hierarchy
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-
-        inputView?.addSubview(stackView)
+        inputView!.addSubview(stackView)
+        
+        // Setup layout
+        applyAutoLayoutConstraints()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        print(self.description + ": viewWillAppear")
 
         // Clear everything and reload
-        snippets.removeAll()
-        snippets = dataAccess.loadSnippets()
-        tableView.reloadData()
-
-        // Compute correct toolbar items, must be done in viewWillAppear
-        var toolbarItems =
-            [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceButton]
-        if needsInputModeSwitchKey {
-            toolbarItems.insert(keyboardSwitchButton, at: 0)
+        loadActivityIndicator!.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
+        DispatchQueue.global(qos: .background).async {
+            self.snippets = self.dataAccess.loadSnippets()
+            DispatchQueue.main.async {
+                self.tableView.backgroundView = self.backgroundLabel
+                self.tableView.backgroundView!.isHidden = self.snippets.count > 0
+                self.loadActivityIndicator!.stopAnimating()
+                self.tableView.reloadData()
+            }
         }
-        toolbar.setItems(toolbarItems, animated: true)
-
-        // Autolayout
-        // HACK: Use inputmodeswitch indicator to determine iPhoneX(s/r) vs others
-        let showKeyboardSwitcher = needsInputModeSwitchKey
-                                ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX
-        inputView?.heightAnchor.constraint(equalToConstant: showKeyboardSwitcher).isActive = true
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
-        toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
-        toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
-        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
-
-        tableView.backgroundView?.isHidden = snippets.count > 0
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        // Compute correct toolbar items, must be done in viewWillAppear
+        var toolbarItems =
+            [UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil), backspaceBarButtonItem]
+        print("needsInputModeSwitchKey=\(needsInputModeSwitchKey)")
+        if needsInputModeSwitchKey {
+            toolbarItems.insert(keyboardSwitchBarButtonItem, at: 0)
+        }
+        toolbar.setItems(toolbarItems, animated: true)
+        
         showDarkKeyboard = textDocumentProxy.keyboardAppearance == .dark
         backgroundLabel!.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
         tableView.backgroundColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
         toolbar.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
-        backspaceLabel.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
-
+        toolbar.barTintColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-
     // MARK: - Keyboard Extension
 
     @objc func keyboardSwitchTouchUp(_ sender: Any) {
@@ -142,6 +112,71 @@ class KeyboardViewController: UIInputViewController {
             longpressDeleteTimer?.invalidate()
             longpressDeleteTimer = nil
         }
+    }
+    
+    // MARK: - Private
+    
+    fileprivate func setupTableView() {
+        // Create controls
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
+        let backgroundViewFrame = CGRect(x: 0,
+                                          y: 0,
+                                          width: tableView.bounds.size.width,
+                                          height: tableView.bounds.size.height)
+        backgroundLabel = UILabel(frame: backgroundViewFrame)
+        backgroundLabel!.text = "list-no-snippets-label".localized
+        backgroundLabel!.textAlignment = .center
+        
+        loadActivityIndicator = UIActivityIndicatorView(frame: backgroundViewFrame)
+        loadActivityIndicator!.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
+    }
+    
+    fileprivate func setupToolbarItems() {
+        keyboardSwitchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardSwitchTouchUp)))
+        keyboardSwitchButton.setImage(StyleController.loadIconResized(assetName: "icons8-globe-50"), for: .normal)
+        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50"), for: .highlighted)
+        keyboardSwitchButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
+        keyboardSwitchBarButtonItem.customView = keyboardSwitchButton
+        
+        backspaceButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
+        // Long press does only work with custom views in a UIBarButtonItem
+        backspaceButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50"), for: .normal)
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50"), for: .highlighted)
+        backspaceButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
+        backspaceBarButtonItem.customView = backspaceButton
+    }
+    
+    fileprivate func applyAutoLayoutConstraints() {
+        // Autolayout
+        inputView!.translatesAutoresizingMaskIntoConstraints = false
+        inputView!.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        inputView!.heightAnchor.constraint(equalToConstant: Constants.keyboardHeight).isActive = true
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.topAnchor.constraint(equalTo: inputView!.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: inputView!.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: inputView!.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: inputView!.leadingAnchor).isActive = true
+        
+        toolbar.translatesAutoresizingMaskIntoConstraints = false
+        toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
+        toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
+        backspaceButton.widthAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        backspaceButton.heightAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+        
     }
 }
 

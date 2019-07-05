@@ -26,6 +26,7 @@ class StyleController {
         UITableView.appearance().contentInset = UIEdgeInsets(top: Constants.margin / 2, left: CGFloat.zero, bottom: Constants.margin / 2, right: CGFloat.zero)
 
         // nav bar
+        UINavigationBar.appearance().tintColor = Constants.accentColor
         UINavigationBar.appearance().barTintColor = Constants.darkColor
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: Constants.accentColor]
 
@@ -46,5 +47,10 @@ class StyleController {
         tableViewCell.contentView.layer.shadowColor = isDark ? UIColor.black.cgColor : Constants.darkColor.cgColor
         tableViewCell.contentView.layer.shadowOpacity = Constants.shadowOpacity
         tableViewCell.contentView.layer.shadowOffset = Constants.shadowOffset
+    }
+    
+    class func loadIconResized(assetName: String) -> UIImage {
+        guard let image = UIImage(named: assetName) else { return UIImage() }
+        return image.resized(to: CGSize(width: 44, height: 44))
     }
 }
