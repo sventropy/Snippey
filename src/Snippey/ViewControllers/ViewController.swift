@@ -15,7 +15,10 @@ class ViewController: UITableViewController {
 
     var snippets: [Snippet] = []
     var dataAccess: DataAccessProtocol?
+    
     var infoButton = UIButton(type: .infoDark)
+    var backgroundLabel: UILabel?
+    var loadActivityIndicator = UIActivityIndicatorView(style: .gray)
 
     // MARK: - UIViewController Lifecycle
 
@@ -29,11 +32,15 @@ class ViewController: UITableViewController {
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
         tableView.reorder.delegate = self
         tableView.allowsSelection = false
-        let backgroundLabel = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
-        backgroundLabel.text = "list-no-snippets-label".localized
-        backgroundLabel.textColor = Constants.textColor
-        backgroundLabel.textAlignment = .center
-        tableView.backgroundView = backgroundLabel
+        backgroundLabel = UILabel(frame: CGRect(x: CGFloat.zero,
+                                                    y: CGFloat.zero,
+                                                    width: tableView.bounds.size.width,
+                                                    height: tableView.bounds.size.height))
+        backgroundLabel!.text = "list-no-snippets-label".localized
+        backgroundLabel!.textColor = Constants.textColor
+        backgroundLabel!.textAlignment = .center
+        loadActivityIndicator.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
         tableView.accessibilityLabel = "access-snippet-list-label".localized
         
         // Add button
@@ -43,20 +50,24 @@ class ViewController: UITableViewController {
         infoButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showInfo)))
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
+        // Apply layout constraints
+        infoButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        infoButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        
         // Check when app enters foreground after being in background to show/hide table header label properly
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround),
                                                name: UIApplication.willEnterForegroundNotification, object: nil)
-        
-        infoButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        infoButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        guard let dataAcc = self.dataAccess else {
+            assertionFailure("Data access not provided")
+            return
+        }
 
-        snippets = dataAccess?.loadSnippets() ?? [Snippet]()
-        tableView.reloadData()
-        toggleNoSnippetsLabel()
+        reloadSnippets(dataAcc)
 
         // In case the keyboard is not configured in the Settings app, remind the user to do so
         if !isKeyboardExtensionEnabled() {
@@ -76,9 +87,14 @@ class ViewController: UITableViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        guard let tableHeader = tableView.tableHeaderView else {
+            return
+        }
+        
         if !isKeyboardExtensionEnabled() {
             // Fix header view frame, in case it is shown
-            tableView.tableHeaderView?.frame = tableView.tableHeaderView!.frame.inset(by:
+            tableHeader.frame = tableHeader.frame.inset(by:
                 UIEdgeInsets(top: 0, left: Constants.margin, bottom: 0, right: Constants.margin))
         }
     }
@@ -124,11 +140,17 @@ class ViewController: UITableViewController {
 
      // Override to support editing the table view.
      override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let dataAcc = dataAccess else {
+            assertionFailure("Data access not available")
+            return
+        }
+        
         // Only delete handled here
         if editingStyle == .delete {
             // Delete the row from the data source
             snippets.remove(at: indexPath.row)
-            dataAccess?.storeSnippets(snippets: snippets)
+            dataAcc.storeSnippets(snippets: snippets)
             tableView.deleteRows(at: [indexPath], with: .fade)
 
             // Update background label in table view
@@ -180,18 +202,20 @@ class ViewController: UITableViewController {
 
     // MARK: - Private
 
-    private func toggleNoSnippetsLabel() {
+    fileprivate func toggleNoSnippetsLabel() {
+        tableView.backgroundView = backgroundLabel
+        loadActivityIndicator.stopAnimating()
         tableView.backgroundView?.isHidden = snippets.count > 0
     }
 
-    private func isKeyboardExtensionEnabled() -> Bool {
+    fileprivate func isKeyboardExtensionEnabled() -> Bool {
         if let keyboards = UserDefaults.standard.object(forKey: Constants.appleKeyboardDefaultsKey) as? [String] {
             return keyboards.contains(Constants.snippeyKeyboardBundleId)
         }
         return true
     }
 
-    private func createTableHeaderView() -> UILabel {
+    fileprivate func createTableHeaderView() -> UILabel {
         let headerLabel = UILabel()
         headerLabel.lineBreakMode = .byWordWrapping
         headerLabel.numberOfLines = 0
@@ -203,6 +227,20 @@ class ViewController: UITableViewController {
         headerLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(openAppSettings)))
         return headerLabel
     }
+    
+    fileprivate func reloadSnippets(_ dataAcc: DataAccessProtocol) {
+        loadActivityIndicator.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
+        DispatchQueue.global(qos: .background).async {
+            // Asynchronously load snippets
+            self.snippets = dataAcc.loadSnippets()
+            DispatchQueue.main.async {
+                // Update UI via runloop
+                self.tableView.reloadData()
+                self.toggleNoSnippetsLabel()
+            }
+        }
+    }
 }
 
 // MARK: - Implementation of add delegate
@@ -210,12 +248,17 @@ class ViewController: UITableViewController {
 extension ViewController: AddSnippetViewControllerDelegate {
 
     func didAddNewSnippet(snippetText: String) {
+        guard let dataAcc = dataAccess else {
+            assertionFailure("Data access not available")
+            return
+        }
 
+        // Add snippet to the list
         snippets.append(Snippet(text: snippetText))
         // Update model
-        dataAccess?.storeSnippets(snippets: self.snippets)
-        // Reload ui
-        tableView.reloadData()
+        dataAcc.storeSnippets(snippets: self.snippets)
+        // Reload
+        self.reloadSnippets(dataAcc)
     }
 }
 
@@ -224,12 +267,18 @@ extension ViewController: AddSnippetViewControllerDelegate {
 extension ViewController: TableViewReorderDelegate {
 
     func tableView(_ tableView: UITableView, reorderRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
+        guard let dataAcc = dataAccess else {
+            assertionFailure("Data access not available")
+            return
+        }
+        
         // Update data source
         let snippet = snippets[sourceIndexPath.row]
         snippets.remove(at: sourceIndexPath.row)
         snippets.insert(snippet, at: destinationIndexPath.row)
 
-        // Update UI
-        dataAccess?.storeSnippets(snippets: snippets)
+        // Update Model
+        dataAcc.storeSnippets(snippets: snippets)
     }
 }

@@ -27,6 +27,7 @@ class KeyboardViewController: UIInputViewController {
     var backgroundLabel: UILabel?
     var keyboardSwitchButton = UIButton()
     var backspaceButton = UIButton()
+    var loadActivityIndicator: UIActivityIndicatorView?
     
     private var showDarkKeyboard: Bool = false
 
@@ -45,7 +46,7 @@ class KeyboardViewController: UIInputViewController {
         // Build view hierarchy
         stackView.addSubview(tableView)
         stackView.addSubview(toolbar)
-        inputView?.addSubview(stackView)
+        inputView!.addSubview(stackView)
         
         // Setup layout
         applyAutoLayoutConstraints()
@@ -56,11 +57,17 @@ class KeyboardViewController: UIInputViewController {
         print(self.description + ": viewWillAppear")
 
         // Clear everything and reload
-        snippets.removeAll()
-        snippets = dataAccess.loadSnippets()
-        tableView.reloadData()
-
-        tableView.backgroundView?.isHidden = snippets.count > 0
+        loadActivityIndicator!.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
+        DispatchQueue.global(qos: .background).async {
+            self.snippets = self.dataAccess.loadSnippets()
+            DispatchQueue.main.async {
+                self.tableView.backgroundView = self.backgroundLabel
+                self.tableView.backgroundView!.isHidden = self.snippets.count > 0
+                self.loadActivityIndicator!.stopAnimating()
+                self.tableView.reloadData()
+            }
+        }
     }
     
     override func viewWillLayoutSubviews() {
@@ -86,11 +93,6 @@ class KeyboardViewController: UIInputViewController {
         toolbar.barTintColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-    }
-
     // MARK: - Keyboard Extension
 
     @objc func keyboardSwitchTouchUp(_ sender: Any) {
@@ -123,14 +125,17 @@ class KeyboardViewController: UIInputViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SnippetTableViewCell.self, forCellReuseIdentifier: Constants.cellReuseIdentifier)
-        let backgroundLabelFrame = CGRect(x: 0,
+        let backgroundViewFrame = CGRect(x: 0,
                                           y: 0,
                                           width: tableView.bounds.size.width,
                                           height: tableView.bounds.size.height)
-        backgroundLabel = UILabel(frame: backgroundLabelFrame)
+        backgroundLabel = UILabel(frame: backgroundViewFrame)
         backgroundLabel!.text = "list-no-snippets-label".localized
         backgroundLabel!.textAlignment = .center
-        tableView.backgroundView = backgroundLabel
+        
+        loadActivityIndicator = UIActivityIndicatorView(frame: backgroundViewFrame)
+        loadActivityIndicator!.startAnimating()
+        tableView.backgroundView = loadActivityIndicator
     }
     
     fileprivate func setupToolbarItems() {
