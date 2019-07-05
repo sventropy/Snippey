@@ -82,10 +82,6 @@ class KeyboardViewController: UIInputViewController {
         }
         toolbar.setItems(toolbarItems, animated: true)
         
-        let keyboardHeight = needsInputModeSwitchKey
-            ? Constants.keyboardHeightIPhone : Constants.keyboardHeightIPhoneX
-        inputView?.heightAnchor.constraint(equalToConstant: keyboardHeight).isActive = true
-        
         showDarkKeyboard = textDocumentProxy.keyboardAppearance == .dark
         backgroundLabel!.textColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
         tableView.backgroundColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
@@ -156,25 +152,31 @@ class KeyboardViewController: UIInputViewController {
     
     fileprivate func applyAutoLayoutConstraints() {
         // Autolayout
+        inputView!.translatesAutoresizingMaskIntoConstraints = false
+        inputView!.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        inputView!.heightAnchor.constraint(equalToConstant: Constants.keyboardHeight).isActive = true
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        stackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        stackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
-        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        stackView.topAnchor.constraint(equalTo: inputView!.topAnchor).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: inputView!.trailingAnchor).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: inputView!.bottomAnchor).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: inputView!.leadingAnchor).isActive = true
+        
         toolbar.translatesAutoresizingMaskIntoConstraints = false
-        toolbar.topAnchor.constraint(equalTo: tableView.bottomAnchor).isActive = true
         toolbar.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
         toolbar.bottomAnchor.constraint(equalTo: stackView.bottomAnchor).isActive = true
         toolbar.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
         toolbar.heightAnchor.constraint(equalToConstant: Constants.toolbarHeight).isActive = true
-        backspaceButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        backspaceButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
-        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+        backspaceButton.widthAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        backspaceButton.heightAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        keyboardSwitchButton.widthAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        keyboardSwitchButton.heightAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.topAnchor.constraint(equalTo: stackView.topAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: stackView.trailingAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: stackView.leadingAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: toolbar.topAnchor).isActive = true
+        
     }
 }
 

@@ -51,8 +51,8 @@ class ViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: infoButton)
         
         // Apply layout constraints
-        infoButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
-        infoButton.widthAnchor.constraint(equalToConstant: 44).isActive = true
+        infoButton.heightAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
+        infoButton.widthAnchor.constraint(equalToConstant: Constants.barButtonItemIconLength).isActive = true
         
         // Check when app enters foreground after being in background to show/hide table header label properly
         NotificationCenter.default.addObserver(self, selector: #selector(applicationWillEnterForeGround),

@@ -32,10 +32,10 @@ struct Constants {
     static let textAreaSideInset: CGFloat = 5.0
     static let textAreaTopBottomInset: CGFloat = 8.0
     static let textAreaDefaultHeight: CGFloat = 320.0
-    static let toolbarHeight: CGFloat = 52.0
-    static let keyboardHeightIPhone: CGFloat = 258.0
-    static let keyboardHeightIPhoneX: CGFloat = 333.0
+    static let toolbarHeight: CGFloat = 49.0
+    static let keyboardHeight: CGFloat = 216.0
     static let margin: CGFloat = 8.0
+    static let barButtonItemIconLength: CGFloat = 44.0
     static let shadowOpacity: Float = 0.5
     static let shadowOffset = CGSize(width: 1, height: 2)
     static let cellBorderWidth: CGFloat = 1
