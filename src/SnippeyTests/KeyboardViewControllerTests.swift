@@ -71,9 +71,7 @@ class KeyboardViewControllerTests: XCTestCase {
     }
 
     func testKeyboardShowsSnippetText() {
-        while(viewController?.snippets.count == 0) {
-            sleep(1)
-        }
+        
         let cellText = viewController?.tableView.cellForRow(at: IndexPath(row: 0, section: 0))?.textLabel?.text
         XCTAssertNotNil(cellText)
         let snippetText = viewController?.snippets[0].text
