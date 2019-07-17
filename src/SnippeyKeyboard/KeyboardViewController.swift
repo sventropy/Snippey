@@ -87,6 +87,8 @@ class KeyboardViewController: UIInputViewController {
         tableView.backgroundColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
         toolbar.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
         toolbar.barTintColor = showDarkKeyboard ? UIColor.darkGray : Constants.mediumColor
+        keyboardSwitchButton.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
+        backspaceButton.tintColor = showDarkKeyboard ? Constants.lightColor : Constants.textColor
     }
     
     // MARK: - Keyboard Extension
@@ -136,16 +138,16 @@ class KeyboardViewController: UIInputViewController {
     
     fileprivate func setupToolbarItems() {
         keyboardSwitchButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(keyboardSwitchTouchUp)))
-        keyboardSwitchButton.setImage(StyleController.loadIconResized(assetName: "icons8-globe-50"), for: .normal)
-        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50"), for: .highlighted)
+        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-50")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        keyboardSwitchButton.setImage(UIImage(named: "icons8-globe-filled-50")?.withRenderingMode(.alwaysTemplate), for: .highlighted)
         keyboardSwitchButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
         keyboardSwitchBarButtonItem.customView = keyboardSwitchButton
-        
+
         backspaceButton.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(backspaceTouchUp)))
         // Long press does only work with custom views in a UIBarButtonItem
         backspaceButton.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(backspaceLongPress)))
-        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50"), for: .normal)
-        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50"), for: .highlighted)
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-50")?.withRenderingMode(.alwaysTemplate), for: .normal)
+        backspaceButton.setImage(UIImage(named: "icons8-clear-symbol-filled-50")?.withRenderingMode(.alwaysTemplate), for: .highlighted)
         backspaceButton.imageEdgeInsets = UIEdgeInsets(top: Constants.margin, left: Constants.margin, bottom: Constants.margin, right: Constants.margin)
         backspaceBarButtonItem.customView = backspaceButton
     }

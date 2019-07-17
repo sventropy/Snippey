@@ -21,6 +21,7 @@ class KeyboardViewControllerTests: XCTestCase {
         viewController!.dataAccess = dataAccess!
         viewController?.viewDidLoad()
         viewController?.viewWillAppear(true)
+        viewController?.viewWillLayoutSubviews()
     }
 
     override func tearDown() {
@@ -123,12 +124,14 @@ class MockKeyboardViewController: KeyboardViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.snippets = self.dataAccess.loadSnippets()
         self.tableView.backgroundView = self.backgroundLabel
         self.tableView.backgroundView!.isHidden = self.snippets.count > 0
         self.loadActivityIndicator!.stopAnimating()
         self.tableView.reloadData()
     }
+    
 }
 
 class MockTextDocumentProxy: NSObject, UITextDocumentProxy {
@@ -162,5 +165,7 @@ class MockTextDocumentProxy: NSObject, UITextDocumentProxy {
     func adjustTextPosition(byCharacterOffset offset: Int) {
 
     }
+    
+    var keyboardAppearance: UIKeyboardAppearance = .default
 
 }
